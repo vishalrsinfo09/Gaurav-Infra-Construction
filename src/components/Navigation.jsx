@@ -18,11 +18,11 @@ const Navigation = () => {
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/interior', label: 'Interior' },
+    // { path: '/interior', label: 'Interior' },
     { path: '/about', label: 'About Us' },
     { path: '/gallery', label: 'Gallery' },
     { path: '/contact', label: 'Contact' },
-    { path: '/3d-tour', label: '3D Tour' },
+    // { path: '/3d-tour', label: '3D Tour' },
     { path: '/blog', label: 'Blog' }
   ];
 

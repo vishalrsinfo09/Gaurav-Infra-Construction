@@ -77,7 +77,7 @@ const Gallery = () => {
       <WhatsAppChat />
 
       {/* Hero Section */}
-      <section className="hero-section" style={{ height: '50vh' }}>
+      <section className="hero-section" style={{ height: '83vh' }}>
         <div 
           className="hero-video"
           style={{
