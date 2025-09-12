@@ -31,8 +31,7 @@ export default function Footer() {
               className="w-32 block"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              whileHover={{ scale: 1.1, rotate: 3 }}
+         
             />
           </a>
 

@@ -93,10 +93,10 @@ const Home = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cyan-100 text-sm flex flex-col items-center gap-2 animate-bounce">
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cyan-100 text-sm flex flex-col items-center gap-2 animate-bounce">
           <span>Scroll Down</span>
           <ArrowDown />
-        </div>
+        </div> */}
       </section>
       <section className="bg-gray-100 py-20 text-center relative">
         <div className="max-w-3xl mx-auto px-6">
@@ -141,7 +141,13 @@ const Home = () => {
 
 
       {/* About Section */}
-      <ParallaxSection bgImage="image3.jpg">
+      <ParallaxSection bgImage="parallax_img1.jpeg" >
+         {/* Background Image Full Width */}
+  <div
+    className="absolute inset-0 w-full h-full bg-fixed bg-left bg-no-repeat bg-contain"
+    style={{ backgroundImage: `url(parallax_img1.jpeg)` }}
+  ></div>
+        
         {/* Overlay for better contrast */}
         <div className="absolute inset-0 bg-black/60"></div>
 
@@ -180,9 +186,12 @@ const Home = () => {
 
       {/* Architecture Section */}
       <ParallaxSection
-        bgImage="image4.jpg"
+        bgImage="parallax_img2.jpg"
         reverse={true}
-      >
+      ><div
+    className="absolute inset-0 w-full h-full bg-fixed bg-right bg-no-repeat bg-contain"
+    style={{ backgroundImage: `url(parallax_img2.jpg)` }}
+  ></div>
         {/* Overlay for contrast */}
         <div className="absolute inset-0 bg-black/60"></div>
 
@@ -240,12 +249,12 @@ const Home = () => {
           </motion.h2>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
             {[
-              { number: 120, suffix: "+", text: "Completed Projects" },
-              { number: 15, suffix: "+", text: "Awards Won" },
+              { number: 5, suffix: "+", text: "Completed Projects" },
+              { number: 15, suffix: "+", text: "Area Delivered" },
               { number: 500, suffix: "+", text: "Happy Clients" },
-              { number: 8, suffix: "+", text: "Ongoing Projects" },
+              // { number: 8, suffix: "+", text: "Ongoing Projects" },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -282,7 +291,7 @@ const Home = () => {
 
       {/* Lifestyle Section with space above */}
       <div className="mt-16"> {/* Adds white space above */}
-        <ParallaxOverlaySection bgImage="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg">
+        <ParallaxOverlaySection bgImage="luxurious.jpg">
           <h3 className="text-3xl font-bold mb-4 text-center">Luxury Lifestyle Redefined</h3>
           <p className="mb-2">
             At Gaurav Infra, we understand that luxury is about more than just beautiful interiors. It's about creating a lifestyle that enhances your daily experiences and brings joy to every moment spent at home.
@@ -320,7 +329,7 @@ const Home = () => {
       </section> */}
 
       {/* Gallery Preview */}
-      <section className="gallery-preview">
+      {/* <section className="gallery-preview">
         <div className="section-title">
           <h2>Visual Gallery</h2>
           <p>Explore our beautiful spaces and amenities</p>
@@ -367,7 +376,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      
     </div>
   );
 };
