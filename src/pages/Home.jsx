@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import WhatsAppChat from '../components/WhatsAppChat';
 import ProgressBar from '../components/ProgressBar';
-import { ArrowDown, Building, Users, Award, Shield, Car, Dumbbell, Wifi, Camera } from 'lucide-react';
+// import { ArrowDown, Building, Users, Award, Shield, Car, Dumbbell, Wifi, Camera } from 'lucide-react';
 import Carousel from "../components/Carousel";
 import ParallaxSection from "../components/ParallaxSection";
 import ParallaxOverlaySection from '../components/parallaxOverlaySection';
@@ -37,38 +37,38 @@ const Home = () => {
     };
   }, []);
 
-  const amenities = [
-    {
-      icon: <Building />,
-      title: "Premium Architecture",
-      description: "Contemporary design with traditional Indian elements"
-    },
-    {
-      icon: <Shield />,
-      title: "24/7 Security",
-      description: "Round-the-clock security with CCTV surveillance"
-    },
-    {
-      icon: <Car />,
-      title: "Parking & Car Wash",
-      description: "Covered parking with professional car washing service"
-    },
-    {
-      icon: <Dumbbell />,
-      title: "Fitness Center",
-      description: "Modern gymnasium with latest equipment"
-    },
-    {
-      icon: <Users />,
-      title: "Community Hall",
-      description: "Spacious hall for events and gatherings"
-    },
-    {
-      icon: <Wifi />,
-      title: "High-Speed Internet",
-      description: "Fiber optic connectivity throughout the building"
-    }
-  ];
+  // const amenities = [
+  //   {
+  //     icon: <Building />,
+  //     title: "Premium Architecture",
+  //     description: "Contemporary design with traditional Indian elements"
+  //   },
+  //   {
+  //     icon: <Shield />,
+  //     title: "24/7 Security",
+  //     description: "Round-the-clock security with CCTV surveillance"
+  //   },
+  //   {
+  //     icon: <Car />,
+  //     title: "Parking & Car Wash",
+  //     description: "Covered parking with professional car washing service"
+  //   },
+  //   {
+  //     icon: <Dumbbell />,
+  //     title: "Fitness Center",
+  //     description: "Modern gymnasium with latest equipment"
+  //   },
+  //   {
+  //     icon: <Users />,
+  //     title: "Community Hall",
+  //     description: "Spacious hall for events and gatherings"
+  //   },
+  //   {
+  //     icon: <Wifi />,
+  //     title: "High-Speed Internet",
+  //     description: "Fiber optic connectivity throughout the building"
+  //   }
+  // ];
 
   return (
     <div className="wrapper">
