@@ -10,7 +10,7 @@ const ParallaxOverlaySection = ({ bgImage, children }) => {
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Card Content */}
-      <div className="relative bg-white/20relative bg-white/20 backdrop-blur-md rounded-2xl shadow-xl p-8 max-w-2xl m-4 text-white
+      <div className="relative bg-white/20 backdrop-blur-md rounded-2xl shadow-xl p-8 max-w-2xl m-4 text-white
                 transform -translate-x-10 opacity-0 animate-slideIn rounded-2xl shadow-xl p-8 max-w-2xl m-4 text-gray-900">
         {children}
       </div>
