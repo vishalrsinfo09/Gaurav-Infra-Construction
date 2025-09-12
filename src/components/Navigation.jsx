@@ -8,13 +8,13 @@ const Navigation = () => {
   const location = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   const navLinks = [
     { path: '/', label: 'Home' },
