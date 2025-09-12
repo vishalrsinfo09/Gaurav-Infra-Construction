@@ -34,7 +34,7 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0 h-full -ml-4">
-          <img src="/Logo.png" alt="Gaurav Infra" className="h-20 object-fill" />
+          <img src="/Logo3.png" alt="Gaurav Infra" className="h-20 object-fill" />
         </Link>
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-white font-semibold">
