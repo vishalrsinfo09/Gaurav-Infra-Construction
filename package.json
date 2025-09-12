@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@types/gsap": "^1.20.2",
+    "bootstrap": "^5.3.8",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.10",
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.8.2"
