@@ -87,7 +87,7 @@ const Home = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-br from-cyan-400 via-white to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
             Gaurav Infra
           </h1>
-          <p className="text-lg md:text-xl mb-6 text-cyan-100 opacity-95">
+          <p className="text-lg md:text-xl mb-6 text-white">
             Experience luxury living with our premium 3BHK, 4BHK & 5BHK apartments in the heart of Nagpur. Modern amenities, traditional values, and uncompromising quality.
           </p>
         </div>
@@ -144,7 +144,7 @@ const Home = () => {
       <ParallaxSection bgImage="parallax_img1.jpeg" >
         {/* Background Image Full Width */}
         <div
-          className="absolute inset-0 w-full h-full bg-fixed bg-left bg-no-repeat bg-contain"
+          className="absolute inset-0 w-full h-full bg-fixed bg-left  bg-no-repeat bg-contain"
           style={{ backgroundImage: `url(parallax_img1.jpeg)` }}
         ></div>
 
@@ -290,7 +290,7 @@ const Home = () => {
 
 
       {/* Lifestyle Section with space above */}
-      <div className="mt-16"> {/* Adds white space above */}
+      <div className="mt-16 "> {/* Adds white space above */}
         <ParallaxOverlaySection bgImage="luxurious.jpg">
           <h3 className="text-3xl font-bold mb-4 text-center">Luxury Lifestyle Redefined</h3>
           <p className="mb-2">
