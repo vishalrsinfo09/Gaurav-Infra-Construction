@@ -38,7 +38,7 @@ const Blog = () => {
       <Navigation />
       <WhatsAppChat />
 
-      <section className="hero-section" style={{ height: '50vh' }}>
+      <section className="hero-section" style={{ height: '82vh' }}>
         <div 
           className="hero-video"
           style={{
