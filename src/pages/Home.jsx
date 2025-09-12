@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import WhatsAppChat from '../components/WhatsAppChat';
 import ProgressBar from '../components/ProgressBar';
-import { ArrowDown, Building, Users, Award, Shield, Car, Dumbbell, Wifi, Camera } from 'lucide-react';
+// import { ArrowDown, Building, Users, Award, Shield, Car, Dumbbell, Wifi, Camera } from 'lucide-react';
 import Carousel from "../components/Carousel";
 import ParallaxSection from "../components/ParallaxSection";
 import ParallaxOverlaySection from '../components/parallaxOverlaySection';
@@ -37,38 +37,38 @@ const Home = () => {
     };
   }, []);
 
-  const amenities = [
-    {
-      icon: <Building />,
-      title: "Premium Architecture",
-      description: "Contemporary design with traditional Indian elements"
-    },
-    {
-      icon: <Shield />,
-      title: "24/7 Security",
-      description: "Round-the-clock security with CCTV surveillance"
-    },
-    {
-      icon: <Car />,
-      title: "Parking & Car Wash",
-      description: "Covered parking with professional car washing service"
-    },
-    {
-      icon: <Dumbbell />,
-      title: "Fitness Center",
-      description: "Modern gymnasium with latest equipment"
-    },
-    {
-      icon: <Users />,
-      title: "Community Hall",
-      description: "Spacious hall for events and gatherings"
-    },
-    {
-      icon: <Wifi />,
-      title: "High-Speed Internet",
-      description: "Fiber optic connectivity throughout the building"
-    }
-  ];
+  // const amenities = [
+  //   {
+  //     icon: <Building />,
+  //     title: "Premium Architecture",
+  //     description: "Contemporary design with traditional Indian elements"
+  //   },
+  //   {
+  //     icon: <Shield />,
+  //     title: "24/7 Security",
+  //     description: "Round-the-clock security with CCTV surveillance"
+  //   },
+  //   {
+  //     icon: <Car />,
+  //     title: "Parking & Car Wash",
+  //     description: "Covered parking with professional car washing service"
+  //   },
+  //   {
+  //     icon: <Dumbbell />,
+  //     title: "Fitness Center",
+  //     description: "Modern gymnasium with latest equipment"
+  //   },
+  //   {
+  //     icon: <Users />,
+  //     title: "Community Hall",
+  //     description: "Spacious hall for events and gatherings"
+  //   },
+  //   {
+  //     icon: <Wifi />,
+  //     title: "High-Speed Internet",
+  //     description: "Fiber optic connectivity throughout the building"
+  //   }
+  // ];
 
   return (
     <div className="wrapper">
@@ -135,19 +135,19 @@ const Home = () => {
           {/* Accent underline */}
           <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 rounded-full mb-10"></span>
 
-  
+
         </div>
       </section>
 
 
       {/* About Section */}
       <ParallaxSection bgImage="parallax_img1.jpeg" >
-         {/* Background Image Full Width */}
-  <div
-    className="absolute inset-0 w-full h-full bg-fixed bg-left bg-no-repeat bg-contain"
-    style={{ backgroundImage: `url(parallax_img1.jpeg)` }}
-  ></div>
-        
+        {/* Background Image Full Width */}
+        <div
+          className="absolute inset-0 w-full h-full bg-fixed bg-left bg-no-repeat bg-contain"
+          style={{ backgroundImage: `url(parallax_img1.jpeg)` }}
+        ></div>
+
         {/* Overlay for better contrast */}
         <div className="absolute inset-0 bg-black/60"></div>
 
@@ -189,9 +189,9 @@ const Home = () => {
         bgImage="parallax_img2.jpg"
         reverse={true}
       ><div
-    className="absolute inset-0 w-full h-full bg-fixed bg-right bg-no-repeat bg-contain"
-    style={{ backgroundImage: `url(parallax_img2.jpg)` }}
-  ></div>
+        className="absolute inset-0 w-full h-full bg-fixed bg-right bg-no-repeat bg-contain"
+        style={{ backgroundImage: `url(parallax_img2.jpg)` }}
+      ></div>
         {/* Overlay for contrast */}
         <div className="absolute inset-0 bg-black/60"></div>
 
@@ -378,7 +378,7 @@ const Home = () => {
         </div>
       </section> */}
 
-      
+
     </div>
   );
 };
