@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
-  { type: "video", src: "/bg_video.mp4" },
-  { type: "video", src: "/video2.mp4" },
-  { type: "image", src: "/carousal2.jpg" },
-  
+  // { type: "video", src: "/bg_video.mp4" },
+  // { type: "video", src: "/video2.mp4" },
+  // { type: "image", src: "/carousal2.jpg" },
+    { type: "image", src: "/carousal-build.jpeg" },
+    { type: "image", src: "/carousal-build2.jpeg" },
 ];
 
 export default function Carousel() {
@@ -54,7 +55,7 @@ export default function Carousel() {
                 <img
                   src={slide.src}
                   alt={`Slide ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-fill"
                 />
               )}
             </motion.div>
@@ -68,7 +69,7 @@ export default function Carousel() {
       </div>
 
       {/* Arrows */}
-      <button
+      {/* <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 pointer-events-auto"
       >
@@ -80,7 +81,7 @@ export default function Carousel() {
         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 pointer-events-auto"
       >
         <ChevronRight size={24} />
-      </button>
+      </button> */}
 
       {/* Dots */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-30 pointer-events-auto">
