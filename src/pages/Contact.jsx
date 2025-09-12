@@ -45,7 +45,7 @@ const Contact = () => {
         <div 
           className="hero-video"
           style={{
-            backgroundImage: `linear-gradient(rgba(22, 33, 62, 0.7), rgba(15, 76, 117, 0.5)), url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
+            backgroundImage: ` url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
