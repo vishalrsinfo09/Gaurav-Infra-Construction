@@ -249,7 +249,7 @@ const Home = () => {
           </motion.h2>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               { number: 5, suffix: "+", text: "Completed Projects" },
               { number: 15000, suffix: "+", text: "Area Delivered In Square Feet" },
