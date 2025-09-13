@@ -15,7 +15,7 @@ const container = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.09, // speed between characters
+      staggerChildren: 0.02, // speed between characters
     },
   },
 };
@@ -83,14 +83,14 @@ const Home = () => {
         </div>
 
         {/* Foreground Content */}
-        <div className="relative max-w-3xl px-8 z-10">
+        {/* <div className="relative max-w-3xl px-8 z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-br from-cyan-400 via-white to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
             Gaurav Infra
           </h1>
           <p className="text-lg md:text-xl mb-6 text-white">
             Experience luxury living with our premium 3BHK, 4BHK & 5BHK apartments in the heart of Nagpur. Modern amenities, traditional values, and uncompromising quality.
           </p>
-        </div>
+        </div> */}
 
         {/* Scroll Indicator */}
         {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cyan-100 text-sm flex flex-col items-center gap-2 animate-bounce">
@@ -98,11 +98,11 @@ const Home = () => {
           <ArrowDown />
         </div> */}
       </section>
-      <section className="bg-gray-100 py-20 text-center relative">
+      <section className=" py-20 text-center relative">
         <div className="max-w-3xl mx-auto px-6">
           {/* Luxury Heading */}
           <motion.h2
-            className="text-5xl font-extrabold mb-6
+            className="text-6xl font-extrabold mb-6
              bg-[url('/image2.jpg')] bg-cover bg-center
              bg-clip-text text-transparent drop-shadow-md"
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
@@ -186,11 +186,11 @@ const Home = () => {
 
       {/* Architecture Section */}
       <ParallaxSection
-        bgImage="parallax_img2.jpg"
+        bgImage="parallax_build2.jpeg"
         reverse={true}
       ><div
         className="absolute inset-0 w-full h-full bg-fixed bg-right bg-no-repeat bg-contain"
-        style={{ backgroundImage: `url(parallax_img2.jpg)` }}
+        style={{ backgroundImage: `url(parallax_build2.jpeg)` }}
       ></div>
         {/* Overlay for contrast */}
         <div className="absolute inset-0 bg-black/60"></div>
@@ -252,7 +252,7 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
             {[
               { number: 5, suffix: "+", text: "Completed Projects" },
-              { number: 15, suffix: "+", text: "Area Delivered" },
+              { number: 15000, suffix: "+", text: "Area Delivered In Square Feet" },
               { number: 500, suffix: "+", text: "Happy Clients" },
               // { number: 8, suffix: "+", text: "Ongoing Projects" },
             ].map((item, index) => (
