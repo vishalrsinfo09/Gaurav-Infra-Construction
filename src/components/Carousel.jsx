@@ -6,8 +6,8 @@ const slides = [
   // { type: "video", src: "/bg_video.mp4" },
   // { type: "video", src: "/video2.mp4" },
   // { type: "image", src: "/carousal2.jpg" },
-    { type: "image", src: "/carousal-build.jpeg" },
-    { type: "image", src: "/carousal-build2.jpeg" },
+  // { type: "image", src: "/carousal-build.jpeg" },
+  { type: "image", src: "/carousal-build2.jpeg" },
 ];
 
 export default function Carousel() {
@@ -49,18 +49,21 @@ export default function Carousel() {
                   autoPlay
                   loop
                   muted
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-fill"
                 />
               ) : (
                 <img
                   src={slide.src}
                   alt={`Slide ${i + 1}`}
-                  className="w-full h-full object-fill"
+                  className="w-full h-full object-fill "
                 />
               )}
             </motion.div>
           ) : null
         )}
+
+        {/* 🔹 Black Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-20"></div>
       </AnimatePresence>
 
       {/* Overlay Content (optional) */}
@@ -90,9 +93,8 @@ export default function Carousel() {
             key={i}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full transition-opacity ${
-              i === index ? "bg-white" : "bg-white/40"
-            }`}
+            className={`w-3 h-3 rounded-full transition-opacity ${i === index ? "bg-white" : "bg-white/40"
+              }`}
           />
         ))}
       </div>

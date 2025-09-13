@@ -28,16 +28,16 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-black/70 backdrop-blur-md' : 'bg-transparent'
+      className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'
         }`}
 
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0 h-full -ml-4">
-          <img src="/Logo.png" alt="Gaurav Infra" className="h-20 object-fill" />
+          <img src="/Logo3.png" alt="Gaurav Infra" className="h-20 w-46 object-fill" />
         </Link>
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 text-white font-semibold">
+        <ul className="hidden md:flex gap-8 text-white font-semibold text-lg lg:text-xl">
           {navLinks.map((link) => (
             <li key={link.path}>
               <Link
