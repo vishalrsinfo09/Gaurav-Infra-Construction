@@ -1,333 +1,276 @@
-// GauravEuphoriaDetail.jsx - Single Page Version
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Phone, MessageCircle, Download, MapPin, Home, Star, Play } from 'lucide-react';
+// src/pages/projects/GauravEuphoriaDetail.jsx
+import React, { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom"; 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const GauravEuphoriaDetail = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState('overview');
+gsap.registerPlugin(ScrollTrigger);
 
-    // Smooth scroll function [web:95][web:98][web:103]
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        }
-    };
+// Mock project data
+const allProjects = {
+    "gaurav-euphoria": {
+        title: "Gaurav Euphoria",
+        tagline: "A Destination Fit for Royalty",
+        heroImage: "/public/carousal-build2.jpeg",
+        galleryImages: [
+            "/carousal-build.jpeg",
+            "/image1.jpg",
+            "/image2.jpg",
+        ],
+    },
+};
+
+export default function GauravEuphoriaDetail() {
+    const { projectId } = useParams(); // React Router
+    const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
+
+    const textRef = useRef(null);
+    const galleryRef = useRef(null);
+    const imagesRef = useRef([]);
+
+    const [activeTab, setActiveTab] = useState("details");
 
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            setScrolled(scrollY > 100);
+        if (!project || !textRef.current) return;
 
-            // Update active section based on scroll position [web:95][web:99]
-            const sections = ['overview', 'interior', 'about', 'gallery', 'contact', '3d-tour', 'blog'];
-            const currentSection = sections.find(section => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    return rect.top <= 100 && rect.bottom >= 100;
-                }
-                return false;
+        // Hero Parallax
+        const heroAnim = gsap.to(textRef.current, {
+            y: -100,
+            opacity: 0.5,
+            ease: "none",
+            scrollTrigger: {
+                trigger: textRef.current,
+                start: "top top",
+                end: "bottom top",
+                scrub: 1,
+            },
+        });
+
+        // Horizontal Gallery Scroll
+        if (galleryRef.current && imagesRef.current.length > 0) {
+            const scrollTween = gsap.to(imagesRef.current, {
+                xPercent: -100 * (imagesRef.current.length - 1),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: galleryRef.current,
+                    pin: true,
+                    scrub: 1,
+                    end: () => `+=${galleryRef.current.offsetWidth * imagesRef.current.length}`,
+                },
             });
 
-            if (currentSection) {
-                setActiveSection(currentSection);
-            }
-        };
+            return () => {
+                heroAnim.kill();
+                scrollTween.kill();
+            };
+        }
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        return () => heroAnim.kill();
+    }, [project]);
 
-    // Navigation items [web:90][web:94][web:96]
-    const navigationItems = [
-        { id: 'overview', label: 'Overview', icon: Home },
-        { id: 'interior', label: 'Interior', icon: Home },
-        { id: 'gallery', label: 'Gallery', icon: Star },
-        { id: '3d-tour', label: '3D Tour', icon: Play },
+    // Fallback if no project found
+    if (!project) return <div>Project not found.</div>;
+
+    const tabs = [
+        { id: "details", label: "DETAILS" },
+        { id: "amenities", label: "AMENITIES" },
+        { id: "specifications", label: "SPECIFICATIONS" },
+        { id: "walkthrough", label: "VIDEO WALKTHROUGH" },
     ];
 
     return (
-        <div className="min-h-screen bg-white">
-            {/* Sticky Navigation [web:91][web:97] */}
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white/90'
-                }`}>
-                <div className="container mx-auto px-4">
-                    <div className="flex items-center justify-between py-4">
-                        <Link
-                            to="/projects"
-                            className="flex items-center gap-2 text-gray-600 hover:text-[#D2AD75] transition-colors"
-                        >
-                            <ArrowLeft className="w-5 h-5" />
-                            <span className="font-medium">Back to Projects</span>
-                        </Link>
-
-                        {/* Desktop Navigation */}
-                        <div className="hidden lg:flex items-center space-x-6">
-                            {navigationItems.map((item) => {
-                                const Icon = item.icon;
-                                return (
-                                    <button
-                                        key={item.id}
-                                        onClick={() => scrollToSection(item.id)}
-                                        className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${activeSection === item.id
-                                                ? 'text-[#D2AD75] bg-[#D2AD75]/10'
-                                                : 'text-gray-600 hover:text-[#D2AD75] hover:bg-gray-50'
-                                            }`}
-                                    >
-                                        <Icon className="w-4 h-4" />
-                                        {item.label}
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        {/* Download Brochure Button */}
-                        <button className="bg-gradient-to-r from-[#D2AD75] to-[#7e581f] text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all">
-                            <Download className="w-4 h-4 inline mr-2" />
-                            Brochure
-                        </button>
-                    </div>
+        <div className="overflow-hidden">
+            {/* Header */}
+            <header className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center text-white bg-black bg-opacity-20 backdrop-blur-sm">
+                <div className="flex items-center">
+                    <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
                 </div>
-            </nav>
+                <nav className="hidden md:flex space-x-8">
+                    <a href="#" className="hover:text-gray-300 transition-colors">THE GROUP</a>
+                    <a href="#" className="hover:text-gray-300 transition-colors">PROJECTS</a>
+                    <a href="#" className="hover:text-gray-300 transition-colors">CAREERS</a>
+                    <a href="#" className="hover:text-gray-300 transition-colors">CONTACT US</a>
+                </nav>
+            </header>
 
             {/* Hero Section */}
-            <section className="relative h-screen overflow-hidden">
-                <div className="absolute inset-0">
-                    <img
-                        src="https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt="Gaurav Euphoria"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                </div>
+            {/* Hero Section */}
+            <section className="relative flex flex-col md:flex-row items-center md:items-start justify-between 
+px-6 md:px-20 py-16 md:h-screen pt-32">
+                {/* Left Side: Title + Info Box */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center space-y-6 z-10">
+                    <h1 className="text-5xl md:text-6xl font-bold tracking-wide">
+                        <span className="block text-gray-500">{project.title.split(" ")[0]}</span>
+                        <span className="text-amber-600 italic">
+                            {project.title.split(" ")[1] || ""}
+                        </span>
+                    </h1>
 
-                <div className="relative h-full flex items-center justify-center text-center text-white z-10">
-                    <div className="max-w-4xl px-4">
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up">
-                            Gaurav Euphoria
-                        </h1>
-                        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                            <MapPin className="w-6 h-6" />
-                            <span className="text-xl">Prime Location, Nagpur</span>
-                        </div>
-                        <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                            Experience luxury living with world-class amenities and modern architecture
+                    <div className="bg-[#061121] text-white p-6 md:p-10 rounded-lg shadow-lg max-w-md">
+                        <h2 className="text-lg md:text-xl font-semibold mb-3 tracking-wide uppercase">
+                            {project.tagline}
+                        </h2>
+                        <p className="text-gray-300 leading-relaxed">
+                            {project.title} speaks the language of architecture very fluently.
+                            It is designed to redefine luxury living with modern comforts and timeless elegance.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                            <button className="bg-gradient-to-r from-[#D2AD75] to-[#7e581f] text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all transform hover:scale-105">
-                                <Phone className="w-5 h-5 inline mr-2" />
-                                Call Now: +91 99701 41477
-                            </button>
-                            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-800 transition-all">
-                                <MessageCircle className="w-5 h-5 inline mr-2" />
-                                WhatsApp
-                            </button>
-                        </div>
+                    </div>
+                </div>
 
-                        {/* Scroll Down Indicator */}
-                        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                {/* Right Side: Hero Image */}
+                <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center">
+                    <img
+                        src={project.heroImage}
+                        alt={project.title}
+                        className="w-full h-auto md:h-[85vh] object-cover rounded-lg shadow-lg"
+                    />
+                </div>
+            </section>
+            <div className="h-60 md:h-62"></div>
+
+
+            {/* Tabs Section */}
+            <section
+                className="relative z-20 px-6 md:px-24 py-16 bg-fixed bg-center bg-cover"
+                style={{ backgroundImage: "url('/carousal-build.jpeg')" }}
+            >
+                {/* Overlay */}
+                <div className="absolute inset-0"></div>
+
+                <div className="relative text-white p-8">
+                    <div className="flex justify-around border-b border-gray-600">
+                        {tabs.map((tab) => (
                             <button
-                                onClick={() => scrollToSection('overview')}
-                                className="text-white hover:text-[#D2AD75] transition-colors"
-                            >
-                                <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center">
-                                    <div className="w-1 h-3 bg-current rounded-full mt-2 animate-pulse"></div>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Overview Section [web:94][web:96] */}
-            <section id="overview" className="py-20 bg-white">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Project Overview</h2>
-                            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Luxury redefined with modern living spaces designed for contemporary lifestyle</p>
-                        </div>
-
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-                            <div className="text-center p-8 bg-gradient-to-br from-[#D2AD75]/10 to-[#7e581f]/10 rounded-2xl hover:shadow-lg transition-all">
-                                <div className="text-4xl font-bold text-[#D2AD75] mb-2">3-5</div>
-                                <div className="text-gray-600 font-medium">BHK Options</div>
-                            </div>
-                            <div className="text-center p-8 bg-gradient-to-br from-[#D2AD75]/10 to-[#7e581f]/10 rounded-2xl hover:shadow-lg transition-all">
-                                <div className="text-4xl font-bold text-[#D2AD75] mb-2">120</div>
-                                <div className="text-gray-600 font-medium">Total Units</div>
-                            </div>
-                            <div className="text-center p-8 bg-gradient-to-br from-[#D2AD75]/10 to-[#7e581f]/10 rounded-2xl hover:shadow-lg transition-all">
-                                <div className="text-4xl font-bold text-[#D2AD75] mb-2">₹85L+</div>
-                                <div className="text-gray-600 font-medium">Starting Price</div>
-                            </div>
-                            <div className="text-center p-8 bg-gradient-to-br from-[#D2AD75]/10 to-[#7e581f]/10 rounded-2xl hover:shadow-lg transition-all">
-                                <div className="text-4xl font-bold text-[#D2AD75] mb-2">24/7</div>
-                                <div className="text-gray-600 font-medium">Security</div>
-                            </div>
-                        </div>
-
-                        {/* Description */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h3 className="text-2xl font-bold text-gray-800 mb-6">Luxury Living Redefined</h3>
-                                <p className="text-gray-600 leading-relaxed mb-6">
-                                    Gaurav Euphoria represents the pinnacle of luxury residential living in Nagpur. These meticulously designed 3BHK, 4BHK, and 5BHK apartments offer an unparalleled living experience with modern amenities and premium finishes throughout.
-                                </p>
-                                <p className="text-gray-600 leading-relaxed">
-                                    Each residence features spacious layouts, high-quality fixtures, and breathtaking views of the city. The project includes world-class amenities such as a swimming pool, fitness center, landscaped gardens, and round-the-clock security.
-                                </p>
-                            </div>
-                            <div className="relative">
-                                <img
-                                    src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                    alt="Luxury Living Room"
-                                    className="w-full h-96 object-cover rounded-2xl shadow-2xl"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Interior Walkthrough Section [web:99][web:101] */}
-            <section id="interior" className="py-20 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Interior Walkthrough</h2>
-                            <p className="text-xl text-gray-600">Step inside luxury living with our meticulously designed interiors</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {[
-                                { img: "1571460", title: "Living Room", desc: "Spacious and elegant living areas" },
-                                { img: "1571468", title: "Kitchen", desc: "Modern kitchen with premium appliances" },
-                                { img: "1571463", title: "Master Bedroom", desc: "Luxurious bedrooms with city views" },
-                                { img: "1571467", title: "Bathroom", desc: "Premium bathroom fittings and finishes" },
-                                { img: "1571471", title: "Dining Area", desc: "Perfect space for family gatherings" },
-                                { img: "1571473", title: "Balcony", desc: "Private balconies with panoramic views" }
-                            ].map((room, index) => (
-                                <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                                    <img
-                                        src={`https://images.pexels.com/photos/${room.img}/pexels-photo-${room.img}.jpeg?auto=compress&cs=tinysrgb&w=600`}
-                                        alt={room.title}
-                                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div className="absolute bottom-4 left-4 right-4 text-white">
-                                            <h4 className="text-lg font-semibold mb-1">{room.title}</h4>
-                                            <p className="text-sm opacity-90">{room.desc}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Gallery Section [web:104][web:107] */}
-            <section id="gallery" className="py-20 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Project Gallery</h2>
-                            <p className="text-xl text-gray-600">Visual journey through Gaurav Euphoria's luxury spaces</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                                <div key={item} className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                                    <img
-                                        src={`https://images.pexels.com/photos/${1571460 + item}/pexels-photo-${1571460 + item}.jpeg?auto=compress&cs=tinysrgb&w=600`}
-                                        alt={`Gallery ${item}`}
-                                        className="w-full h-64 object-cover transition-transform group-hover:scale-110 duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <button className="bg-white text-gray-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                                            View Full Size
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 3D Tour Section */}
-            <section id="3d-tour" className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">3D Virtual Tour</h2>
-                        <p className="text-xl text-gray-300 mb-12">Experience your future home virtually with our immersive 3D tour</p>
-
-                        <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-12 shadow-2xl">
-                            <div className="text-center">
-                                <Play className="w-20 h-20 text-[#D2AD75] mx-auto mb-6" />
-                                <h3 className="text-2xl font-semibold mb-4">Coming Soon</h3>
-                                <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-                                    We're preparing an immersive 3D virtual tour that will let you explore every corner of Gaurav Euphoria from the comfort of your home.
-                                </p>
-                                <button className="bg-gradient-to-r from-[#D2AD75] to-[#7e581f] text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all transform hover:scale-105">
-                                    Request Preview Demo
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Mobile Navigation - Bottom Tabs [web:95][web:103] */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 z-40">
-                <div className="flex overflow-x-auto py-2">
-                    {navigationItems.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                            <button
-                                key={item.id}
-                                onClick={() => scrollToSection(item.id)}
-                                className={`flex-shrink-0 flex flex-col items-center gap-1 px-4 py-2 text-xs transition-colors ${activeSection === item.id ? 'text-[#D2AD75]' : 'text-gray-600'
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`py-4 px-2 md:px-8 uppercase font-semibold transition-colors duration-300 ${activeTab === tab.id
+                                        ? "border-b-2 border-white"
+                                        : "border-b-2 border-transparent hover:border-gray-400"
                                     }`}
                             >
-                                <Icon className="w-5 h-5" />
-                                <span className="whitespace-nowrap">{item.label}</span>
+                                {tab.label}
                             </button>
-                        );
-                    })}
-                </div>
-            </div>
+                        ))}
+                    </div>
 
-            {/* Custom Styles */}
-            <style jsx>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out forwards;
-        }
-        
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
+                    <div className="tab-content mt-8 p-4">
+                        {activeTab === "details" && (
+                            <div className="text-left">
+                                <h2 className="text-3xl font-bold">DETAILS</h2>
+                                <p className="mt-4 text-lg">4.5 BHK & 6.5 BHK</p>
+                                <p className="mt-2 text-sm">4 FLOORS OF WORLD CLASS AMENITIES</p>
+                                <button className="mt-8 px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors">
+                                    Enquire Now
+                                </button>
+                            </div>
+                        )}
+
+                        {activeTab === "amenities" && (
+                            <div className="text-center py-8">
+                                <h2 className="text-3xl font-bold mb-4">AMENITIES</h2>
+                                <p>Double height entrance lobby
+
+                                    Huge drop off area with double height canopy
+
+                                    Semi formal lounge
+
+                                    Conference room
+
+                                    3 layer security
+
+                                    Basketball & volleyball court
+
+                                    Landscaped area on podium
+
+                                    Banquet hall & pre-function area.
+
+                                    Kitchen with service staircase for catering
+
+                                    Podium garden connected to pre-function area
+
+                                    180-degree infinity edged heated ozonated pool above 325 feet from ground level with sky deck
+
+                                    Kids pool
+
+                                    Sky lounge with Amphitheatre
+
+                                    Full Amenity floor above 225 feet from ground level
+
+                                    Fully equipped Fitness Centre with 180-degree city view
+
+                                    Multi-purpose hall for Yoga, Meditation, Zumba, dance
+
+                                    Steam & Sauna with lockers and changing room
+
+                                    Salon
+
+                                    Spa room
+
+                                    Toddlerʼs activity room
+
+                                    Game room with pool table, poker table, foosball, carrom board & dart game
+
+                                    Squash court with viewing gallery
+
+                                    Home theatre
+
+                                    Driver's dormitory</p>
+                            </div>
+                        )}
+
+                        {activeTab === "specifications" && (
+                            <div className="text-center py-8">
+                                <h2 className="text-3xl font-bold mb-4">SPECIFICATIONS</h2>
+                                <p>Flooring, Fittings, Electrical, Plumbing details...</p>
+                            </div>
+                        )}
+
+                        {activeTab === "walkthrough" && (
+                            <div className="text-center py-8">
+                                <h2 className="text-3xl font-bold mb-4">VIDEO WALKTHROUGH</h2>
+                                <iframe
+                                    className="w-full h-96"
+                                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                    title="Video Walkthrough"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </section>
+
+
+            {/* Horizontal Gallery */}
+            <section className="bg-white py-12">
+                <div className="text-center mb-8">
+                    <h2 className="text-4xl font-serif">INTERIOR</h2>
+                    <p className="mt-2 text-lg uppercase tracking-widest text-gray-600">
+                        WORLD CLASS LIVING
+                    </p>
+                </div>
+                <div
+                    className="gallery-container relative w-full overflow-hidden"
+                    ref={galleryRef}
+                >
+                    <div
+                        className="flex"
+                        ref={(el) =>
+                            (imagesRef.current = el ? gsap.utils.toArray(el.children) : [])
+                        }
+                    >
+                        {project.galleryImages.map((imgSrc, index) => (
+                            <img
+                                key={index}
+                                src={imgSrc}
+                                alt={`Gallery ${index}`}
+                                className="w-screen h-[400px] object-cover px-2"
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
-};
-
-export default GauravEuphoriaDetail;
+}
