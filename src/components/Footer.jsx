@@ -31,7 +31,7 @@ export default function Footer() {
               className="w-32 block"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-         
+
             />
           </a>
 
@@ -75,41 +75,41 @@ export default function Footer() {
           </ul>
         </motion.div> */}
         <motion.div
-  className="footer-section"
-  initial="hidden"
-  animate="visible"
-  variants={fadeInUp}
-  custom={1}
->
-  <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-  <ul className="flex flex-col gap-2 text-gray-300">
-    {[
-      { name: "About Us", href: "/about" },
-      { name: "Gallery", href: "/gallery" },
-      // { name: "Interior Walkthrough", href: "/interior-walkthrough" },
-      // { name: "3D Virtual Tour", href: "/virtual-tour" },
-      { name: "Contact Us", href: "/contact" },
-      { name: "Blog", href: "/Blog" },
-    ].map((link, i) => (
-      <motion.li
-        key={i}
-        variants={fadeInUp}
-        custom={i + 2}
-        whileHover={{
-          scale: 1.1,
-          x: 6,
-          color: "#22d3ee", // cyan glow
-          textShadow: "0px 0px 8px rgba(34,211,238,0.8)",
-        }}
-        transition={{ type: "spring", stiffness: 200 }}
-      >
-        <a href={link.href} className="transition-colors">
-          {link.name}
-        </a>
-      </motion.li>
-    ))}
-  </ul>
-</motion.div>
+          className="footer-section"
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          custom={1}
+        >
+          <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+          <ul className="flex flex-col gap-2 text-gray-300">
+            {[
+              { name: "About Us", href: "/about" },
+              { name: "Gallery", href: "/gallery" },
+              // { name: "Interior Walkthrough", href: "/interior-walkthrough" },
+              // { name: "3D Virtual Tour", href: "/virtual-tour" },
+              { name: "Contact Us", href: "/contact" },
+              { name: "Blog", href: "/Blog" },
+            ].map((link, i) => (
+              <motion.li
+                key={i}
+                variants={fadeInUp}
+                custom={i + 2}
+                whileHover={{
+                  scale: 1.1,
+                  x: 6,
+                  color: "#22d3ee", // cyan glow
+                  textShadow: "0px 0px 8px rgba(34,211,238,0.8)",
+                }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                <a href={link.href} className="transition-colors">
+                  {link.name}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
 
 
         {/* Apartment Types */}
@@ -169,10 +169,10 @@ export default function Footer() {
             }}
             transition={{ type: "spring", stiffness: 200 }}
           >
-             <Phone size={20} />
-    <a href="tel:+919970141477" className="hover:underline">
-      +91 99804 14166
-    </a>
+            <Phone size={20} />
+            <a href="tel:+919970141477">
+              +91 99804 14166
+            </a>
           </motion.div>
 
           {/* Email */}
@@ -187,10 +187,10 @@ export default function Footer() {
             }}
             transition={{ type: "spring", stiffness: 200 }}
           >
-             <Mail size={20} />
-    <a href="mailto:info@gaurainfra.com" className="hover:underline">
-      info@gaurainfra.com
-    </a>
+            <Mail size={20} />
+            <a href="mailto:info@gaurainfra.com">
+              info@gaurainfra.com
+            </a>
           </motion.div>
 
           {/* Address */}
@@ -205,8 +205,8 @@ export default function Footer() {
             }}
             transition={{ type: "spring", stiffness: 200 }}
           >
-           <MapPin size={20} />
-    <span>Nagpur, Maharashtra</span>
+            <MapPin size={20} />
+            <span>Nagpur, Maharashtra</span>
           </motion.div>
 
           {/* Timing */}
