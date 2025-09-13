@@ -83,14 +83,14 @@ const Home = () => {
         </div>
 
         {/* Foreground Content */}
-        {/* <div className="relative max-w-3xl px-8 z-10">
+        <div className="relative max-w-3xl px-8 z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-br from-cyan-400 via-white to-yellow-400 bg-clip-text text-transparent drop-shadow-lg">
             Gaurav Infra
           </h1>
           <p className="text-lg md:text-xl mb-6 text-white">
             Experience luxury living with our premium 3BHK, 4BHK & 5BHK apartments in the heart of Nagpur. Modern amenities, traditional values, and uncompromising quality.
           </p>
-        </div> */}
+        </div>
 
         {/* Scroll Indicator */}
         {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cyan-100 text-sm flex flex-col items-center gap-2 animate-bounce">
