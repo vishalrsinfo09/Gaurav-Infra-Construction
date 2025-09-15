@@ -21,9 +21,9 @@ const Navigation = () => {
     { path: '/projects', label: 'Projects' },
     { path: '/about', label: 'About Us' },
     { path: '/gallery', label: 'Gallery' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/contact', label: 'Contact Us' },
     // { path: '/3d-tour', label: '3D Tour' },
-    { path: '/blog', label: 'Blog' }
+    // { path: '/blog', label: 'Blog' }
   ];
 
   return (
