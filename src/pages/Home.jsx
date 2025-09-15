@@ -8,6 +8,7 @@ import ParallaxSection from "../components/ParallaxSection";
 import ParallaxOverlaySection from '../components/parallaxOverlaySection';
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
+import Testimonials from "../components/Testimonials";
 
 
 const container = {
@@ -98,6 +99,8 @@ const Home = () => {
           <ArrowDown />
         </div> */}
       </section>
+
+      
       <section className=" py-20 text-center relative">
         <div className="max-w-3xl mx-auto px-6">
           {/* Luxury Heading */}
@@ -201,33 +204,33 @@ const Home = () => {
           <h3
             className="text-3xl md:text-4xl font-serif font-extrabold mb-6 
       bg-gradient-to-r from-blue-500 via-blue-300 to-white 
-      bg-clip-text text-transparent drop-shadow-2xl tracking-wide"
+      bg-clip-text text-transparent drop-shadow-2xl tracking-wide  mr-16" 
           >
             Architectural Excellence
           </h3>
 
           {/* Premium Description */}
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg">
+          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg mr-16">
             Our architectural design philosophy combines modern functionality with timeless elegance.
             Each apartment is meticulously planned to maximize space utilization while maintaining
             an open, airy feel that promotes well-being and comfort.
           </p>
 
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg">
+          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg  mr-16">
             Premium materials including high-quality teak wood furnishing, stainless steel kitchen
             countertops, and marble flooring ensure durability and sophistication. Large windows
             and balconies bring in abundant natural light and fresh air, creating a healthy living
             environment.
           </p>
 
-          <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg">
+          <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg  mr-16">
             The building features earthquake-resistant construction, energy-efficient systems, and
             sustainable design elements that reduce environmental impact while lowering utility
             costs for residents.
           </p>
 
           {/* Accent underline */}
-          <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-blue-600 via-blue-300 to-white rounded-full mt-6"></span>
+          <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-blue-600 via-blue-300 to-white rounded-full mt-6 "></span>
         </div>
       </ParallaxSection>
 
@@ -377,6 +380,8 @@ const Home = () => {
           </div>
         </div>
       </section> */}
+<Testimonials />
+      
 
 
     </div>

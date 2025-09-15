@@ -32,7 +32,7 @@ const interiors = {
   ],
 };
 
-const GauravEuphoriaDetail=()=> {
+const GauravEuphoriaDetail = () => {
   const { projectId } = useParams();
   const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
   const heroImgRef = useRef(null);
@@ -173,31 +173,7 @@ const GauravEuphoriaDetail=()=> {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
-  // useEffect(() => {
-  //   if (!window.lifestyleMasonry) return;
 
-  //   const el = window.lifestyleMasonry;
-  //   let tween = gsap.to(el, {
-  //     scrollLeft: el.scrollWidth - el.clientWidth,
-  //     duration: 20,
-  //     ease: "linear",
-  //     repeat: -1,
-  //     yoyo: true,
-  //   });
-
-  //   // अगर user manually scroll करे → auto scroll pause हो
-  //   const stopScroll = () => tween.pause();
-  //   const resumeScroll = () => tween.resume();
-
-  //   el.addEventListener("mouseenter", stopScroll);
-  //   el.addEventListener("mouseleave", resumeScroll);
-
-  //   return () => {
-  //     tween.kill();
-  //     el.removeEventListener("mouseenter", stopScroll);
-  //     el.removeEventListener("mouseleave", resumeScroll);
-  //   };
-  // }, []);
 
   if (!project) return <div>Project not found.</div>;
 
@@ -278,7 +254,7 @@ const GauravEuphoriaDetail=()=> {
           <h2 className="section-title text-5xl md:text-6xl font-serif font-bold mb-14 text-[#D2AD75] tracking-wide">
             Architecture
           </h2>
-
+          <div className="w-24 h-1 bg-[#D2AD75] mx-auto mt-4 mb-10"></div>
           <div className="section-content grid md:grid-cols-2 gap-16 items-center">
             {/* Left Text */}
             <div className="content-text fade-up">
@@ -328,11 +304,11 @@ const GauravEuphoriaDetail=()=> {
 
       {/* Floor Plan Section */}
       <section className="floor-plan-section relative py-20 bg-gray-50">
-        <div className="section-container max-w-5xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">
+        <div className="section-container max-w-5xl mx-auto ">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75] ">
             Floor Plan
           </h2>
-
+          <div className="w-24 h-1 bg-[#D2AD75] mx-auto mt-4 mb-10"></div>
           {/* Image Container */}
           <div className="overflow-hidden rounded-lg shadow-lg">
             <img
@@ -367,64 +343,18 @@ const GauravEuphoriaDetail=()=> {
               we craft spaces that truly reflect your personality while ensuring cost-effectiveness and precision.
             </p>
           </div>
-
-
-          {/* Masonry Grid Below */}
-          <div className="relative">
-            {/* Arrows */}
-            <button
-              onClick={() => window.lifestyleMasonry.scrollBy({ left: -400, behavior: "smooth" })}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full z-10"
-            >
-              ←
-            </button>
-            <button
-              onClick={() => window.lifestyleMasonry.scrollBy({ left: 400, behavior: "smooth" })}
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full z-10"
-            >
-              →
-            </button>
-
-            <div
-              className="mt-16 flex gap-6 overflow-x-auto scroll-smooth no-scrollbar"
-              ref={(el) => (window.lifestyleMasonry = el)}
-            >
-              {/* Column 1 */}
-              <div className="flex flex-col gap-6 w-1/3">
-                <img src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-1.jpg" className="w-full h-auto shadow-lg" />
-                <img src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-2.jpg" className="w-full h-auto shadow-lg" />
-              </div>
-              {/* Column 2 */}
-              <div className="flex flex-col gap-6 w-1/3">
-                <img src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-6.jpg" className="w-full h-auto shadow-lg" />
-              </div>
-              {/* Column 3 */}
-              <div className="flex flex-col gap-6 w-1/3">
-                <img src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-8.jpg" className="w-full h-auto shadow-lg" />
-                <img src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-9.jpg" className="w-full h-auto shadow-lg" />
-              </div>
-            </div>
-          </div>
-
-
-
-
         </div>
       </section>
 
       <GalleryLoop />
 
-
-
-      {/* <div className="h-60 md:h-62"></div> */}
-
       {/* Tabs Section */}
       <section
         className="relative z-20 px-6 md:px-24 py-16 bg-fixed bg-center bg-cover"
-        style={{ backgroundImage: "url('/carousal-build.jpeg')" }}
+        style={{ backgroundImage: "url('/carousal2.jpg')" }}
       >
         <div className="absolute inset-0"></div>
-        <div className="relative text-white p-8">
+        <div className="relative text-black p-8">
           <div className="flex justify-around border-b border-gray-600">
             {tabs.map((tab) => (
               <button
@@ -444,9 +374,9 @@ const GauravEuphoriaDetail=()=> {
             {activeTab === "details" && (
               <div className="text-left">
                 <h2 className="text-3xl font-bold">DETAILS</h2>
-                <p className="mt-4 text-lg">4.5 BHK & 6.5 BHK</p>
+                <p className="mt-4 text-lg">2 BHK & 3 BHK</p>
                 <p className="mt-2 text-sm">4 FLOORS OF WORLD CLASS AMENITIES</p>
-                <button className="mt-8 px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition-colors">
+                <button className="mt-8 px-6 py-3 border border-black text-black hover:bg-white hover:text-black transition-colors">
                   Enquire Now
                 </button>
               </div>
@@ -517,16 +447,16 @@ const GauravEuphoriaDetail=()=> {
         </div>
       </section>
 
-      <section className="bg-white py-12">
+      {/* <section className="bg-white py-12">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-serif">INTERIOR</h2>
           <p className="mt-2 text-lg uppercase tracking-widest text-gray-600">
             WORLD CLASS LIVING
           </p>
-        </div>
+        </div> */}
 
         {/* Interior Type Selector */}
-        <div className="flex justify-center gap-4 mb-6">
+        {/* <div className="flex justify-center gap-4 mb-6">
           {Object.keys(interiors).map((type) => (
             <button
               key={type}
@@ -537,10 +467,10 @@ const GauravEuphoriaDetail=()=> {
               {type}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Gallery for Selected Interior */}
-        <div className="gallery-container relative w-full overflow-hidden" ref={galleryRef}>
+        {/* <div className="gallery-container relative w-full overflow-hidden" ref={galleryRef}>
           <div className="flex flex-nowrap">
             {interiors[selectedInterior].map((img, idx) => (
               <img
@@ -551,8 +481,8 @@ const GauravEuphoriaDetail=()=> {
               />
             ))}
           </div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
 
 
       {/* Horizontal Gallery */}
