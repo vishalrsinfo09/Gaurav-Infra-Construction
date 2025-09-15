@@ -7,17 +7,23 @@ import "swiper/css/autoplay";
 
 const GallerySection = () => {
   const images = [
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-1.jpg",
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-2.jpg",
+    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-8.jpg",
+    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-9.jpg",
     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-10.jpg",
     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-11.jpg",
     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-12.jpg",
   ];
 
+  // Group images in sets of 3
+  const slides = [];
+  for (let i = 0; i < images.length; i += 3) {
+    slides.push(images.slice(i, i + 3));
+  }
+
   return (
     <section className="gallery-section">
-      {/* <h2 className="gallery-title">Infinite and Blissful</h2> */}
-      {/* <p className="gallery-subtitle ">World Class Living</p> */}
+      <h2 className="gallery-title">Infinite and Blissful</h2>
+      <p className="gallery-subtitle">World Class Living</p>
 
       <Swiper
         modules={[Autoplay, Navigation]}
@@ -27,48 +33,54 @@ const GallerySection = () => {
         autoplay={{
           delay: 0,
           disableOnInteraction: false,
-          pauseOnMouseEnter: false,
+          pauseOnMouseEnter: true,
         }}
-        speed={10000}
-        grabCursor={true}
+        speed={3000}
+        allowTouchMove={true}
+        breakpoints={{
+          320: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
       >
-        {images.map((img, index) => (
+        {slides.map((group, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 2fr", // left stacked small, right big
-                gap: "10px",
+                gridTemplateColumns: "2fr 1fr",
+                gridTemplateRows: "repeat(2, 1fr)",
+                gap: "20px",
                 height: "600px",
                 width: "100%",
               }}
             >
-              {/* Left: 2 small images stacked vertically */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateRows: "1fr 1fr",
-                  gap: "10px",
-                }}
-              >
+              {group[0] && (
                 <img
-                  src={img}
+                  src={group[0]}
+                  style={{
+                    gridRow: "1 / span 2",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
                   alt=""
-                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
                 />
+              )}
+              {group[1] && (
                 <img
-                  src={images[(index + 1) % images.length]}
+                  src={group[1]}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   alt=""
-                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
                 />
-              </div>
-
-              {/* Right: 1 big image */}
-              <img
-                src={images[(index + 2) % images.length]}
-                alt=""
-                style={{ width: "100%", height: "100%", objectFit: "fill" }}
-              />
+              )}
+              {group[2] && (
+                <img
+                  src={group[2]}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  alt=""
+                />
+              )}
             </div>
           </SwiperSlide>
         ))}
