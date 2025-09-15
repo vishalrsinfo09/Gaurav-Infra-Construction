@@ -895,6 +895,7 @@ const Contact = () => {
                   <option value="penthouse">🏢 Penthouse Suite</option>
                   <option value="commercial">🏢 Commercial Project</option>
                   <option value="renovation">🔨 Renovation & Remodeling</option>
+                  <option value="other"> Other</option>
                 </select>
               </div>
 

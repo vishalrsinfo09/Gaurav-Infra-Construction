@@ -84,12 +84,13 @@ export default function Footer() {
           <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
           <ul className="flex flex-col gap-2 text-gray-300">
             {[
+              { name: "Home", href: "/" },
               { name: "About Us", href: "/about" },
               { name: "Gallery", href: "/gallery" },
               // { name: "Interior Walkthrough", href: "/interior-walkthrough" },
               // { name: "3D Virtual Tour", href: "/virtual-tour" },
               { name: "Contact Us", href: "/contact" },
-              { name: "Blog", href: "/Blog" },
+              // { name: "Blog", href: "/Blog" },
             ].map((link, i) => (
               <motion.li
                 key={i}
