@@ -12,7 +12,7 @@ const allProjects = {
   "gaurav-euphoria": {
     title: "Gaurav Euphoria",
     tagline: "A Destination Fit for Royalty",
-    heroImage: "/carousal-build2.jpeg",
+    heroImage: "/image4.jpg",
     galleryImages: [
       "/carousal-build.jpeg",
       "/image1.jpg",
@@ -69,7 +69,7 @@ const GauravEuphoriaDetail=()=> {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        markers: true,
+        markers: false,
       },
     });
 
@@ -173,35 +173,31 @@ const GauravEuphoriaDetail=()=> {
       elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
-  useEffect(() => {
-    if (!window.lifestyleMasonry) return;
+  // useEffect(() => {
+  //   if (!window.lifestyleMasonry) return;
 
-    const el = window.lifestyleMasonry;
-    let tween = gsap.to(el, {
-      scrollLeft: el.scrollWidth - el.clientWidth,
-      duration: 20,
-      ease: "linear",
-      repeat: -1,
-      yoyo: true,
-    });
+  //   const el = window.lifestyleMasonry;
+  //   let tween = gsap.to(el, {
+  //     scrollLeft: el.scrollWidth - el.clientWidth,
+  //     duration: 20,
+  //     ease: "linear",
+  //     repeat: -1,
+  //     yoyo: true,
+  //   });
 
-    // अगर user manually scroll करे → auto scroll pause हो
-    const stopScroll = () => tween.pause();
-    const resumeScroll = () => tween.resume();
+  //   // अगर user manually scroll करे → auto scroll pause हो
+  //   const stopScroll = () => tween.pause();
+  //   const resumeScroll = () => tween.resume();
 
-    el.addEventListener("mouseenter", stopScroll);
-    el.addEventListener("mouseleave", resumeScroll);
+  //   el.addEventListener("mouseenter", stopScroll);
+  //   el.addEventListener("mouseleave", resumeScroll);
 
-    return () => {
-      tween.kill();
-      el.removeEventListener("mouseenter", stopScroll);
-      el.removeEventListener("mouseleave", resumeScroll);
-    };
-  }, []);
-
-
-
-
+  //   return () => {
+  //     tween.kill();
+  //     el.removeEventListener("mouseenter", stopScroll);
+  //     el.removeEventListener("mouseleave", resumeScroll);
+  //   };
+  // }, []);
 
   if (!project) return <div>Project not found.</div>;
 
