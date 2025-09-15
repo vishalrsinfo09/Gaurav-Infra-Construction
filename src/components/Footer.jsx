@@ -206,7 +206,7 @@ export default function Footer() {
             transition={{ type: "spring", stiffness: 200 }}
           >
             <MapPin size={20} />
-            <span>Nagpur, Maharashtra</span>
+            <span className="text-cyan-200">Nagpur, Maharashtra</span>
           </motion.div>
 
           {/* Timing */}
@@ -304,13 +304,18 @@ export default function Footer() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
-        whileHover={{
-          color: "#22d3ee",
-          textShadow: "0px 0px 10px rgba(34,211,238,0.9)",
-          scale: 1.05,
-        }}
-      >
-        <p>&copy; 2024 Gaurav Infra. All Rights Reserved. | Designed with Excellence</p>
+       
+      > <p>
+        &copy; {new Date().getFullYear()} Gaurav Infra. All Rights Reserved. | 
+        Designed & Developed by <a
+          href="https://www.rsinfotechsys.com" // 👉 yaha apni company ka website link dal do
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-white hover:text-cyan-400 transition-colors"
+        >
+          Right Serve Infotech Pvt Ltd.
+        </a>
+        </p>
       </motion.div>
     </footer>
   );
