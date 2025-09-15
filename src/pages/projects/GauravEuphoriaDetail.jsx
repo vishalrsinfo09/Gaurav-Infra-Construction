@@ -11,7 +11,7 @@ const allProjects = {
   "gaurav-euphoria": {
     title: "Gaurav Euphoria",
     tagline: "A Destination Fit for Royalty",
-    heroImage: "/public/carousal-build2.jpeg",
+    heroImage: "/carousal-build2.jpeg",
     galleryImages: [
       "/carousal-build.jpeg",
       "/image1.jpg",
@@ -20,7 +20,7 @@ const allProjects = {
   },
 };
 
-export default function GauravEuphoriaDetail() {
+const GauravEuphoriaDetail=()=> {
   const { projectId } = useParams();
   const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
 
@@ -241,4 +241,6 @@ export default function GauravEuphoriaDetail() {
       </section>
     </div>
   );
-}
+};
+
+export default GauravEuphoriaDetail;

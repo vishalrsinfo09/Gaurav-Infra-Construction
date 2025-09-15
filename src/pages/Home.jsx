@@ -252,8 +252,8 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               { number: 5, suffix: "+", text: "Completed Projects" },
-              { number: 15000, suffix: "+", text: "Area Delivered In Square Feet" },
-              { number: 500, suffix: "+", text: "Happy Clients" },
+              { number: 150000, suffix: "+", text: "Area Delivered In Square Feet" },
+              { number: 300, suffix: "+", text: "Happy Clients" },
               // { number: 8, suffix: "+", text: "Ongoing Projects" },
             ].map((item, index) => (
               <motion.div
