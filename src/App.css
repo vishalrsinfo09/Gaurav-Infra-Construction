@@ -600,3 +600,94 @@ body {
 .bg-premium-light {
   background: linear-gradient(135deg, var(--light-gray), rgba(187, 225, 250, 0.2));
 }
+
+
+/* Add this CSS to your stylesheet or a <style> tag */
+.masonry-gallery-container {
+  display: grid;
+  /* Adjust the grid columns for different screen sizes */
+  grid-template-columns: repeat(1, 1fr); /* Default: 1 column */
+  grid-auto-rows: 10px; /* Base row height for perfect alignment */
+  gap: 10px; /* Space between images */
+}
+
+@media (min-width: 640px) {
+  .masonry-gallery-container {
+    grid-template-columns: repeat(2, 1fr); /* Small screens: 2 columns */
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry-gallery-container {
+    grid-template-columns: repeat(3, 1fr); /* Large screens: 3 columns */
+  }
+}
+
+/* Make sure the image is the correct size to fit the masonry rows */
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Calculate how many rows each image should span based on its height. */
+/* This is optional but can help with a more perfect layout. */
+/* You would need to add a bit of JavaScript for this. */
+/*
+.masonry-item {
+  grid-row-end: span var(--rows);
+}
+*/
+
+/* global.css ya tailwind.css me add karo */
+
+.masonry-gallery {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.masonry-inner {
+  display: grid;
+  grid-auto-flow: column; /* horizontal flow */
+  grid-template-rows: repeat(3, 200px); /* 3 rows, adjust height */
+  gap: 16px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+}
+
+/* Animations *//* Text Fade Up */
+/* Fade up for text */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade left for images */
+.fade-left {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 1s ease-out;
+}
+
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Optional: luxury hover effect on images */
+.content-images img {
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
+}
+
+.content-images img:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
