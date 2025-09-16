@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 .env
 
+#ignore
 public/2 BHK/
 public/3 BHK/
 public/video/
