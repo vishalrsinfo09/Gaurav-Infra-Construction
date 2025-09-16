@@ -208,8 +208,8 @@ const About = () => {
     .content-layout {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      max-width: 1200px;
+      gap: 4rem;
+      max-width: 1000px;
       margin: 0 auto;
     }
     
@@ -622,7 +622,7 @@ const About = () => {
           </div>
           <div className={`content-image ${isVisible.story ? 'visible' : ''}`}>
             <img
-              src=""
+              src="/carousal-build.jpeg"
               alt="Modern office building representing Gaurav Infra headquarters"
               loading="lazy"
             />
@@ -670,13 +670,13 @@ const About = () => {
         <div className="content-layout">
           <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`}>
             <img
-              src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="/Giri_Sir.jpg"
               alt="Professional team meeting in modern office environment"
               loading="lazy"
             />
           </div>
           <div className={`content-text ${isVisible.leadership ? 'visible' : ''}`}>
-            <h3>Experienced Leadership</h3>
+            <h3>KRISHNAKANT GIRI</h3>
             <p>
               Our leadership team brings together decades of experience in real estate development, architecture, construction management, and customer service. This diverse expertise enables us to deliver projects that set new standards in the industry.
             </p>
