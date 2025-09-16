@@ -6,7 +6,7 @@ const slides = [
   // { type: "video", src: "/bg_video.mp4" },
   // { type: "video", src: "/video2.mp4" },
   // { type: "image", src: "/carousal2.jpg" },
-  // { type: "image", src: "/carousal-build.jpeg" },
+  { type: "image", src: "/carousal-build3.jpeg" },
   { type: "image", src: "/carousal-build2.jpeg" },
 ];
 

@@ -273,8 +273,8 @@ const Projects = () => {
                         {
                             title: 'Gaurav Euphoria',
                             img: 'https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg',
-                            desc: 'Premium 3BHK & 4BHK apartments with modern amenities and green surroundings.',
-                            path: "/projects/gauraveuphoriadetail"
+                            desc: 'Premium 2BHK & 3BHK apartments with modern amenities and green surroundings.',
+                             path: "/projects/gaurav-euphoria"  
                         },
                         {
                             title: 'Gaurav Signature',
@@ -311,7 +311,7 @@ const Projects = () => {
                     <h2>Commercial Projects</h2>
                     <p>Spaces that inspire innovation and business growth</p>
                 </div>
-                <div className="projects-grid">
+                <div className="projects-grid ">
                     {[
                         {
                             title: 'Gaurav Square',
@@ -319,12 +319,12 @@ const Projects = () => {
                             desc: 'Modern commercial complex offering premium office spaces in prime location.',
                             path: "/"
                         },
-                        {
-                            title: 'Corporate Tower',
-                            img: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg',
-                            desc: 'A-grade commercial tower with world-class facilities for enterprises.',
-                            path: "/"
-                        },
+                        // {
+                        //     title: 'Corporate Tower',
+                        //     img: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg',
+                        //     desc: 'A-grade commercial tower with world-class facilities for enterprises.',
+                        //     path: "/"
+                        // },
                     ].map((project, i) => (
                         <div key={i} className={`project-card ${isVisible.commercial ? 'visible' : ''}`}>
                             <img src={project.img} alt={project.title} loading="lazy" />
