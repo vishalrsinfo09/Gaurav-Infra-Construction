@@ -622,7 +622,7 @@ const About = () => {
           </div>
           <div className={`content-image ${isVisible.story ? 'visible' : ''}`}>
             <img
-              src="https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src=""
               alt="Modern office building representing Gaurav Infra headquarters"
               loading="lazy"
             />
