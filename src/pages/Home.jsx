@@ -100,7 +100,7 @@ const Home = () => {
         </div> */}
       </section>
 
-      
+
       <section className=" py-20 text-center relative">
         <div className="max-w-3xl mx-auto px-6">
           {/* Luxury Heading */}
@@ -144,11 +144,11 @@ const Home = () => {
 
 
       {/* About Section */}
-      <ParallaxSection bgImage="parallax_img1.jpeg" >
+      <ParallaxSection bgImage="carousal-build3.jpeg" >
         {/* Background Image Full Width */}
         <div
           className="absolute inset-0 w-full h-full bg-fixed bg-left  bg-no-repeat bg-contain"
-          style={{ backgroundImage: `url(parallax_img1.jpeg)` }}
+          style={{ backgroundImage: `url(carousal-build3.jpeg)` }}
         ></div>
 
         {/* Overlay for better contrast */}
@@ -166,14 +166,14 @@ const Home = () => {
           </h3>
 
           {/* Premium Description */}
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-gray-100 font-light italic drop-shadow-lg">
-            Gaurav Infra offers ultra-luxurious 3BHK, 4BHK, and 5BHK apartments
+          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed leading-snug text-gray-100 font-light italic drop-shadow-lg">
+            Gaurav Infra offers ultra-luxurious 2BHK and 3BHK apartments
             designed for modern families who appreciate quality living. Our residential
             project combines contemporary architecture with traditional Indian design
             principles, creating homes that are both stylish and spiritually harmonious.
           </p>
 
-          <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-gray-100 font-light italic drop-shadow-lg">
+          <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed leading-snug text-gray-100 font-light italic drop-shadow-lg">
             Each apartment features fully equipped modern kitchens, spacious bedrooms with
             ample natural light, premium bathrooms, expansive living areas, and private
             balconies with stunning city views. Built with Vastu compliance, our homes ensure
@@ -204,7 +204,7 @@ const Home = () => {
           <h3
             className="text-3xl md:text-4xl font-serif font-extrabold mb-6 
       bg-gradient-to-r from-blue-500 via-blue-300 to-white 
-      bg-clip-text text-transparent drop-shadow-2xl tracking-wide  mr-16" 
+      bg-clip-text text-transparent drop-shadow-2xl tracking-wide  mr-16"
           >
             Architectural Excellence
           </h3>
@@ -380,8 +380,8 @@ const Home = () => {
           </div>
         </div>
       </section> */}
-<Testimonials />
-      
+      <Testimonials />
+
 
 
     </div>
