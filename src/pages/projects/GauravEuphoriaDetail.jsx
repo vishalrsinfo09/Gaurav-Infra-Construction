@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react";
-
+import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,9 +48,20 @@ const GauravEuphoriaDetail = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-
-
+  const sections = [
+    { title: "BUILDING STRUCTURE", items: ["R.C.C. frame structure.", "Earthquake resistant design."] },
+    { title: "WALLS", items: ["External 150mm, Internal 115mm thick."] },
+    { title: "FLOORING", items: ["24x24 vitrified tiles.", "Toilet & Balcony anti-skid tiles."] },
+    { title: "KITCHEN", items: ["Granite platform with SS sink, dado up to 2’"] },
+    { title: "PAINTING", items: ["Plastic paint inside, Apex outside."] },
+    { title: "PAINTING FINISHES", items: ["Internal walls of all the rooms to be putty finish and painted in Plastic or Royal paint.", "All external walls to be painted in Apex or Ultima."] },
+    { title: "ELECTRICAL", items: ["Electrical wiring to be concealed with 4.5 points in each room with modular switches.", "A.C., CCTV, Telephone and Cable connection point in all room."] },
+    { title: "TOILETS", items: ["Jaquar fitting in bathing area. One Indian & European WC in each flat."] },
+    { title: "OTHERS", items: ["POP with light in all ceiling.", "Two lift of Kone or Jhonson company with Rescue Backup.", "24 hour water supply from over head tank & underground sump."] },
+    { title: "ADDITIONAL CHARGES", items: ["Registration, stamp duty charges and document preparation charges shall be paid by purchaser.", "M.S.E.B. meter, water meter and other incidental expenses will be charged extra.", "Any extra work other than specification shall be charged separately before execution.", "Elevation changes are not allowed.", "All rights reserved with builder for making changes in drawing & Specification.", "GST & other Govt. taxes if applicable will be charge extra.", "Possession after full clearance of all dues."] }
+  ];
   //navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -211,6 +222,9 @@ const GauravEuphoriaDetail = () => {
         </div>
       )}
 
+
+
+
       {/* Hero Section */}
       <div className="project-wrapper">
         <section className="flex flex-col md:flex-row min-h-screen">
@@ -360,44 +374,44 @@ const GauravEuphoriaDetail = () => {
             </div>
 
           </div>
-     
+
         </section>
 
 
-<section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
-  <div className="section-container max-w-5xl mx-auto px-6">
-    <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
-      Isometric View
-    </h2>
+        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
+          <div className="section-container max-w-5xl mx-auto px-6">
+            <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
+              Isometric View
+            </h2>
 
-    {/* Image Container */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* 2BHK Floor Plan */}
-      <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/2bhk_isometric_view.png")}>
-        {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3> */}
-        <div className="rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="/2bhk_isometric_view.png"
-            alt="Gaurav Euphoria 2BHK floor plan"
-            className="w-full max-w-sm h-auto object-contain cursor-pointer"
-          />
-        </div>
-      </div>
+            {/* Image Container */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* 2BHK Floor Plan */}
+              <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/2bhk_isometric_view.png")}>
+                {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3> */}
+                <div className="rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src="/2bhk_isometric_view.png"
+                    alt="Gaurav Euphoria 2BHK floor plan"
+                    className="w-full max-w-sm h-auto object-contain cursor-pointer"
+                  />
+                </div>
+              </div>
 
-      {/* 3BHK Floor Plan */}
-      <div className="flex flex-col items-center"onClick={() => setSelectedImage("/3bhk_isometric_view.png")}>
-        {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3> */}
-        <div className="rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="/3bhk_isometric_view.png"
-            alt="Gaurav Euphoria 3BHK floor plan"
-            className="w-full max-w-sm h-auto object-contain cursor-pointer"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+              {/* 3BHK Floor Plan */}
+              <div className="flex flex-col items-center" onClick={() => setSelectedImage("/3bhk_isometric_view.png")}>
+                {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3> */}
+                <div className="rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src="/3bhk_isometric_view.png"
+                    alt="Gaurav Euphoria 3BHK floor plan"
+                    className="w-full max-w-sm h-auto object-contain cursor-pointer"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
 
 
@@ -433,18 +447,18 @@ const GauravEuphoriaDetail = () => {
               {/* Left Image */}
               <div className="w-72 md:w-96 h-80 border-2 border-gray-300 shadow-lg">
                 <img
-                  src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-22.jpg"
+                  src="/3 BHK/RAJ06604.JPG"
                   alt="Floor Plan 1"
-                  className="rounded-lg w-full h-full object-contain"
+                  className="rounded-lg w-full h-full object-FILL"
                 />
               </div>
 
               {/* Right Image */}
               <div className="w-72 md:w-96 h-80 border-2 border-gray-300 shadow-lg">
                 <img
-                  src="/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-32.jpg"
+                  src="/2 BHK/RAJ06598.JPG"
                   alt="Floor Plan 2"
-                  className="rounded-lg w-full h-full object-contain"
+                  className="rounded-lg w-full h-full object-FILL"
                 />
               </div>
             </div>
@@ -455,6 +469,61 @@ const GauravEuphoriaDetail = () => {
         {/* 
 
         <GalleryLoop /> */}
+        <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100 px-6 py-2" >
+          <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide">
+            Specification
+          </h2>
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-0">
+            {/* Left: Text */}
+            <div className="md:w-1/2 space-y-6">
+              <div className="w-full md:w-1/2 space-y-4"></div>
+              {sections.map((sec, i) => (
+
+                <div key={i}>
+
+                  <h3
+                    className="text-2xl font-semibold text-[#D2AD75] mb-0 cursor-pointer hover:text-amber-600 "
+                    onClick={() => setActiveIndex(activeIndex === i ? null : i)}
+
+                  >  <span
+                    className={`transform transition-transform duration-300 text-2xl ml-2 ${activeIndex === i ? "rotate-90" : "rotate-0"
+                      }`}
+                  >
+                      +
+                    </span>
+                    {sec.title}
+
+                  </h3>
+
+                  {activeIndex === i && (
+                    <ul className="list-disc list-inside space-y-1 leading-relaxed text-lg">
+                      {sec.items.map((item, j) => (
+                        <li key={j}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Right: Image */}
+            <div className="md:w-1/2 flex justify-center items-start">
+              <img
+                src="/specifications.png" // Replace with your image path
+                alt="Specification illustration"
+                className="w-full h-[550px] object-contain rounded-lg"
+              />
+            </div>
+
+
+          </div>
+        </section>
+
+
+
+
+
+
 
         {/* Tabs Section */}
         <section
@@ -612,27 +681,27 @@ const GauravEuphoriaDetail = () => {
       </section> */}
 
       {/* PopUp Modal */}
-           {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-              onClick={() => setSelectedImage(null)} // Close on background click
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)} // Close on background click
+        >
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img
+              src={selectedImage}
+              alt="Selected Floor Plan"
+              className="w-full h-full object-contain"
+            />
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white text-3xl font-bold"
             >
-              <div className="relative w-full h-full flex items-center justify-center">
-                <img
-                  src={selectedImage}
-                  alt="Selected Floor Plan"
-                  className="w-full h-full object-contain"
-                />
-                {/* Close button */}
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 text-white text-3xl font-bold"
-                >
-                  &times;
-                </button>
-              </div>
-            </div>
-          )}
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
