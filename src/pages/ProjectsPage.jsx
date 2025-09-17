@@ -36,28 +36,28 @@ const Projects = () => {
 
     /* Hero */
     .hero-projects {
-      height: 70vh;
+      height: 100vh;
       min-height: 500px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
+      // background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
     }
     .hero-projects::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg') center/cover;
-      opacity: 0.15;
+      background: url('/3bhk.jpg') center/cover;
+      // opacity: 0.15;
       animation: parallaxMove 20s ease-in-out infinite;
     }
     .hero-projects::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center, transparent 0%, rgba(22,33,62,0.5) 100%);
+      background: radial-gradient(rgba(0, 0, 0, 0.5));
     }
     .hero-content-projects {
       text-align: center;
@@ -67,7 +67,7 @@ const Projects = () => {
       animation: heroSlideUp 1s ease-out;
     }
     .hero-title-projects {
-      font-size: 2.5rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
       background: linear-gradient(45deg, #ffffff, #3282b8, #0ebe7f, #ffffff);
@@ -164,7 +164,7 @@ const Projects = () => {
       left: 0;
       width: 100%;
       padding: 10px 20px;
-      background: linear-gradient( rgba(0, 0, 0, 0.53));
+      background: linear-gradient( rgba(0, 0, 0, 0.64));
       color: #fff;
       text-align: center;
     }
@@ -239,7 +239,7 @@ const Projects = () => {
     /* Responsive */
     @media(min-width:768px){
       .projects-grid{ grid-template-columns: repeat(2,1fr);}
-      .hero-title-projects{ font-size:3.5rem; }
+      .hero-title-projects{ font-size:4rem; }
     }
     @media(min-width:1024px){
       .projects-grid{ grid-template-columns: repeat(3,1fr);}
@@ -272,19 +272,19 @@ const Projects = () => {
                     {[
                         {
                             title: 'Gaurav Euphoria',
-                            img: 'https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg',
+                            img: 'gaurav-euphoria.jpeg',
                             desc: 'Premium 2BHK & 3BHK apartments with modern amenities and green surroundings.',
                              path: "/projects/gaurav-euphoria"  
                         },
                         {
                             title: 'Gaurav Signature',
-                            img: 'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg',
+                            img: '/gaurav-signature.jpeg',
                             desc: 'Spacious apartments designed for comfort, luxury, and functionality.',
                             path: "/"
                         },
                         {
                             title: 'Gaurav Residency',
-                            img: 'https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg',
+                            img: '/gaurav-residency.jpeg',
                             desc: 'Spacious apartments designed for comfort, luxury, and functionality.',
                             path: "/"
                         },
@@ -315,7 +315,7 @@ const Projects = () => {
                     {[
                         {
                             title: 'Gaurav Square',
-                            img: 'https://images.pexels.com/photos/323772/pexels-photo-323772.jpeg',
+                            img: '/carousal-build3.jpeg',
                             desc: 'Modern commercial complex offering premium office spaces in prime location.',
                             path: "/"
                         },

@@ -34,14 +34,14 @@ const About = () => {
     
     /* Mobile-First Hero Section */
     .hero-about {
-      height: 70vh;
+      height: 100vh;
       min-height: 500px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
+      // background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
     }
     
     .hero-about::before {
@@ -51,8 +51,8 @@ const About = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover;
-      opacity: 0.15;
+      background: url('/parallax_img1.jpeg') center/cover;
+      // opacity: 0.9;
       animation: parallaxMove 20s ease-in-out infinite;
     }
     
@@ -63,7 +63,7 @@ const About = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at center, transparent 0%, rgba(22, 33, 62, 0.4) 100%);
+      background: radial-gradient( rgba(0, 0, 0, 0.28));
     }
     
     .hero-content-about {
@@ -208,8 +208,8 @@ const About = () => {
     .content-layout {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      max-width: 1200px;
+      gap: 4rem;
+      max-width: 1000px;
       margin: 0 auto;
     }
     
@@ -622,7 +622,7 @@ const About = () => {
           </div>
           <div className={`content-image ${isVisible.story ? 'visible' : ''}`}>
             <img
-              src="https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="/carousal-build.jpeg"
               alt="Modern office building representing Gaurav Infra headquarters"
               loading="lazy"
             />
@@ -670,13 +670,13 @@ const About = () => {
         <div className="content-layout">
           <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`}>
             <img
-              src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="/Giri_Sir.jpg"
               alt="Professional team meeting in modern office environment"
               loading="lazy"
             />
           </div>
           <div className={`content-text ${isVisible.leadership ? 'visible' : ''}`}>
-            <h3>Experienced Leadership</h3>
+            <h3>KRISHNAKANT GIRI</h3>
             <p>
               Our leadership team brings together decades of experience in real estate development, architecture, construction management, and customer service. This diverse expertise enables us to deliver projects that set new standards in the industry.
             </p>

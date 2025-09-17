@@ -3,8 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GalleryLoop from "../../components/GallarySwiper";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 
@@ -16,7 +14,7 @@ const allProjects = {
   "gaurav-euphoria": {
     title: "Gaurav Euphoria",
     tagline: "A Destination Fit for Royalty",
-    heroImage: "/image4.jpg",
+    heroImage: "/carousal-build2.jpeg",
     galleryImages: [
       "/carousal-build.jpeg",
       "/image1.jpg",
@@ -25,28 +23,30 @@ const allProjects = {
   },
 };
 // Mock data for interiors
-const interiors = {
-  "2BHK": [
-    "/5bhk.jpg",
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-4.jpg",
-  ],
-  "3BHK": [
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-5.jpg",
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-6.jpg",
-  ],
-};
+// const interiors = {
+//   "2BHK": [
+//     "/5bhk.jpg",
+//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-4.jpg",
+//   ],
+//   "3BHK": [
+//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-5.jpg",
+//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-6.jpg",
+//   ],
+// };
 
 const GauravEuphoriaDetail = () => {
   const { projectId } = useParams();
   const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
   const heroImgRef = useRef(null);
   const textRef = useRef(null);
-  const galleryRef = useRef(null);
-  const imagesRef = useRef([]);
-  const [selectedInterior, setSelectedInterior] = useState("2BHK");
+  // const galleryRef = useRef(null);
+  // const imagesRef = useRef([]);
+  // const [selectedInterior, setSelectedInterior] = useState("2BHK");
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("details");
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
 
@@ -124,6 +124,7 @@ const GauravEuphoriaDetail = () => {
   ];
 
   return (
+
     <div className="overflow-hidden">
       {/* Header */}
       {/* <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center text-dark bg-black bg-opacity-10 backdrop-blur-sm">
@@ -154,56 +155,95 @@ const GauravEuphoriaDetail = () => {
           </div>
 
           {/* Full Navbar */}
-          <nav className="hidden md:flex space-x-8 text-white">
+          <nav className="hidden md:flex space-x-8 text-white relative">
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
-            <a href="/" className="hover:text-cyan-300 transition-colors">INTERIOR WALKTHROUGH</a>
+
+            <div className="relative group inline-block">
+              {/* Trigger */}
+              <button className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
+                INTERIOR WALKTHROUGH
+              </button>
+
+              {/* Dropdown */}
+              <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
+                <li>
+                  <a
+                    href="/video-player/2bhk"
+                    className="block px-4 py-2 hover:bg-cyan-600"
+                  >
+                    2 BHK
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/video-player/3bhk"
+                    className="block px-4 py-2 hover:bg-cyan-600"
+                  >
+                    3 BHK
+                  </a>
+                </li>
+              </ul>
+
+              {/* Custom thin arrow */}
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-cyan-300 text-sm">
+                ▼
+              </div>
+            </div>
+
             <a href="#" className="hover:text-cyan-300 transition-colors">3D TOUR</a>
           </nav>
+          {/* Hamburger for mobile */}
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </header>
       )}
-
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-2xl md:hidden z-40">
+          <a href="/" onClick={() => setIsOpen(false)}>HOME</a>
+          <a href="/projects" onClick={() => setIsOpen(false)}>PROJECTS</a>
+          <a href="/" onClick={() => setIsOpen(false)}>INTERIOR WALKTHROUGH</a>
+          <a href="#" onClick={() => setIsOpen(false)}>3D TOUR</a>
+        </div>
+      )}
 
       {/* Hero Section */}
       <div className="project-wrapper">
-        <section
-          ref={textRef}
-          className=" project-panel h-screen relative flex flex-col md:flex-row items-center md:items-start justify-between px-6 md:px-20 py-16"
-        >
+        <section className="flex flex-col md:flex-row min-h-screen">
           {/* Left Side: Title + Info Box */}
-          <div className="w-full md:w-1/2 flex flex-col mt-20 justify-center space-y-6 z-10">
-            <h1 className="text-6xl md:text-8xl font-bold tracking-wide">
-              <span className="block text-gray-500">
-                {project.title.split(" ")[0]}
-              </span>
+          <div className="flex-1 flex flex-col justify-center gap-6 px-6 md:px-12 py-12 bg-white">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
+              <span className="block text-gray-500">{project.title.split(" ")[0]}</span>
               <span className="text-amber-600 italic">
                 {project.title.split(" ")[1] || ""}
               </span>
             </h1>
 
-            <div className="bg-[#061121] text-white  p-8 md:p-14  rounded-lg shadow-lg max-w-2xl">
-              <h2 className="text-lg md:text-xl font-semibold mb-3 tracking-wide uppercase">
+            <div className="bg-[#061121] text-white p-8 rounded-xl shadow-lg max-w-xl">
+              <h2 className="text-lg md:text-xl font-semibold uppercase tracking-wide mb-3">
                 {project.tagline}
               </h2>
               <p className="text-gray-300 leading-relaxed">
-                {project.title} speaks the language of architecture very
-                fluently. It is designed to redefine luxury living with modern
-                comforts and timeless elegance.
+                {project.title} speaks the language of architecture very fluently.
+                It is designed to redefine luxury living with modern comforts and timeless elegance.
               </p>
             </div>
           </div>
 
           {/* Right Side: Hero Image */}
-          <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center pr-10 md:pr-40 overflow-hidden">
+          <div className="flex-1 flex items-center justify-center overflow-hidden">
             <img
-              ref={heroImgRef}
               src={project.heroImage}
               alt={project.title}
-              className="w-[200%] h-auto object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
-
         </section>
+
 
 
         <section className="project-panel h-screen content-section pin bg-gray-50" id="architecture">
@@ -241,10 +281,10 @@ const GauravEuphoriaDetail = () => {
               {/* Right Image (only one now) */}
               <div className="content-images fade-left">
                 <img
-                  src="/arch.jpg"
+                  src="/carousal-build2.jpeg"
                   alt="Gaurav Euphoria modern facade"
                   className="w-full h-[500px] object-cover rounded-xl shadow-2xl"
-                  onClick={() => setSelectedImage("/arch.jpg")}
+                  onClick={() => setSelectedImage("/carousal-build2.jpeg")}
                 />
               </div>
             </div>
@@ -256,23 +296,111 @@ const GauravEuphoriaDetail = () => {
 
 
 
-        {/* Floor Plan Section */}
-        <section className="project-panel h-screen floor-plan-section relative  bg-gray-50">
-          <div className="section-container max-w-5xl mx-auto ">
-            <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75] pt-10">
+        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
+          <div className="section-container max-w-5xl mx-auto px-6">
+            <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
               Floor Plan
             </h2>
 
             {/* Image Container */}
-            <div className=" rounded-lg shadow-lg">
-              <img
-                src="/5bhk.jpg"
-                alt="Gaurav Euphoria 5BHK floor plan"
-                className="w-full h-auto object-fill transform transition-transform duration-1000 hover:scale-105"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column */}
+              <div className="flex flex-col gap-8">
+                {/* First Image */}
+                <div className="flex flex-col items-center w-full " onClick={() => setSelectedImage("/_2bhk_floor.png")}>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3>
+                  <div className="rounded-lg shadow-lg overflow-hidden w-full">
+                    <img
+                      src="/_2bhk_floor.png"
+                      alt="2BHK Floor Plan"
+                      className="w-full h-auto object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* Second Image */}
+                <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK Premium</h3>
+                  <div className="rounded-lg shadow-lg overflow-hidden w-full">
+                    <img
+                      src="/_2bhk_floor.png"
+                      alt="2BHK Premium Floor Plan"
+                      className="w-full h-auto object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="flex flex-col gap-8">
+                {/* Third Image */}
+                <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3>
+                  <div className="rounded-lg shadow-lg overflow-hidden w-full">
+                    <img
+                      src="/_2bhk_floor.png"
+                      alt="3BHK Floor Plan"
+                      className="w-full h-auto object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* Fourth Image */}
+                <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/5bhk.jpg")}>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK Premium</h3>
+                  <div className="rounded-lg shadow-lg overflow-hidden w-full">
+                    <img
+                      src="/5bhk.jpg"
+                      alt="3BHK Premium Floor Plan"
+                      className="w-full h-auto object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
+     
         </section>
+
+
+<section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
+  <div className="section-container max-w-5xl mx-auto px-6">
+    <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
+      Isometric View
+    </h2>
+
+    {/* Image Container */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* 2BHK Floor Plan */}
+      <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/2bhk_isometric_view.png")}>
+        {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3> */}
+        <div className="rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="/2bhk_isometric_view.png"
+            alt="Gaurav Euphoria 2BHK floor plan"
+            className="w-full max-w-sm h-auto object-contain cursor-pointer"
+          />
+        </div>
+      </div>
+
+      {/* 3BHK Floor Plan */}
+      <div className="flex flex-col items-center"onClick={() => setSelectedImage("/3bhk_isometric_view.png")}>
+        {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3> */}
+        <div className="rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="/3bhk_isometric_view.png"
+            alt="Gaurav Euphoria 3BHK floor plan"
+            className="w-full max-w-sm h-auto object-contain cursor-pointer"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
         {/* Lifestyle Section */}
         <section
@@ -482,8 +610,32 @@ const GauravEuphoriaDetail = () => {
           </div>
         </div>
       </section> */}
+
+      {/* PopUp Modal */}
+           {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+              onClick={() => setSelectedImage(null)} // Close on background click
+            >
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img
+                  src={selectedImage}
+                  alt="Selected Floor Plan"
+                  className="w-full h-full object-contain"
+                />
+                {/* Close button */}
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute top-4 right-4 text-white text-3xl font-bold"
+                >
+                  &times;
+                </button>
+              </div>
+            </div>
+          )}
     </div>
   );
 };
+
 
 export default GauravEuphoriaDetail;

@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 .env
 
-#ignore
+# Ignore media folders
 public/2 BHK/
 public/3 BHK/
 public/video/

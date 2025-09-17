@@ -89,7 +89,7 @@ const Home = () => {
             Gaurav Infra
           </h1>
           <p className="text-lg md:text-xl mb-6 text-white">
-            Experience luxury living with our premium 3BHK, 4BHK & 5BHK apartments in the heart of Nagpur. Modern amenities, traditional values, and uncompromising quality.
+            Experience luxury living with our premium 2BHK & 3BHK apartments in the heart of Nagpur. Modern amenities, traditional values, and uncompromising quality.
           </p>
         </div>
 
@@ -99,7 +99,6 @@ const Home = () => {
           <ArrowDown />
         </div> */}
       </section>
-
 
       <section className=" py-20 text-center relative">
         <div className="max-w-3xl mx-auto px-6">
@@ -159,8 +158,8 @@ const Home = () => {
           {/* Luxury Heading */}
           <h3
             className="text-3xl md:text-4xl font-serif font-extrabold mb-6 
-      bg-gradient-to-r from-yellow-400 via-yellow-200 to-white 
-      bg-clip-text text-transparent drop-shadow-2xl tracking-wide"
+                       bg-gradient-to-r from-yellow-400 via-yellow-200 to-white 
+                       bg-clip-text text-transparent drop-shadow-2xl tracking-wide"
           >
             Your Dream Home Awaits
           </h3>
