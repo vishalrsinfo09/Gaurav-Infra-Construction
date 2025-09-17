@@ -6,8 +6,8 @@
 
 body {
   /* font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; */
-    font-family: 'Playfair Display', serif;
-     /* font-family: 'Poppins', sans-serif;  */
+  font-family: 'Playfair Display', serif;
+  /* font-family: 'Poppins', sans-serif;  */
   line-height: 1.6;
   color: #1a1a2e;
   overflow-x: hidden;
@@ -202,16 +202,24 @@ body {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-  50% { box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6); }
-  100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+  0% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
 }
 
 /* Hero Section */
 .hero-section {
   position: relative;
   height: 100vh;
-  background: linear-gradient(135deg, rgba(22, 33, 62, 0.8), rgba(15, 76, 117, 0.6));
+  /* background: linear-gradient(135deg, rgba(22, 33, 62, 0.8), rgba(15, 76, 117, 0.6)); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,8 +242,24 @@ body {
   position: relative;
   z-index: 1;
   max-width: 800px;
-  padding: 0 2rem;
+  padding: 100px 2rem 2rem;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 1.2s ease-out forwards;
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .hero-content h1 {
   font-size: 3.5rem;
@@ -292,9 +316,22 @@ body {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-10px); }
-  60% { transform: translateX(-50%) translateY(-5px); }
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
 }
 
 
@@ -393,6 +430,7 @@ body {
 .section-image:hover::before {
   opacity: 1;
 }
+
 /* Luxury Lifestyle Redifened */
 
 @keyframes slideIn {
@@ -400,6 +438,7 @@ body {
     transform: translateX(-50px);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -514,41 +553,41 @@ body {
   .nav-links {
     display: none;
   }
-  
+
   .hamburger {
     display: flex;
   }
-  
+
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-content p {
     font-size: 1rem;
   }
-  
+
   .section {
     padding: 4rem 1rem;
   }
-  
+
   .section-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .section-title h2 {
     font-size: 2rem;
   }
-  
+
   .amenities-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .whatsapp-chat {
     width: 50px;
     height: 50px;
@@ -562,15 +601,15 @@ body {
   .top-nav {
     padding: 0.5rem 1rem;
   }
-  
+
   .hero-content {
     padding: 0 1rem;
   }
-  
+
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .section {
     padding: 3rem 1rem;
   }
@@ -606,20 +645,25 @@ body {
 .masonry-gallery-container {
   display: grid;
   /* Adjust the grid columns for different screen sizes */
-  grid-template-columns: repeat(1, 1fr); /* Default: 1 column */
-  grid-auto-rows: 10px; /* Base row height for perfect alignment */
-  gap: 10px; /* Space between images */
+  grid-template-columns: repeat(1, 1fr);
+  /* Default: 1 column */
+  grid-auto-rows: 10px;
+  /* Base row height for perfect alignment */
+  gap: 10px;
+  /* Space between images */
 }
 
 @media (min-width: 640px) {
   .masonry-gallery-container {
-    grid-template-columns: repeat(2, 1fr); /* Small screens: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    /* Small screens: 2 columns */
   }
 }
 
 @media (min-width: 1024px) {
   .masonry-gallery-container {
-    grid-template-columns: repeat(3, 1fr); /* Large screens: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+    /* Large screens: 3 columns */
   }
 }
 
@@ -648,8 +692,10 @@ body {
 
 .masonry-inner {
   display: grid;
-  grid-auto-flow: column; /* horizontal flow */
-  grid-template-rows: repeat(3, 200px); /* 3 rows, adjust height */
+  grid-auto-flow: column;
+  /* horizontal flow */
+  grid-template-rows: repeat(3, 200px);
+  /* 3 rows, adjust height */
   gap: 16px;
 }
 
@@ -657,7 +703,8 @@ body {
   break-inside: avoid;
 }
 
-/* Animations *//* Text Fade Up */
+/* Animations */
+/* Text Fade Up */
 /* Fade up for text */
 .fade-up {
   opacity: 0;
@@ -692,6 +739,6 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-li{
-  margin: 0 0 0!important;
+li {
+  margin: 0 0 0 !important;
 }

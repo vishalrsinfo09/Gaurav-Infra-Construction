@@ -100,7 +100,6 @@ const Home = () => {
         </div> */}
       </section>
 
-
       <section className=" py-20 text-center relative">
         <div className="max-w-3xl mx-auto px-6">
           {/* Luxury Heading */}

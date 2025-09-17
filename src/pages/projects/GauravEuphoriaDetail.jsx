@@ -3,9 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GalleryLoop from "../../components/GallarySwiper";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -25,29 +22,29 @@ const allProjects = {
   },
 };
 // Mock data for interiors
-const interiors = {
-  "2BHK": [
-    "/5bhk.jpg",
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-4.jpg",
-  ],
-  "3BHK": [
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-5.jpg",
-    "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-6.jpg",
-  ],
-};
+// const interiors = {
+//   "2BHK": [
+//     "/5bhk.jpg",
+//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-4.jpg",
+//   ],
+//   "3BHK": [
+//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-5.jpg",
+//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-6.jpg",
+//   ],
+// };
 
 const GauravEuphoriaDetail = () => {
   const { projectId } = useParams();
   const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
   const heroImgRef = useRef(null);
   const textRef = useRef(null);
-  const galleryRef = useRef(null);
-  const imagesRef = useRef([]);
-  const [selectedInterior, setSelectedInterior] = useState("2BHK");
+  // const galleryRef = useRef(null);
+  // const imagesRef = useRef([]);
+  // const [selectedInterior, setSelectedInterior] = useState("2BHK");
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("details");
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
 
 
 
@@ -155,10 +152,42 @@ const GauravEuphoriaDetail = () => {
           </div>
 
           {/* Full Navbar */}
-          <nav className="hidden md:flex space-x-8 text-white">
+          <nav className="hidden md:flex space-x-8 text-white relative">
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
-            <a href="/" className="hover:text-cyan-300 transition-colors">INTERIOR WALKTHROUGH</a>
+
+            <div className="relative group inline-block">
+              {/* Trigger */}
+              <button className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
+                INTERIOR WALKTHROUGH
+              </button>
+
+              {/* Dropdown */}
+              <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
+                <li>
+                  <a
+                    href="/video-player/2bhk"
+                    className="block px-4 py-2 hover:bg-cyan-600"
+                  >
+                    2 BHK
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/video-player/3bhk"
+                    className="block px-4 py-2 hover:bg-cyan-600"
+                  >
+                    3 BHK
+                  </a>
+                </li>
+              </ul>
+
+              {/* Custom thin arrow */}
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-cyan-300 text-sm">
+                ▼
+              </div>
+            </div>
+
             <a href="#" className="hover:text-cyan-300 transition-colors">3D TOUR</a>
           </nav>
           {/* Hamburger for mobile */}
