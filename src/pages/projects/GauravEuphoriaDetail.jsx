@@ -1,5 +1,5 @@
 // src/pages/projects/GauravEuphoriaDetail.jsx
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,8 +37,8 @@ const allProjects = {
 const GauravEuphoriaDetail = () => {
   const { projectId } = useParams();
   const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
-  const heroImgRef = useRef(null);
-  const textRef = useRef(null);
+  // const heroImgRef = useRef(null);
+  // const textRef = useRef(null);
   // const galleryRef = useRef(null);
   // const imagesRef = useRef([]);
   // const [selectedInterior, setSelectedInterior] = useState("2BHK");
@@ -48,7 +48,7 @@ const GauravEuphoriaDetail = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [openDropdown, setOpenDropdown] = useState(false);
 
 
   //navbar
@@ -159,36 +159,38 @@ const GauravEuphoriaDetail = () => {
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
 
-            <div className="relative group inline-block">
+            <div className="relative group inline-block"
+              onMouseEnter={() => setOpenDropdown(true)}
+              onMouseLeave={() => setOpenDropdown(false)}
+            >
               {/* Trigger */}
-              <button className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
+              <button
+                onClick={() => setOpenDropdown(!openDropdown)}
+                className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
                 INTERIOR WALKTHROUGH
               </button>
 
               {/* Dropdown */}
-              <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
-                <li>
-                  <a
-                    href="/video-player/2bhk"
-                    className="block px-4 py-2 hover:bg-cyan-600"
-                  >
-                    2 BHK
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/video-player/3bhk"
-                    className="block px-4 py-2 hover:bg-cyan-600"
-                  >
-                    3 BHK
-                  </a>
-                </li>
-              </ul>
-
-              {/* Custom thin arrow */}
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-cyan-300 text-sm">
-                ▼
-              </div>
+              {openDropdown && (
+                <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
+                  <li>
+                    <a
+                      href="/video-player/2bhk"
+                      className="block px-4 py-2 hover:bg-cyan-600"
+                    >
+                      2 BHK
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/video-player/3bhk"
+                      className="block px-4 py-2 hover:bg-cyan-600"
+                    >
+                      3 BHK
+                    </a>
+                  </li>
+                </ul>
+              )}
             </div>
 
             <a href="#" className="hover:text-cyan-300 transition-colors">3D TOUR</a>
@@ -202,11 +204,43 @@ const GauravEuphoriaDetail = () => {
         </header>
       )}
       {/* Mobile menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-2xl md:hidden z-40">
+        <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-white text-xl md:hidden z-40">
           <a href="/" onClick={() => setIsOpen(false)}>HOME</a>
           <a href="/projects" onClick={() => setIsOpen(false)}>PROJECTS</a>
-          <a href="/" onClick={() => setIsOpen(false)}>INTERIOR WALKTHROUGH</a>
+
+          {/* Interior Walkthrough with Dropdown */}
+          <div className="flex flex-col items-center">
+            <button
+              onClick={() => setOpenDropdown(!openDropdown)}
+              className="flex items-center gap-2"
+            >
+              INTERIOR WALKTHROUGH
+              <span className={`transform transition-transform ${openDropdown ? "rotate-180" : ""}`}>
+                ▼
+              </span>
+            </button>
+            {openDropdown && (
+              <div className="mt-3 flex flex-col space-y-2">
+                <a
+                  href="/video-player/2bhk"
+                  className="hover:text-cyan-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  2 BHK
+                </a>
+                <a
+                  href="/video-player/3bhk"
+                  className="hover:text-cyan-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  3 BHK
+                </a>
+              </div>
+            )}
+          </div>
+
           <a href="#" onClick={() => setIsOpen(false)}>3D TOUR</a>
         </div>
       )}
@@ -360,44 +394,44 @@ const GauravEuphoriaDetail = () => {
             </div>
 
           </div>
-     
+
         </section>
 
 
-<section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
-  <div className="section-container max-w-5xl mx-auto px-6">
-    <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
-      Isometric View
-    </h2>
+        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
+          <div className="section-container max-w-5xl mx-auto px-6">
+            <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
+              Isometric View
+            </h2>
 
-    {/* Image Container */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* 2BHK Floor Plan */}
-      <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/2bhk_isometric_view.png")}>
-        {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3> */}
-        <div className="rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="/2bhk_isometric_view.png"
-            alt="Gaurav Euphoria 2BHK floor plan"
-            className="w-full max-w-sm h-auto object-contain cursor-pointer"
-          />
-        </div>
-      </div>
+            {/* Image Container */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* 2BHK Floor Plan */}
+              <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/2bhk_isometric_view.png")}>
+                {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3> */}
+                <div className="rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src="/2bhk_isometric_view.png"
+                    alt="Gaurav Euphoria 2BHK floor plan"
+                    className="w-full max-w-sm h-auto object-contain cursor-pointer"
+                  />
+                </div>
+              </div>
 
-      {/* 3BHK Floor Plan */}
-      <div className="flex flex-col items-center"onClick={() => setSelectedImage("/3bhk_isometric_view.png")}>
-        {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3> */}
-        <div className="rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="/3bhk_isometric_view.png"
-            alt="Gaurav Euphoria 3BHK floor plan"
-            className="w-full max-w-sm h-auto object-contain cursor-pointer"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+              {/* 3BHK Floor Plan */}
+              <div className="flex flex-col items-center" onClick={() => setSelectedImage("/3bhk_isometric_view.png")}>
+                {/* <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3> */}
+                <div className="rounded-lg shadow-lg overflow-hidden">
+                  <img
+                    src="/3bhk_isometric_view.png"
+                    alt="Gaurav Euphoria 3BHK floor plan"
+                    className="w-full max-w-sm h-auto object-contain cursor-pointer"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
 
 
@@ -612,27 +646,27 @@ const GauravEuphoriaDetail = () => {
       </section> */}
 
       {/* PopUp Modal */}
-           {selectedImage && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-              onClick={() => setSelectedImage(null)} // Close on background click
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)} // Close on background click
+        >
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img
+              src={selectedImage}
+              alt="Selected Floor Plan"
+              className="w-full h-full object-contain"
+            />
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white text-3xl font-bold"
             >
-              <div className="relative w-full h-full flex items-center justify-center">
-                <img
-                  src={selectedImage}
-                  alt="Selected Floor Plan"
-                  className="w-full h-full object-contain"
-                />
-                {/* Close button */}
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 text-white text-3xl font-bold"
-                >
-                  &times;
-                </button>
-              </div>
-            </div>
-          )}
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
