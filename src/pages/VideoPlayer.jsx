@@ -25,6 +25,11 @@ const VideoPlayer = () => {
       title: '3 BHK Sample Flat Video',
       src: '/video/3 BHK Sample Flat @ Gaurav Euphoria, Nagpur.mp4',
       description: 'Discover the luxurious and premium 3 BHK apartment layout'
+    },
+    'amenities': {
+      title: 'Amenities Video',
+      src: '/video/Amenities @ Gaurav Euphoria, Nagpur.mp4',
+      description: 'Explore the world-class amenities offered at Gaurav Euphoria'
     }
   };
 
@@ -167,7 +172,7 @@ const VideoPlayer = () => {
           <video
             ref={videoRef}
             className="w-full rounded-lg shadow-2xl"
-            style={{height:'521px'}}
+            style={{height:'90vh'}}
             src={currentVideo.src}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
