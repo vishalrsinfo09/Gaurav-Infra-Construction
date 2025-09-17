@@ -263,7 +263,7 @@ const About = () => {
     
     .content-image img {
       width: 100%;
-      height: 530px;
+      height: 450px;
       display: block;
       transition: transform 0.5s ease;
     }
@@ -678,13 +678,13 @@ const About = () => {
           <div className={`content-text ${isVisible.leadership ? 'visible' : ''}`}>
             <h3>KRISHNAKANT GIRI</h3>
             <p>
-              Our leadership team brings together decades of experience in real estate development, architecture, construction management, and customer service. This diverse expertise enables us to deliver projects that set new standards in the industry.
+              Gaurav Infra is one of the fastest growing company in real estate sector of Nagpur city. The company known for its top quality construction and timely delivered project. It has highly skill management team, who manage every part of construction very carefully.
             </p>
             <p>
-              Under their guidance, Gaurav Infra has successfully completed multiple residential projects, each characterized by innovative design, superior construction quality, and exceptional customer satisfaction.
+              We believe in to give something new and unique of our customers to satisfy all their needs and deeds.
             </p>
             <p>
-              The team's commitment to continuous learning and adaptation to market trends ensures that our projects always incorporate the latest technologies and design philosophies.
+              Customers are always the first priority for us
             </p>
           </div>
         </div>
