@@ -1,15 +1,11 @@
-// src/pages/projects/GauravEuphoriaDetail.jsx
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react";
-import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-// Mock project data
 const allProjects = {
   "gaurav-euphoria": {
     title: "Gaurav Euphoria",
@@ -22,33 +18,21 @@ const allProjects = {
     ],
   },
 };
-// Mock data for interiors
-// const interiors = {
-//   "2BHK": [
-//     "/5bhk.jpg",
-//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-4.jpg",
-//   ],
-//   "3BHK": [
-//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-5.jpg",
-//     "/Interior/3 BHK Sample Flat @ Gaurav Euphoria Photos-images-6.jpg",
-//   ],
-// };
+
+const tabs = [
+  { id: "details", label: "DETAILS" },
+  { id: "amenities", label: "AMENITIES" },
+];
 
 const GauravEuphoriaDetail = () => {
   const { projectId } = useParams();
   const project = allProjects[projectId] || allProjects["gaurav-euphoria"];
-  const heroImgRef = useRef(null);
-  const textRef = useRef(null);
-  // const galleryRef = useRef(null);
-  // const imagesRef = useRef([]);
-  // const [selectedInterior, setSelectedInterior] = useState("2BHK");
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("details");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   const sections = [
     { title: "BUILDING STRUCTURE", items: ["R.C.C. frame structure.", "Earthquake resistant design."] },
@@ -63,19 +47,19 @@ const GauravEuphoriaDetail = () => {
     { title: "ADDITIONAL CHARGES", items: ["Registration, stamp duty charges and document preparation charges shall be paid by purchaser.", "M.S.E.B. meter, water meter and other incidental expenses will be charged extra.", "Any extra work other than specification shall be charged separately before execution.", "Elevation changes are not allowed.", "All rights reserved with builder for making changes in drawing & Specification.", "GST & other Govt. taxes if applicable will be charge extra.", "Possession after full clearance of all dues."] }
   ];
   //navbar
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight * 0.8) {
-        setIsScrolled(true);   // Hero se bahar → button
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false);  // Hero ke andar → full navbar
+        setIsScrolled(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-up, .fade-left");
@@ -89,12 +73,10 @@ const GauravEuphoriaDetail = () => {
         });
       },
       {
-        threshold: 0.3, // triggers when 30% visible
+        threshold: 0.3,
       }
     );
-
     elements.forEach((el) => observer.observe(el));
-
     return () => {
       elements.forEach((el) => observer.unobserve(el));
     };
@@ -102,10 +84,7 @@ const GauravEuphoriaDetail = () => {
 
   useEffect(() => {
     const sections = gsap.utils.toArray(".project-panel");
-
     sections.forEach((panel) => {
-
-
       ScrollTrigger.create({
         trigger: panel,
         start: "top top",
@@ -115,96 +94,62 @@ const GauravEuphoriaDetail = () => {
         snap: 1,
       });
     });
-
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-
   if (!project) return <div>Project not found.</div>;
 
-  const tabs = [
-    { id: "details", label: "DETAILS" },
-    { id: "amenities", label: "AMENITIES" },
-    { id: "specifications", label: "SPECIFICATIONS" },
-    // { id: "walkthrough", label: "VIDEO WALKTHROUGH" },
-  ];
-
   return (
-
     <div className="overflow-hidden">
-      {/* Header */}
-      {/* <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center text-dark bg-black bg-opacity-10 backdrop-blur-sm">
-        <div className="flex items-center">
-          <img src="/Logo3.png" alt="Logo" className="h-20 w-auto" />
-        </div>
-        <nav className="hidden md:flex space-x-8">
-          <a href="/" className="hover:text-cyan-300 transition-colors">
-            HOME
-          </a>
-          <a href="/projects" className="hover:text-cyan-300 transition-colors">
-            PROJECTS
-          </a>
-          <a href="/" className="hover:text-cyan-300 transition-colors">
-            INTERIOR WALKTHROGH
-          </a>
 
-          <a href="#" className="hover:text-cyan-300 transition-colors">
-            3D TOUR
-          </a>
-        </nav>
-      </header> */}
       {!isScrolled && (
         <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-30 backdrop-blur-md px-6 py-4 flex justify-between items-center">
-          {/* Logo */}
+
           <div className="flex items-center">
             <img src="/Logo3.png" alt="Logo" className="h-16 w-auto" />
           </div>
 
-          {/* Full Navbar */}
           <nav className="hidden md:flex space-x-8 text-white relative">
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
-
-            <div className="relative group inline-block">
-              {/* Trigger */}
-              <button className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
+            <div className="relative group inline-block"
+              onMouseEnter={() => setOpenDropdown(true)}
+              onMouseLeave={() => setOpenDropdown(false)}
+            >
+              <button
+                onClick={() => setOpenDropdown(!openDropdown)}
+                className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
                 INTERIOR WALKTHROUGH
               </button>
-
-              {/* Dropdown */}
-              <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
-                <li>
-                  <a
-                    href="/video-player/2bhk"
-                    className="block px-4 py-2 hover:bg-cyan-600"
-                  >
-                    2 BHK
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/video-player/3bhk"
-                    className="block px-4 py-2 hover:bg-cyan-600"
-                  >
-                    3 BHK
-                  </a>
-                </li>
-              </ul>
-
-              {/* Custom thin arrow */}
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-cyan-300 text-sm">
-                ▼
-              </div>
+              {openDropdown && (
+                <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
+                  <li>
+                    <a
+                      href="/video-player/2bhk"
+                      className="block px-4 py-2 hover:bg-cyan-600"
+                    >
+                      2 BHK
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/video-player/3bhk"
+                      className="block px-4 py-2 hover:bg-cyan-600"
+                    >
+                      3 BHK
+                    </a>
+                  </li>
+                </ul>
+              )}
             </div>
-
             <a href="#" className="hover:text-cyan-300 transition-colors">3D TOUR</a>
           </nav>
-          {/* Hamburger for mobile */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="text-white">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -212,24 +157,52 @@ const GauravEuphoriaDetail = () => {
           </div>
         </header>
       )}
-      {/* Mobile menu */}
+
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-8 text-white text-2xl md:hidden z-40">
+        <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 text-white text-xl md:hidden z-40">
           <a href="/" onClick={() => setIsOpen(false)}>HOME</a>
           <a href="/projects" onClick={() => setIsOpen(false)}>PROJECTS</a>
-          <a href="/" onClick={() => setIsOpen(false)}>INTERIOR WALKTHROUGH</a>
+
+          {/* Interior Walkthrough with Dropdown */}
+          <div className="flex flex-col items-center">
+            <button
+              onClick={() => setOpenDropdown(!openDropdown)}
+              className="flex items-center gap-2"
+            >
+              INTERIOR WALKTHROUGH
+              <span className={`transform transition-transform ${openDropdown ? "rotate-180" : ""}`}>
+                ▼
+              </span>
+            </button>
+            {openDropdown && (
+              <div className="mt-3 flex flex-col space-y-2">
+                <a
+                  href="/video-player/2bhk"
+                  className="hover:text-cyan-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  2 BHK
+                </a>
+                <a
+                  href="/video-player/3bhk"
+                  className="hover:text-cyan-300"
+                  onClick={() => setIsOpen(false)}
+                >
+                  3 BHK
+                </a>
+              </div>
+            )}
+          </div>
+
           <a href="#" onClick={() => setIsOpen(false)}>3D TOUR</a>
         </div>
       )}
 
-
-
-
-      {/* Hero Section */}
       <div className="project-wrapper">
+
         <section className="flex flex-col md:flex-row min-h-screen">
           {/* Left Side: Title + Info Box */}
-          <div className="flex-1 flex flex-col justify-center gap-6 px-6 md:px-12 py-12 bg-white">
+          <div className="flex-1 flex flex-col justify-center gap-6 px-3 md:px-12 py-12 bg-white">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
               <span className="block text-gray-500">{project.title.split(" ")[0]}</span>
               <span className="text-amber-600 italic">
@@ -237,18 +210,13 @@ const GauravEuphoriaDetail = () => {
               </span>
             </h1>
 
-            <div className="bg-[#061121] text-white p-8 rounded-xl shadow-lg max-w-xl">
-              <h2 className="text-lg md:text-xl font-semibold uppercase tracking-wide mb-3">
-                {project.tagline}
-              </h2>
-              <p className="text-gray-300 leading-relaxed">
-                {project.title} speaks the language of architecture very fluently.
-                It is designed to redefine luxury living with modern comforts and timeless elegance.
+            <div className="text-green-800 rounded-lg mt-6 inline-block">
+              <p className="text-3xl" style={{ fontFamily: 'Cairo' }}>
+                the first <strong style={{ fontSize: '45px' }}>highrise</strong> building<br /> <span className="ps-6">in <span style={{ fontWeight: 'bold' }}>Lashkaribagh</span> with modern <strong style={{ fontSize: '45px' }}>amenities</strong></span>
               </p>
             </div>
           </div>
 
-          {/* Right Side: Hero Image */}
           <div className="flex-1 flex items-center justify-center overflow-hidden">
             <img
               src={project.heroImage}
@@ -258,46 +226,75 @@ const GauravEuphoriaDetail = () => {
           </div>
         </section>
 
-
-
-        <section className="project-panel h-screen content-section pin bg-gray-50" id="architecture">
+        <section className="project-panel h-screen content-section pin bg-gray-50">
           <div className="section-container max-w-7xl mx-auto px-6">
-            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-12">
-              Architecture
+            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-6" style={{ marginBottom: '24px' }}>
+              About Project
             </h2>
             <div className="w-24 h-1 bg-[#D2AD75] mx-auto mb-10"></div>
             <div className="section-content grid md:grid-cols-2 gap-16 items-center">
-              {/* Left Text */}
+              <div className="">
+                <img
+                  src="/carousal-build2.jpeg"
+                  alt="Gaurav Euphoria modern facade"
+                  className="w-full h-[400px] object-cover rounded-xl shadow-2xl"
+                  onClick={() => setSelectedImage("/carousal-build3.jpeg")}
+                />
+              </div>
               <div className="content-text fade-up">
-                <p className="mb-6 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                  There are too many option for homes, but every home is not a luxurious home. Luxury cannot be described, it has to be experienced.
+                  Experience it first, at the finest residential project <strong>"Gaurav Euphoria"</strong> developed by Gaurav Infra at the prime location of the city.
+                </p>
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                  It offers 2 & 3 spacious bed rooms with proper ventilation and sunlight. A large living room along with entrance foyer. Big kitchen with separate dining space. Balcony / terrace to every rooms. Thoughtful planning, stylish design, quality construction and peaceful surrounding make <strong>"Gaurav Euphoria"</strong> more prestigious and beautiful place to live.
+                </p>
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                  The additional advantage of the project is its location. You can easily access many things like Shopping Mall, Inox, Metro Station, Hospital, Petrol Pump, ATM etc. within walking distance.
+                  <strong>"Gaurav Euphoria"</strong> is the perfect place to live luxurious life, that you can call a dream home.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="project-panel h-screen content-section pin bg-gray-50" id="architecture">
+          <div className="section-container max-w-7xl mx-auto px-6">
+            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-6" style={{ marginBottom: '24px' }}>
+              Architecture
+            </h2>
+            <div className="w-24 h-1 bg-[#D2AD75] mx-auto mb-7"></div>
+            <div className="section-content grid md:grid-cols-2 gap-16 items-center">
+
+              <div className="content-text fade-up">
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
                   <strong>Gaurav Euphoria</strong> showcases a modern minimalist architectural design,
                   combining sleek glass facades with textured stone cladding. Each tower is thoughtfully
                   oriented to maximize natural light, cross-ventilation, and panoramic views of the
                   landscaped gardens below.
                 </p>
-                <p className="mb-6 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
                   Apartments feature open-plan living areas, modular kitchens, and spacious bedrooms.
                   Balconies with elegant glass railings provide uninterrupted views, emphasizing the
                   seamless connection between indoor and outdoor spaces.
                 </p>
-                <p className="mb-6 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
                   The construction emphasizes durability and sustainability, using high-quality concrete,
                   eco-friendly materials, and energy-efficient systems. Rainwater harvesting, solar lighting,
                   and landscaped terraces reflect Gaurav Infra’s commitment to environmentally conscious design.
                 </p>
-                <p className="mb-6 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
                   Exclusive amenities like rooftop sky lounges, meditation decks, and wellness-focused terraces
                   create a luxurious living experience while maintaining a harmonious blend of aesthetics
                   and functionality.
                 </p>
               </div>
 
-              {/* Right Image (only one now) */}
-              <div className="content-images fade-left">
+              <div className="">
                 <img
                   src="/carousal-build2.jpeg"
                   alt="Gaurav Euphoria modern facade"
-                  className="w-full h-[500px] object-cover rounded-xl shadow-2xl"
+                  className="w-full h-[400px] object-cover rounded-xl shadow-2xl"
                   onClick={() => setSelectedImage("/carousal-build2.jpeg")}
                 />
               </div>
@@ -305,12 +302,7 @@ const GauravEuphoriaDetail = () => {
           </div>
         </section>
 
-
-
-
-
-
-        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
+        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-6">
           <div className="section-container max-w-5xl mx-auto px-6">
             <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
               Floor Plan
@@ -377,8 +369,7 @@ const GauravEuphoriaDetail = () => {
 
         </section>
 
-
-        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-12">
+        <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-6">
           <div className="section-container max-w-5xl mx-auto px-6">
             <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
               Isometric View
@@ -413,21 +404,13 @@ const GauravEuphoriaDetail = () => {
           </div>
         </section>
 
-
-
-
-        {/* Lifestyle Section */}
-        <section
-          className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100"
-          id="lifestyle"
-        >
-          <div className="section-container max-w-7xl mx-auto px-6 py-12 text-center">
-
+        <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100" id="lifestyle">
+          <div className="section-container max-w-7xl mx-auto px-6 py-6 text-center">
             {/* Heading */}
-            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide">
+            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide" style={{ marginBottom: '24px' }}>
               Lifestyle
             </h2>
-            <div className="w-24 h-1 bg-[#D2AD75] mx-auto mt-4 mb-10"></div>
+            <div className="w-24 h-1 bg-[#D2AD75] mx-auto mt-2 mb-10"></div>
 
             {/* Text Content */}
             <div className="content-text fade-up max-w-3xl mx-auto">
@@ -466,9 +449,7 @@ const GauravEuphoriaDetail = () => {
 
           </div>
         </section>
-        {/* 
 
-        <GalleryLoop /> */}
         <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100 px-6 py-2" >
           <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide">
             Specification
@@ -578,107 +559,33 @@ const GauravEuphoriaDetail = () => {
                   </div>
                 </section>
               )}
-
-              {activeTab === "specifications" && (
-                <div className="text-left py-6 sm:py-8">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Specifications</h2>
-                  <ul className="space-y-2 sm:space-y-3 list-disc list-inside text-sm sm:text-base md:text-lg">
-                    <li>
-                      <strong>BUILDING STRUCTURE:</strong> Earthquake resistant design and premium quality construction.
-                    </li>
-                    <li>RCC framed earthquake-resistant structure</li>
-                    <li>
-                      <strong>WALLS:</strong> External walls 150 mm thick and Internal walls 115 mm thick.
-                    </li>
-                    <li>
-                      <strong>PLASTER:</strong> All internal walls to be plastered with 12mm fanti plaster and external walls with 20mm sand face plaster.
-                    </li>
-                    <li>
-                      <strong>DOORS:</strong> Teak Wood Main Door. Rest of the door to be pre laminate door.
-                    </li>
-                    <li>
-                      <strong>WINDOWS:</strong> Powder coated aluminium glazed sliding windows with MS grills.
-                    </li>
-                    <li>
-                      <strong>FLOORING:</strong> Complete vitrified tile flooring of size 24 X 24 or 32 X 32.
-
-                      Toilets in Ceramic Concept Tile up to lintel level and antiskid tiles in flooring.
-
-                      Balconies to have non skid ceramic tiles/ Kota tiles.
-                    </li>
-                    <li>
-                      <strong>KITCHEN:</strong> Granite cooking platform with stainless steel sink and dado up to 2’ height.
-                    </li>
-                  </ul>
-                </div>
-              )}
             </div>
           </div>
         </section>
 
       </div>
-      {/* <section className="bg-white py-12">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-serif">INTERIOR</h2>
-          <p className="mt-2 text-lg uppercase tracking-widest text-gray-600">
-            WORLD CLASS LIVING
-          </p>
-        </div> */}
 
-      {/* Interior Type Selector */}
-      {/* <div className="flex justify-center gap-4 mb-6">
-          {Object.keys(interiors).map((type) => (
-            <button
-              key={type}
-              onClick={() => setSelectedInterior(type)}
-              className={`px-6 py-2 rounded-lg font-semibold transition-colors
-          ${selectedInterior === type ? "bg-amber-600 text-white" : "bg-gray-200 text-gray-800"}`}
-            >
-              {type}
-            </button>
-          ))}
-        </div> */}
-
-      {/* Gallery for Selected Interior */}
-      {/* <div className="gallery-container relative w-full overflow-hidden" ref={galleryRef}>
-          <div className="flex flex-nowrap">
-            {interiors[selectedInterior].map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`${selectedInterior} ${idx}`}
-                className="w-screen h-[400px] object-cover"
-              />
-            ))}
-          </div>
-        </div> */}
-      {/* </section> */}
-
-
-      {/* Horizontal Gallery */}
-      {/* <section className="bg-white py-12">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-serif">INTERIOR</h2>
-          <p className="mt-2 text-lg uppercase tracking-widest text-gray-600">
-            WORLD CLASS LIVING
-          </p>
-        </div>
+      {selectedImage && (
         <div
-          className="gallery-container relative w-full overflow-hidden"
-          ref={galleryRef}
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)}
         >
-          <div className="flex flex-nowrap">
-            {project.galleryImages.map((imgSrc, index) => (
-              <img
-                key={index}
-                src={imgSrc}
-                alt={`Gallery ${index}`}
-                className="w-screen h-[400px] object-cover"
-              />
-            ))}
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img
+              src={selectedImage}
+              alt="Selected Floor Plan"
+              className="w-full h-full object-contain"
+            />
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white text-3xl font-bold"
+            >
+              &times;
+            </button>
           </div>
         </div>
-      </section> */}
+      )}
 
       {/* PopUp Modal */}
       {selectedImage && (
@@ -705,6 +612,5 @@ const GauravEuphoriaDetail = () => {
     </div>
   );
 };
-
 
 export default GauravEuphoriaDetail;
