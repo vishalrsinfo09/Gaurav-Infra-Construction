@@ -90,13 +90,13 @@ const Contact = () => {
     
     /* Professional Hero Section */
     .hero-professional {
-      height: 60vh;
+      height: 100vh;
       min-height: 450px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #4f46e5 100%);
+      // background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #4f46e5 100%);
       overflow: hidden;
     }
     
@@ -106,7 +106,7 @@ const Contact = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: linear-gradient(rgba(22, 33, 62, 0.8), rgba(15, 76, 117, 0.7)), url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.49)), url('architecture-concept-with-laptop-workspace.jpg');
       background-size: cover;
       background-position: center;
       animation: ${isVisible ? 'parallaxMove' : 'none'} 20s ease-in-out infinite;
@@ -488,7 +488,8 @@ const Contact = () => {
     /* Map Section */
     .map-section {
       padding: 6rem 1rem;
-      background: linear-gradient(135deg, #1e3a8a, #3730a3);
+      // background: linear-gradient(135deg, #1e3a8a, #3730a3);
+      background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
       margin-top: 6rem;
     }
     

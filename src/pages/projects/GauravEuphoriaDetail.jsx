@@ -151,15 +151,47 @@ const GauravEuphoriaDetail = () => {
           </div>
 
           {/* Full Navbar */}
-          <nav className="hidden md:flex space-x-8 text-white">
+          <nav className="hidden md:flex space-x-8 text-white relative">
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
-            <a href="/" className="hover:text-cyan-300 transition-colors">INTERIOR WALKTHROUGH</a>
+
+            <div className="relative group inline-block">
+              {/* Trigger */}
+              <button className="bg-transparent text-white hover:text-cyan-300 transition-colors cursor-pointer pr-6 focus:outline-none">
+                INTERIOR WALKTHROUGH
+              </button>
+
+              {/* Dropdown */}
+              <ul className="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200">
+                <li>
+                  <a
+                    href="/video-player/2bhk"
+                    className="block px-4 py-2 hover:bg-cyan-600"
+                  >
+                    2 BHK
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/video-player/3bhk"
+                    className="block px-4 py-2 hover:bg-cyan-600"
+                  >
+                    3 BHK
+                  </a>
+                </li>
+              </ul>
+
+              {/* Custom thin arrow */}
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-cyan-300 text-sm">
+                ▼
+              </div>
+            </div>
+
             <a href="#" className="hover:text-cyan-300 transition-colors">3D TOUR</a>
           </nav>
+
         </header>
       )}
-
 
       {/* Hero Section */}
       <div className="project-wrapper">

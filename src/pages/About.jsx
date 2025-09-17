@@ -34,14 +34,14 @@ const About = () => {
     
     /* Mobile-First Hero Section */
     .hero-about {
-      height: 70vh;
+      height: 100vh;
       min-height: 500px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
+      // background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
     }
     
     .hero-about::before {
@@ -51,8 +51,8 @@ const About = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover;
-      opacity: 0.15;
+      background: url('/parallax_img1.jpeg') center/cover;
+      // opacity: 0.9;
       animation: parallaxMove 20s ease-in-out infinite;
     }
     
@@ -63,7 +63,7 @@ const About = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at center, transparent 0%, rgba(22, 33, 62, 0.4) 100%);
+      background: radial-gradient( rgba(0, 0, 0, 0.28));
     }
     
     .hero-content-about {
