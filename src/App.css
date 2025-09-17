@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Cairo:wght@200..1000&family=Kapakana:wght@300&family=Oswald:wght@200..700&family=Teko:wght@300&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +8,15 @@
 
 body {
   /* font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; */
-  font-family: 'Playfair Display', serif;
-  /* font-family: 'Poppins', sans-serif;  */
+  /* font-family: 'Playfair Display', serif; */
+  font-family: 'Poppins', sans-serif; 
+  /* font-family: 'Teko'; */
+  font-family: 'Oswald';
   line-height: 1.6;
   color: #1a1a2e;
   overflow-x: hidden;
+  /* word-spacing: 10px; */
+  /* letter-spacing: 2px; */
 }
 
 .wrapper {
