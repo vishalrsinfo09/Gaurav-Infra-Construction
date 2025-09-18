@@ -34,8 +34,8 @@ const About = () => {
     
     /* Mobile-First Hero Section */
     .hero-about {
-      height: 100vh;
-      min-height: 500px;
+      height: 70vh;
+      // min-height: 500px;
       position: relative;
       display: flex;
       align-items: center;
