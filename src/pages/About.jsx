@@ -139,7 +139,7 @@ const About = () => {
     
     /* Section Styling */
     .about-section {
-      padding: 4rem 1rem;
+      padding: 2rem 1rem;
       position: relative;
       overflow: hidden;
     }
@@ -263,7 +263,7 @@ const About = () => {
     
     .content-image img {
       width: 100%;
-      height: 450px;
+      height: 500px;
       display: block;
       transition: transform 0.5s ease;
     }
@@ -528,7 +528,7 @@ const About = () => {
       }
       
       .about-section {
-        padding: 5rem 2rem;
+        padding: 2rem 1rem;
       }
       
       .section-title-about h2 {
@@ -561,7 +561,7 @@ const About = () => {
       }
       
       .about-section {
-        padding: 6rem 2rem;
+        padding: 2rem 1rem;
       }
       
       .section-title-about h2 {
@@ -598,6 +598,35 @@ const About = () => {
           <p className="hero-subtitle-about">
             Building dreams, creating homes, transforming lives with luxury and uncompromising quality
           </p>
+        </div>
+      </section>
+
+      {/* Leadership Excellence */}
+      <section className="about-section" data-section="leadership">
+        <div className={`section-title-about ${isVisible.leadership ? 'visible' : ''}`}>
+          <h2>Leadership Excellence</h2>
+          <p>Meet the visionaries behind Gaurav Infra's success</p>
+        </div>
+        <div className="content-layout">
+          <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`} style={{ border: '2px solid' }}>
+            <img
+              src="/Giri_Sir.jpg"
+              alt="Professional team meeting in modern office environment"
+              loading="lazy"
+            />
+          </div>
+          <div className={`content-text ${isVisible.leadership ? 'visible' : ''}`}>
+            <h3>KRISHNAKANT GIRI</h3>
+            <p>
+              At Gaurav Infra, leadership is not just about building structures, it is about building trust. With a vision to transform the real estate landscape of Nagpur, our leaders focus on creating projects that reflect innovation, quality, and timeless value. Every milestone we achieve is driven by a commitment to deliver beyond expectations.
+            </p>
+            <p>
+              Our leadership team combines deep industry expertise with a modern outlook, ensuring that each project is planned with precision and executed with responsibility. By emphasizing sustainable construction practices, timely delivery, and uncompromised quality, we continue to set benchmarks in the real estate sector.
+            </p>
+            <p>
+              We strongly believe that true leadership lies in putting customers first. Every decision, design, and detail is crafted to fulfill the aspirations of our clients. Through transparency, integrity, and visionary guidance, Gaurav Infra is shaping not only the skyline of Nagpur but also the trust and satisfaction of the families who choose us.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -657,35 +686,6 @@ const About = () => {
             </div>
             <h4>Our Values</h4>
             <p>Integrity, excellence, innovation, and customer satisfaction form the core of our business philosophy. We believe in building long-term relationships based on trust and quality.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Excellence */}
-      <section className="about-section" data-section="leadership">
-        <div className={`section-title-about ${isVisible.leadership ? 'visible' : ''}`}>
-          <h2>Leadership Excellence</h2>
-          <p>Meet the visionaries behind Gaurav Infra's success</p>
-        </div>
-        <div className="content-layout">
-          <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`} style={{border:'2px solid'}}>
-            <img
-              src="/Giri_Sir.jpg"
-              alt="Professional team meeting in modern office environment"
-              loading="lazy"
-            />
-          </div>
-          <div className={`content-text ${isVisible.leadership ? 'visible' : ''}`}>
-            <h3>KRISHNAKANT GIRI</h3>
-            <p>
-              Gaurav Infra is one of the fastest growing company in real estate sector of Nagpur city. The company known for its top quality construction and timely delivered project. It has highly skill management team, who manage every part of construction very carefully.
-            </p>
-            <p>
-              We believe in to give something new and unique of our customers to satisfy all their needs and deeds.
-            </p>
-            <p>
-              Customers are always the first priority for us
-            </p>
           </div>
         </div>
       </section>
