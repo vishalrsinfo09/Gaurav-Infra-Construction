@@ -20,7 +20,7 @@ const Gallery = () => {
       category: 'Interior'
     },
     {
-      url: 'public/RAJ06579.JPG',
+      url: '/RAJ06579.JPG',
       title: 'Bathroom',
       category: 'Interior'
     },
