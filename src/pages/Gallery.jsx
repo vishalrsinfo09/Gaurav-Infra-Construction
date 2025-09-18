@@ -24,36 +24,37 @@ const Gallery = () => {
       title: 'Bathroom',
       category: 'Interior'
     },
-    {
-      url: '/RAJ06634.JPG',
-      title: 'Premium Bathroom',
-      category: 'Interior'
-    },
-    {
-      url: 'https://images.pexels.com/photos/2468773/pexels-photo-2468773.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Building Exterior',
-      category: 'Exterior'
-    },
-    {
-      url: 'https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Front Facade',
-      category: 'Exterior'
-    },
-    {
+     {
       url: '/RAJ06550.JPG',
       title: 'Dining Area',
       category: 'Interior'
     },
     {
-      url: 'https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Office Space',
-      category: 'Amenities'
+      url: '/RAJ06645.JPG',
+      title: 'Premium Bathroom',
+      category: 'Interior'
     },
-    {
-      url: 'https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=800',
-      title: 'Under Construction',
-      category: 'Construction'
-    },
+    // {
+    //   url: 'https://images.pexels.com/photos/2468773/pexels-photo-2468773.jpeg?auto=compress&cs=tinysrgb&w=800',
+    //   title: 'Building Exterior',
+    //   category: 'Exterior'
+    // },
+    // {
+    //   url: 'https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=800',
+    //   title: 'Front Facade',
+    //   category: 'Exterior'
+    // },
+   
+    // {
+    //   url: 'https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=800',
+    //   title: 'Office Space',
+    //   category: 'Amenities'
+    // },
+    // {
+    //   url: 'https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=800',
+    //   title: 'Under Construction',
+    //   category: 'Construction'
+    // },
   ];
 
   // Navigation functions
