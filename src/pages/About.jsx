@@ -77,7 +77,7 @@ const About = () => {
     }
     
     .hero-title-about {
-      font-size: 2.5rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
       background: linear-gradient(135deg, #22d3ee, #ffffff, #facc15);

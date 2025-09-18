@@ -133,12 +133,13 @@ const Projects = () => {
 
     /* Hero Section with Advanced Animations */
     .hero-projects {
-      height: 100vh;
+      height: 70vh;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      // background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       overflow: hidden;
@@ -163,15 +164,16 @@ const Projects = () => {
     }
     
     .hero-title-projects {
-      font-size: clamp(3rem, 8vw, 7rem);
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff, #f8fafc, #e2e8f0);
+      background: linear-gradient(135deg, #22d3ee, #ffffff, #facc15);
+      background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-size: 300% 300%;
-      animation: shimmerText 4s ease-in-out infinite;
-      position: relative;
+      animation: gradientFlow 4s ease-in-out infinite;
+      line-height: 1.2;
+      text-shadow: 0 0 30px rgba(50, 130, 184, 0.3);
     }
 
     .hero-title-projects::after {
@@ -794,26 +796,26 @@ const Projects = () => {
             <style>{styles}</style>
             
             {/* Loading Screen */}
-            {isLoading && (
+            {/* {isLoading && (
                 <div className="loading-screen">
                     <div className="loading-content">
                         <div className="loading-spinner"></div>
                         <div className="loading-text">Loading Projects...</div>
                     </div>
                 </div>
-            )}
+            )} */}
 
             {/* Mouse Cursor Effect */}
-            <div 
+            {/* <div 
                 className="cursor-glow" 
                 style={{
                     left: mousePosition.x + 'px',
                     top: mousePosition.y + 'px'
                 }}
-            ></div>
+            ></div> */}
 
             {/* Floating Elements */}
-            <div className="floating-element">
+            {/* <div className="floating-element">
                 <div style={{width: '60px', height: '60px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '50%'}}></div>
             </div>
             <div className="floating-element">
@@ -821,7 +823,7 @@ const Projects = () => {
             </div>
             <div className="floating-element">
                 <div style={{width: '80px', height: '80px', background: 'rgba(236, 72, 153, 0.1)', borderRadius: '50%'}}></div>
-            </div>
+            </div> */}
 
             <ProgressBar />
             <Navigation />
@@ -829,11 +831,11 @@ const Projects = () => {
 
             {/* Hero Section */}
             <section className="hero-projects" ref={heroRef}>
-                <div className="particles">
+                {/* <div className="particles">
                     {[...Array(8)].map((_, i) => (
                         <div key={i} className="particle"></div>
                     ))}
-                </div>
+                </div> */}
                 <div className="hero-content-projects">
                     <h1 className="hero-title-projects">Our Projects</h1>
                     <p className="hero-subtitle-projects">
