@@ -96,7 +96,7 @@ const Contact = () => {
       display: flex;
       align-items: center;
       justify-content: center;
-      // background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #4f46e5 100%);
+     background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
       overflow: hidden;
     }
     
@@ -106,9 +106,9 @@ const Contact = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.6)), url('architecture-concept-with-laptop-workspace.jpg');
-      background-size: cover;
-      background-position: center;
+      // background-image: linear-gradient(rgba(0, 0, 0, 0.6)), url('architecture-concept-with-laptop-workspace.jpg');
+      // background-size: cover;
+      // background-position: center;
       animation: ${isVisible ? 'parallaxMove' : 'none'} 20s ease-in-out infinite;
     }
     
@@ -122,12 +122,14 @@ const Contact = () => {
     }
     
     .hero-title-pro {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      font-family: 'Playfair Display', serif;
-      line-height: 1.2;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+       font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #22d3ee, #ffffff, #facc15);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 300% 300%;
+      animation: gradientFlow 5s ease infinite;
     }
     
     .hero-subtitle-pro {
