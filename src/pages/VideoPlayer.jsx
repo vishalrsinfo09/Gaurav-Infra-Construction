@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import React, { useRef, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const VideoPlayer = () => {
   const { type } = useParams();
@@ -9,13 +9,13 @@ const VideoPlayer = () => {
 
   // Video configurations
   const videoConfig = {
-    '2bhk': {
-      title: '2 BHK Sample Flat Video',
-      src: '/2BHKvideo.mp4',
+    "2bhk": {
+      title: "2 BHK Sample Flat Video",
+      src: "/2BHKvideo.mp4",
     },
-    '3bhk': {
-      title: '3 BHK Sample Flat Video',
-      src: '/3BHKvideo.mp4',
+    "3bhk": {
+      title: "3 BHK Sample Flat Video",
+      src: "/3BHKvideo.mp4",
     },
   };
 
@@ -30,11 +30,12 @@ const VideoPlayer = () => {
     }
   };
 
-  // Auto fullscreen on load
+  // Auto fullscreen + speed
   useEffect(() => {
     if (videoRef.current) {
       const playVideo = async () => {
         try {
+          videoRef.current.playbackRate = 0.50; 
           await videoRef.current.play();
           if (videoRef.current.requestFullscreen) {
             videoRef.current.requestFullscreen();
@@ -46,6 +47,32 @@ const VideoPlayer = () => {
       playVideo();
     }
   }, []);
+
+  // Keyboard controls
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!videoRef.current) return;
+
+      if (e.key === "ArrowRight") {
+        videoRef.current.currentTime += 5; 
+      }
+      if (e.key === "ArrowLeft") {
+        videoRef.current.currentTime -= 5; 
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Update progress bar
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const percent =
+        (videoRef.current.currentTime / videoRef.current.duration) * 100;
+      setProgress(percent);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black flex flex-col">
@@ -67,6 +94,7 @@ const VideoPlayer = () => {
         autoPlay
         loop
         muted={true}
+        onTimeUpdate={handleTimeUpdate}
         className="w-full h-screen object-cover"
       />
     </div>
