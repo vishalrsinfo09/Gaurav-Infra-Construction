@@ -253,7 +253,7 @@ const About = () => {
       transition: all 0.8s ease;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.61);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
     }
     
     .content-image.visible {

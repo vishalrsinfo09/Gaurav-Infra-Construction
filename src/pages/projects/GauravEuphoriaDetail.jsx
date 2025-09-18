@@ -199,7 +199,7 @@ const GauravEuphoriaDetail = () => {
 
       <div className="project-wrapper">
 
-        <section className="flex flex-col md:flex-row min-h-screen">
+        <section className="project-panel h-screen flex flex-col md:flex-row min-h-screen">
           {/* Left Side: Title + Info Box */}
           <div className="flex-1 flex flex-col justify-center gap-6 px-3 md:px-12 py-12 bg-white">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
@@ -208,7 +208,7 @@ const GauravEuphoriaDetail = () => {
                 color: '#B8860B',
                 fontWeight: '700',
                 letterSpacing: '2px',
-                fontSize:'30px'
+                fontSize: '30px'
               }}>
                 Gaurav
               </span>
@@ -227,7 +227,7 @@ const GauravEuphoriaDetail = () => {
                 color: '#B8860B',
                 fontWeight: '500',
                 letterSpacing: '1px',
-                paddingLeft:'100px'
+                paddingLeft: '100px'
               }}>
                 2 & 3 BHK Premium Homes
               </div>
@@ -259,10 +259,10 @@ const GauravEuphoriaDetail = () => {
             <div className="section-content grid md:grid-cols-2 gap-16 items-center">
               <div className="">
                 <img
-                  src="/carousal-build2.jpeg"
+                  src="/carousal-build.jpeg"
                   alt="Gaurav Euphoria modern facade"
                   className="w-full h-[400px] object-cover rounded-xl shadow-2xl"
-                  onClick={() => setSelectedImage("/carousal-build3.jpeg")}
+                  onClick={() => setSelectedImage("/carousal-build.jpeg")}
                 />
               </div>
               <div className="content-text fade-up">
@@ -321,6 +321,7 @@ const GauravEuphoriaDetail = () => {
                   className="w-full h-[400px] object-cover rounded-xl shadow-2xl"
                   onClick={() => setSelectedImage("/carousal-build2.jpeg")}
                 />
+
               </div>
             </div>
           </div>
@@ -338,7 +339,7 @@ const GauravEuphoriaDetail = () => {
               <div className="flex flex-col gap-8">
                 {/* First Image */}
                 <div className="flex flex-col items-center w-full " onClick={() => setSelectedImage("/_2bhk_floor.png")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK</h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK (1st Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/_2bhk_floor.png"
@@ -350,7 +351,7 @@ const GauravEuphoriaDetail = () => {
 
                 {/* Second Image */}
                 <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK Premium</h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center"> (2nd/4th/6th/8th/10th Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/_2bhk_floor.png"
@@ -365,7 +366,7 @@ const GauravEuphoriaDetail = () => {
               <div className="flex flex-col gap-8">
                 {/* Third Image */}
                 <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK</h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">(3rd/5th/7th/9th/11th Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/_2bhk_floor.png"
@@ -377,12 +378,12 @@ const GauravEuphoriaDetail = () => {
 
                 {/* Fourth Image */}
                 <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/5bhk.jpg")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">3BHK Premium</h3>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">(12th Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/5bhk.jpg"
                       alt="3BHK Premium Floor Plan"
-                      className="w-full h-auto object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
+                      className="w-[4000px] h-[170px] object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -431,7 +432,7 @@ const GauravEuphoriaDetail = () => {
         <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100" id="lifestyle">
           <div className="section-container max-w-7xl mx-auto px-6 py-6 text-center">
             {/* Heading */}
-            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide" style={{ marginBottom: '24px' }}>
+            <h2 className="section-title text-5xl md:text-6xl font-bold text-[#D2AD75] tracking-wide" style={{ marginBottom: '24px' }}>
               Lifestyle
             </h2>
             <div className="w-24 h-1 bg-[#D2AD75] mx-auto mt-2 mb-10"></div>
@@ -475,7 +476,7 @@ const GauravEuphoriaDetail = () => {
         </section>
 
         <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100 px-6 py-2" >
-          <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide">
+          <h2 className="section-title text-5xl md:text-6xl  font-bold text-[#D2AD75] tracking-wide">
             Specification
           </h2>
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-0">
@@ -525,7 +526,7 @@ const GauravEuphoriaDetail = () => {
         </section>
 
         <section className="project-panel h-screen relative z-20 px-4 sm:px-6 md:px-24 py-12 sm:py-16 bg-fixed bg-center bg-cover"
-          style={{ backgroundImage: "url('/carousal2.jpg')" }}>
+          style={{ backgroundImage: "url('/carousal-build.jpeg')" }}>
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
           <div className="relative z-10 text-white">
             {/* Tabs */}
@@ -553,9 +554,21 @@ const GauravEuphoriaDetail = () => {
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">DETAILS</h2>
                   <p className="mt-4 text-base sm:text-lg">2 BHK & 3 BHK</p>
                   <p className="mt-2 text-sm sm:text-base">4 FLOORS OF WORLD CLASS AMENITIES</p>
-                  <button className="mt-6 sm:mt-8 px-5 py-2 sm:px-6 sm:py-3 border border-white text-white hover:bg-white hover:text-black transition-colors text-sm sm:text-base">
-                    Enquire Now
-                  </button>
+
+
+                  <div className="mt-8">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">SITE ADDRESS</h3>
+                    <p className="mt-2 text-sm sm:text-base">
+                      Plot No. 41, Dr. Aulebabu Chowk, <br />
+                      Opp. Kali Mandir, Lashkaribagh, <br />
+                      Nagpur – 440017.
+                    </p>
+                    <a href="/contact">
+                      <button className="mt-6 sm:mt-8 px-5 py-2 sm:px-6 sm:py-3 border border-white text-white hover:bg-white hover:text-black transition-colors text-sm sm:text-base">
+                        Enquire Now
+                      </button>
+                    </a>
+                  </div>
                 </div>
               )}
 

@@ -143,95 +143,67 @@ const Home = () => {
 
 
       {/* About Section */}
-      <ParallaxSection bgImage="carousal-build3.jpeg" >
-        {/* Background Image Full Width */}
-        <div
-          className="absolute inset-0 w-full h-full bg-fixed bg-left  bg-no-repeat bg-contain"
-          style={{ backgroundImage: `url(carousal-build3.jpeg)` }}
-        ></div>
+      <section className="flex flex-col md:flex-row min-h-screen">
+        {/* Left Side: Image */}
+        <div className="md:w-1/2">
+          <img
+            src="carousal-build3.jpeg"
+            alt="Gaurav Square"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-        {/* Overlay for better contrast */}
-        <div className="absolute inset-0 bg-black/60"></div>
-
-        {/* Text Content */}
-        <div className="relative z-10 text-center px-6">
-          {/* Luxury Heading */}
+        {/* Right Side: Text */}
+        <div className="md:w-1/2 flex flex-col justify-center p-8 bg-gray-400">
           <h3
-            className="text-3xl md:text-4xl font-serif font-extrabold mb-6 
-                       bg-gradient-to-r from-yellow-400 via-yellow-200 to-white 
-                       bg-clip-text text-transparent drop-shadow-2xl tracking-wide"
+            className="text-3xl md:text-4xl  font-extrabold mb-6 
+                 bg-gradient-to-r from-yellow-400 via-yellow-200 to-white 
+                 bg-clip-text text-transparent drop-shadow-2xl tracking-wide mx-auto"
           >
-            Your Dream Home Awaits
+            Your Dream Place Awaits
           </h3>
 
-          {/* Premium Description */}
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed leading-snug text-gray-100 font-light italic drop-shadow-lg">
-            Gaurav Infra offers ultra-luxurious 2BHK and 3BHK apartments
-            designed for modern families who appreciate quality living. Our residential
-            project combines contemporary architecture with traditional Indian design
-            principles, creating homes that are both stylish and spiritually harmonious.
+          <p className="mb-4 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-900 font-light italic drop-shadow-lg">
+            Gaurav Infra is proud to present <span className="font-semibold">Gaurav Square</span>,
+            a premium commercial destination designed to give your business a new identity.
+            This landmark project brings together modern architecture and strategic location
+            to create the perfect synergy for growth.
           </p>
 
-          <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed leading-snug text-gray-100 font-light italic drop-shadow-lg">
-            Each apartment features fully equipped modern kitchens, spacious bedrooms with
-            ample natural light, premium bathrooms, expansive living areas, and private
-            balconies with stunning city views. Built with Vastu compliance, our homes ensure
-            positive energy flow throughout your living space.
+          <p className="mb-6 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-900 font-light italic drop-shadow-lg">
+            Located on a prime road-touch site with seamless connectivity across the city,
+            Gaurav Square ensures your business stays connected and accessible.
+            Offering smartly planned spaces for diverse business needs, it provides
+            an environment where success finds its true address.
           </p>
 
-          {/* Accent underline */}
           <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-yellow-500 via-yellow-300 to-white rounded-full mt-6"></span>
         </div>
-      </ParallaxSection>
+      </section>
+
 
 
 
       {/* Architecture Section */}
-      <ParallaxSection
-        bgImage="parallax_build2.jpeg"
-        reverse={true}
-      ><div
-        className="absolute inset-0 w-full h-full bg-fixed bg-right bg-no-repeat bg-contain"
-        style={{ backgroundImage: `url(parallax_build2.jpeg)` }}
-      ></div>
-        {/* Overlay for contrast */}
-        <div className="absolute inset-0 bg-black/60"></div>
+      <section className="flex flex-col md:flex-row min-h-screen">
+        {/* Left Side: Text */}
+        <div className="md:w-1/2 flex flex-col justify-center p-8 bg-gray-400">
+          <h3 className="text-3xl md:text-4xl font-serif font-extrabold mb-6 bg-gradient-to-r from-blue-500 via-blue-300 to-white bg-clip-text text-transparent drop-shadow-2xl tracking-wide mx-auto" > Architectural Excellence </h3>
+          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light italic drop-shadow-lg mr-16"> Our architectural design philosophy combines modern functionality with timeless elegance. Each apartment is meticulously planned to maximize space utilization while maintaining an open, airy feel that promotes well-being and comfort. </p> <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light italic drop-shadow-lg mr-16"> Premium materials including high-quality teak wood furnishing, stainless steel kitchen countertops, and marble flooring ensure durability and sophistication. Large windows and balconies bring in abundant natural light and fresh air, creating a healthy living environment. </p> <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light italic drop-shadow-lg mr-16"> The building features earthquake-resistant construction, energy-efficient systems, and sustainable design elements that reduce environmental impact while lowering utility costs for residents. </p>
+           {/* Accent underline */} 
+           <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-blue-600 via-blue-300 to-white rounded-full mt-6 "></span> </div>
 
-        {/* Text Content */}
-        <div className="relative z-10 text-center px-6">
-          {/* Luxury Heading */}
-          <h3
-            className="text-3xl md:text-4xl font-serif font-extrabold mb-6 
-      bg-gradient-to-r from-blue-500 via-blue-300 to-white 
-      bg-clip-text text-transparent drop-shadow-2xl tracking-wide  mr-16"
-          >
-            Architectural Excellence
-          </h3>
-
-          {/* Premium Description */}
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg mr-16">
-            Our architectural design philosophy combines modern functionality with timeless elegance.
-            Each apartment is meticulously planned to maximize space utilization while maintaining
-            an open, airy feel that promotes well-being and comfort.
-          </p>
-
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg  mr-16">
-            Premium materials including high-quality teak wood furnishing, stainless steel kitchen
-            countertops, and marble flooring ensure durability and sophistication. Large windows
-            and balconies bring in abundant natural light and fresh air, creating a healthy living
-            environment.
-          </p>
-
-          <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-white/90 font-light italic drop-shadow-lg  mr-16">
-            The building features earthquake-resistant construction, energy-efficient systems, and
-            sustainable design elements that reduce environmental impact while lowering utility
-            costs for residents.
-          </p>
-
-          {/* Accent underline */}
-          <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-blue-600 via-blue-300 to-white rounded-full mt-6 "></span>
+        {/* Right Side: Image */}
+        <div className="md:w-1/2 flex justify-end">
+          <img
+            src="parallax_build2.jpeg"
+            alt="Building"
+            className="w-full h-full object-cover"
+          />
         </div>
-      </ParallaxSection>
+      </section>
+
+
 
       {/* Number of Projects Section */}
       <section className="relative bg-gradient-to-r from-gray-50 via-white to-gray-100 py-20">
