@@ -253,7 +253,7 @@ const About = () => {
       transition: all 0.8s ease;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(22, 33, 62, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.61);
     }
     
     .content-image.visible {
@@ -668,7 +668,7 @@ const About = () => {
           <p>Meet the visionaries behind Gaurav Infra's success</p>
         </div>
         <div className="content-layout">
-          <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`}>
+          <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`} style={{border:'2px solid'}}>
             <img
               src="/Giri_Sir.jpg"
               alt="Professional team meeting in modern office environment"
