@@ -1,14 +1,17 @@
 // Projects.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navigation from '../components/Navigation';
 import ProgressBar from '../components/ProgressBar';
 import WhatsAppChat from '../components/WhatsAppChat';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Calendar, Eye } from 'lucide-react';
+import { ArrowRight, MapPin, Calendar, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Projects = () => {
     const [isVisible, setIsVisible] = useState({});
     const [activeProject, setActiveProject] = useState(0);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isLoading, setIsLoading] = useState(true);
+    const heroRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -26,7 +29,20 @@ const Projects = () => {
         );
 
         document.querySelectorAll('[data-section]').forEach((el) => observer.observe(el));
-        return () => observer.disconnect();
+        
+        // Loading animation
+        setTimeout(() => setIsLoading(false), 2000);
+
+        // Mouse move effect
+        const handleMouseMove = (e) => {
+            setMousePosition({ x: e.clientX, y: e.clientY });
+        };
+        document.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            observer.disconnect();
+            document.removeEventListener('mousemove', handleMouseMove);
+        };
     }, []);
 
     const styles = `
@@ -34,17 +50,98 @@ const Projects = () => {
       overflow-x: hidden;
       width: 100%;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      position: relative;
     }
 
-    /* Hero Section */
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeOut 1s ease-in-out 1.5s forwards;
+    }
+
+    .loading-content {
+      text-align: center;
+      color: white;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    .loading-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Mouse Cursor Effect */
+    .cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.8) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      mix-blend-mode: difference;
+      animation: cursorPulse 2s ease-in-out infinite;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Floating Elements */
+    .floating-element {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(1) { 
+      top: 20%; 
+      left: 10%; 
+      animation-delay: 0s; 
+      animation-duration: 8s;
+    }
+    .floating-element:nth-child(2) { 
+      top: 60%; 
+      right: 15%; 
+      animation-delay: 2s; 
+      animation-duration: 10s;
+    }
+    .floating-element:nth-child(3) { 
+      bottom: 30%; 
+      left: 20%; 
+      animation-delay: 4s; 
+      animation-duration: 12s;
+    }
+
+    /* Hero Section with Advanced Animations */
     .hero-projects {
-      height: 80vh;
+      height: 100vh;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      overflow: hidden;
     }
     
     .hero-projects::before {
@@ -52,228 +149,132 @@ const Projects = () => {
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 117, 95, 0.3) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 117, 95, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(69, 104, 220, 0.3) 0%, transparent 50%);
+      animation: floatingBubbles 15s ease-in-out infinite;
     }
     
     .hero-content-projects {
       text-align: center;
-      z-index: 2;
+      z-index: 3;
       padding: 2rem;
+      animation: heroFadeInUp 1.5s ease-out 0.5s backwards;
     }
     
     .hero-title-projects {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(3rem, 8vw, 7rem);
       font-weight: 800;
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      background: linear-gradient(135deg, #ffffff, #f8fafc, #e2e8f0);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-size: 300% 300%;
+      animation: shimmerText 4s ease-in-out infinite;
+      position: relative;
+    }
+
+    .hero-title-projects::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ffffff, #f8fafc);
+      border-radius: 2px;
+      animation: expandLine 1s ease-out 2s forwards;
     }
     
     .hero-subtitle-projects {
-      font-size: 1.25rem;
-      opacity: 0.9;
-      max-width: 600px;
+      font-size: 1.35rem;
+      opacity: 0;
+      max-width: 700px;
       margin: 0 auto;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      animation: fadeInUp 1s ease-out 1.5s forwards;
     }
 
-    /* Section Base */
+    /* Animated Particles */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: particleFloat 10s linear infinite;
+    }
+
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+    .particle:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 12s; }
+    .particle:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 10s; }
+    .particle:nth-child(4) { left: 40%; animation-delay: 3s; animation-duration: 15s; }
+    .particle:nth-child(5) { left: 50%; animation-delay: 4s; animation-duration: 9s; }
+    .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 11s; }
+    .particle:nth-child(7) { left: 70%; animation-delay: 6s; animation-duration: 13s; }
+    .particle:nth-child(8) { left: 80%; animation-delay: 7s; animation-duration: 14s; }
+
+    /* Section Animations */
     .projects-section {
       min-height: 100vh;
       position: relative;
+      overflow: hidden;
     }
 
     .section-title {
       text-align: center;
-      padding: 4rem 2rem 2rem;
+      padding: 5rem 2rem 3rem;
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+      transform: translateY(60px) scale(0.8);
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .section-title.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
     
     .section-title h2 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textReveal 2s ease-out 0.5s forwards;
+      overflow: hidden;
+      white-space: nowrap;
     }
     
     .section-title p {
-      font-size: 1.2rem;
-      opacity: 0.8;
+      font-size: 1.25rem;
+      opacity: 0;
       max-width: 600px;
       margin: 0 auto;
+      animation: fadeInUp 1s ease-out 1s forwards;
     }
 
-    /* Full Width Project Display */
-    .project-showcase {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
-    }
-    
-    .project-showcase.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .project-image-full {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-      filter: brightness(0.8);
-    }
-    
-    .project-showcase:hover .project-image-full {
-      transform: scale(1.05);
-      filter: brightness(0.9);
-    }
-
-    /* Project Info Overlay */
-    .project-info-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.9)
-      );
-      color: white;
-      padding: 4rem 2rem 2rem;
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-    
-    .project-showcase:hover .project-info-overlay {
-      transform: translateY(0);
-    }
-    
-    .project-title {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    
-    .project-meta {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .project-meta span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-    
-    .project-description {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      opacity: 0.95;
-    }
-    
-    .project-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    
-    .view-project-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
-    }
-    
-    .view-project-btn:hover {
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-    }
-
-    /* Project Navigation */
-    .project-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .project-nav.left { left: 2rem; }
-    .project-nav.right { right: 2rem; }
-    
-    .nav-btn {
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
-    }
-
-    /* Project Indicators */
-    .project-indicators {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 1rem;
-      z-index: 10;
-    }
-    
-    .indicator {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .indicator.active {
-      background: white;
-      transform: scale(1.2);
-    }
-
-    /* List View for Multiple Projects */
+    /* Enhanced Project Rows */
     .projects-list {
       display: flex;
       flex-direction: column;
@@ -282,107 +283,465 @@ const Projects = () => {
     
     .project-row {
       display: flex;
-      min-height: 60vh;
+      min-height: 70vh;
       opacity: 0;
-      transform: translateX(-50px);
-      transition: all 0.8s ease;
+      transform: translateX(-100px) rotateY(-15deg);
+      transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
     
     .project-row.visible {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateX(0) rotateY(0deg);
     }
     
     .project-row:nth-child(even) {
       flex-direction: row-reverse;
+      transform: translateX(100px) rotateY(15deg);
     }
     
-    .project-row:nth-child(even) .project-content {
-      padding-left: 3rem;
-      padding-right: 2rem;
+    .project-row:nth-child(even).visible {
+      transform: translateX(0) rotateY(0deg);
+    }
+
+    .project-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(59, 130, 246, 0.1),
+        transparent
+      );
+      transition: left 0.8s ease;
+      z-index: 1;
+    }
+
+    .project-row:hover::before {
+      left: 100%;
     }
     
     .project-image-half {
       flex: 1;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.6s ease;
       position: relative;
       overflow: hidden;
+      background: #000;
     }
     
     .project-image-half img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0.9) saturate(1.1);
+    }
+    
+    .project-row:hover .project-image-half img {
+      transform: scale(1.1) rotate(1deg);
+      filter: brightness(1) saturate(1.3);
+    }
+
+    .project-image-half::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        45deg,
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(139, 92, 246, 0.1) 50%,
+        rgba(236, 72, 153, 0.1) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .project-row:hover .project-image-half::after {
+      opacity: 1;
     }
     
     .project-content {
       flex: 1;
-      padding: 3rem 3rem 2rem 2rem;
+      padding: 4rem 3rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       background: white;
+      position: relative;
+      z-index: 2;
     }
     
     .project-row:nth-child(even) .project-content {
-      background: #f8fafc;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding-left: 4rem;
+      padding-right: 3rem;
     }
 
-    /* CTA Section */
+    .project-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s ease 0.3s;
+    }
+
+    .project-row.visible .project-title {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .project-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      transition: width 0.8s ease 0.8s;
+    }
+
+    .project-row.visible .project-title::after {
+      width: 60px;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.6s ease 0.6s;
+    }
+
+    .project-row.visible .project-meta {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .project-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      opacity: 0.8;
+      padding: 0.5rem 1rem;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .project-meta span:hover {
+      background: rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .project-description {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease 0.9s;
+    }
+
+    .project-row.visible .project-description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .project-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.6s ease 1.2s;
+    }
+
+    .project-row.visible .project-actions {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .view-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .view-project-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .view-project-btn:hover::before {
+      left: 100%;
+    }
+    
+    .view-project-btn:hover {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+    }
+
+    .view-project-btn svg {
+      transition: transform 0.3s ease;
+    }
+
+    .view-project-btn:hover svg {
+      transform: translateX(5px);
+    }
+
+    /* CTA Section with Advanced Animations */
     .cta-section {
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 8rem 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
       text-align: center;
       color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      animation: floatingBubbles 20s ease-in-out infinite reverse;
+    }
+    
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      transform: translateY(50px);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.5s forwards;
     }
     
     .cta-content h3 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      animation: textGlow 3s ease-in-out infinite;
+    }
+
+    .cta-content p {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .cta-button {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 1.25rem 2.5rem;
+      padding: 1.5rem 3rem;
       background: white;
       border-radius: 50px;
       color: #1e293b;
       font-weight: 700;
-      transition: all 0.4s ease;
+      font-size: 1.2rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
-      margin-top: 2rem;
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Responsive */
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cta-button:hover::before {
+      opacity: 1;
+    }
+
+    .cta-button span,
+    .cta-button svg {
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-button:hover span,
+    .cta-button:hover svg {
+      color: white;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeOut {
+      to { 
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes cursorPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.5); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(180deg); }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes floatingBubbles {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
+
+    @keyframes heroFadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(80px) scale(0.8); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+
+    @keyframes shimmerText {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes expandLine {
+      from { width: 0; }
+      to { width: 100px; }
+    }
+
+    @keyframes fadeInUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    @keyframes particleFloat {
+      0% { 
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { 
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes textReveal {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes textGlow {
+      0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+      50% { text-shadow: 0 0 40px rgba(255, 255, 255, 0.8); }
+    }
+
+    /* Responsive Animations */
     @media (max-width: 768px) {
       .project-row {
         flex-direction: column !important;
         min-height: auto;
+        transform: translateY(50px);
+      }
+      
+      .project-row.visible {
+        transform: translateY(0);
       }
       
       .project-row:nth-child(even) {
         flex-direction: column !important;
+        transform: translateY(50px);
       }
       
       .project-content {
-        padding: 2rem 1rem !important;
+        padding: 2rem 1.5rem !important;
       }
       
-      .project-nav { display: none; }
+      .floating-element,
+      .particles {
+        display: none;
+      }
       
-      .project-meta {
-        flex-direction: column;
-        gap: 0.5rem;
+      .hero-title-projects {
+        font-size: 3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   `;
@@ -401,7 +760,7 @@ const Projects = () => {
             {
                 title: 'Gaurav Signature',
                 img: '/gaurav-signature.jpeg',
-                desc: 'Spacious apartments designed for comfort, luxury, and functionality. Every detail crafted to perfection for modern families.',
+                desc: 'Spacious apartments designed for comfort, luxury, and functionality. Every detail crafted to perfection for modern families seeking contemporary living spaces.',
                 path: "/",
                 location: "City Center",
                 year: "2023",
@@ -410,7 +769,7 @@ const Projects = () => {
             {
                 title: 'Gaurav Residency',
                 img: '/gaurav-residency.jpeg',
-                desc: 'Elegant residential complex offering premium living spaces with world-class amenities and excellent connectivity.',
+                desc: 'Elegant residential complex offering premium living spaces with world-class amenities and excellent connectivity to major business hubs.',
                 path: "/",
                 location: "Suburb Area",
                 year: "2023",
@@ -421,7 +780,7 @@ const Projects = () => {
             {
                 title: 'Gaurav Square',
                 img: '/carousal-build3.jpeg',
-                desc: 'Modern commercial complex offering premium office spaces in prime location. Perfect for businesses looking for prestigious addresses.',
+                desc: 'Modern commercial complex offering premium office spaces in prime location. Perfect for businesses looking for prestigious addresses with cutting-edge infrastructure.',
                 path: "/",
                 location: "Business District",
                 year: "2024",
@@ -433,16 +792,52 @@ const Projects = () => {
     return (
         <div className="projects-wrapper">
             <style>{styles}</style>
+            
+            {/* Loading Screen */}
+            {isLoading && (
+                <div className="loading-screen">
+                    <div className="loading-content">
+                        <div className="loading-spinner"></div>
+                        <div className="loading-text">Loading Projects...</div>
+                    </div>
+                </div>
+            )}
+
+            {/* Mouse Cursor Effect */}
+            <div 
+                className="cursor-glow" 
+                style={{
+                    left: mousePosition.x + 'px',
+                    top: mousePosition.y + 'px'
+                }}
+            ></div>
+
+            {/* Floating Elements */}
+            <div className="floating-element">
+                <div style={{width: '60px', height: '60px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '50%'}}></div>
+            </div>
+            <div className="floating-element">
+                <div style={{width: '40px', height: '40px', background: 'rgba(139, 92, 246, 0.1)', borderRadius: '50%'}}></div>
+            </div>
+            <div className="floating-element">
+                <div style={{width: '80px', height: '80px', background: 'rgba(236, 72, 153, 0.1)', borderRadius: '50%'}}></div>
+            </div>
+
             <ProgressBar />
             <Navigation />
             <WhatsAppChat />
 
             {/* Hero Section */}
-            <section className="hero-projects">
+            <section className="hero-projects" ref={heroRef}>
+                <div className="particles">
+                    {[...Array(8)].map((_, i) => (
+                        <div key={i} className="particle"></div>
+                    ))}
+                </div>
                 <div className="hero-content-projects">
                     <h1 className="hero-title-projects">Our Projects</h1>
                     <p className="hero-subtitle-projects">
-                        Luxury living spaces designed for modern lifestyles
+                        Luxury living spaces designed for modern lifestyles and future aspirations
                     </p>
                 </div>
             </section>
@@ -459,17 +854,17 @@ const Projects = () => {
                         <div 
                             key={i} 
                             className={`project-row ${isVisible.residential ? 'visible' : ''}`}
-                            style={{ transitionDelay: `${i * 0.2}s` }}
+                            style={{ transitionDelay: `${i * 0.3}s` }}
                         >
                             <div className="project-image-half">
-                                <img src={project.img} alt={project.title} />
+                                <img src={project.img} alt={project.title} loading="lazy" />
                             </div>
                             <div className="project-content">
                                 <h3 className="project-title">{project.title}</h3>
                                 <div className="project-meta">
-                                    <span><MapPin size={18} />{project.location}</span>
-                                    <span><Calendar size={18} />{project.year}</span>
-                                    <span><Eye size={18} />{project.units}</span>
+                                    <span><MapPin size={16} />{project.location}</span>
+                                    <span><Calendar size={16} />{project.year}</span>
+                                    <span><Eye size={16} />{project.units}</span>
                                 </div>
                                 <p className="project-description">{project.desc}</p>
                                 <div className="project-actions">
@@ -500,14 +895,14 @@ const Projects = () => {
                             className={`project-row ${isVisible.commercial ? 'visible' : ''}`}
                         >
                             <div className="project-image-half">
-                                <img src={project.img} alt={project.title} />
+                                <img src={project.img} alt={project.title} loading="lazy" />
                             </div>
                             <div className="project-content">
                                 <h3 className="project-title">{project.title}</h3>
                                 <div className="project-meta">
-                                    <span><MapPin size={18} />{project.location}</span>
-                                    <span><Calendar size={18} />{project.year}</span>
-                                    <span><Eye size={18} />{project.units}</span>
+                                    <span><MapPin size={16} />{project.location}</span>
+                                    <span><Calendar size={16} />{project.year}</span>
+                                    <span><Eye size={16} />{project.units}</span>
                                 </div>
                                 <p className="project-description">{project.desc}</p>
                                 <div className="project-actions">
@@ -524,14 +919,14 @@ const Projects = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
+            {/* Enhanced CTA Section */}
             <section className="cta-section">
                 <div className="cta-content">
                     <h3>Ready to Find Your Dream Space?</h3>
-                    <p>Discover our complete portfolio and let us help you find the perfect property</p>
+                    <p>Discover our complete portfolio and let us help you find the perfect property that matches your vision and lifestyle</p>
                     <a href="/contact" className="cta-button">
                         <span>Get in Touch</span>
-                        <ArrowRight size={20} />
+                        <ArrowRight size={22} />
                     </a>
                 </div>
             </section>
