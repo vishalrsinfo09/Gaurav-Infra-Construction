@@ -208,11 +208,12 @@ const GauravEuphoriaDetail = () => {
                 color: '#B8860B',
                 fontWeight: '700',
                 letterSpacing: '2px',
-                fontSize:'30px'
+                fontSize: '30px'
               }}>
                 Gaurav
               </span>
-              <span className="text-amber-600 italic" style={{
+
+              <span className="text-amber-600 italic relative" style={{
                 fontFamily: 'Dancing Script, Brush Script MT, cursive',
                 color: '#CD853F',
                 fontWeight: '400',
@@ -220,23 +221,43 @@ const GauravEuphoriaDetail = () => {
                 letterSpacing: '3px',
                 fontStyle: 'italic'
               }}>
-                Euphoria
+                Euphori
+                <span className="relative inline-block">
+                  a
+                  <span
+                    className="absolute"
+                    style={{
+                      top: '4px',
+                      left: '0%',
+                      transform: 'translateX(-50%)',
+                      fontSize: '40px',
+                      color: '#CD853F',
+                      animation: 'gentle-float 3s ease-in-out infinite'
+                    }}
+                  >
+                    ✿
+                  </span>
+                </span>
               </span>
+
               <div className="text-amber-700 text-lg md:text-xl" style={{
                 fontFamily: 'Playfair Display, serif',
                 color: '#B8860B',
                 fontWeight: '500',
                 letterSpacing: '1px',
-                paddingLeft:'100px'
+                paddingLeft: '100px'
               }}>
                 2 & 3 BHK Premium Homes
               </div>
             </h1>
 
-
             <div className="text-green-800 rounded-lg mt-6 inline-block">
               <p className="text-3xl" style={{ fontFamily: 'Cairo' }}>
-                the first <strong style={{ fontSize: '45px' }}>highrise</strong> building<br /> <span className="ps-6">in <span style={{ fontWeight: 'bold' }}>Lashkaribagh</span> with modern <strong style={{ fontSize: '45px' }}>amenities</strong></span>
+                the first <strong style={{ fontSize: '45px' }}>highrise</strong> building<br />
+                <span className="ps-6">
+                  in <span style={{ fontWeight: 'bold' }}>Lashkaribagh</span> with modern
+                  <strong style={{ fontSize: '45px' }}>amenities</strong>
+                </span>
               </p>
             </div>
           </div>
@@ -249,6 +270,7 @@ const GauravEuphoriaDetail = () => {
             />
           </div>
         </section>
+
 
         <section className="project-panel h-screen content-section pin bg-gray-50">
           <div className="section-container max-w-7xl mx-auto px-6">
@@ -454,7 +476,7 @@ const GauravEuphoriaDetail = () => {
               {/* Left Image */}
               <div className="w-72 md:w-96 h-80 border-2 border-gray-300 shadow-lg">
                 <img
-                  src="/3 BHK/RAJ06604.JPG"
+                  src="/RAJ06604.JPG"
                   alt="Floor Plan 1"
                   className="rounded-lg w-full h-full object-FILL"
                 />
@@ -463,7 +485,7 @@ const GauravEuphoriaDetail = () => {
               {/* Right Image */}
               <div className="w-72 md:w-96 h-80 border-2 border-gray-300 shadow-lg">
                 <img
-                  src="/2 BHK/RAJ06598.JPG"
+                  src="/RAJ06598.JPG"
                   alt="Floor Plan 2"
                   className="rounded-lg w-full h-full object-FILL"
                 />

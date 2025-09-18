@@ -10,22 +10,22 @@ const Gallery = () => {
 
   const galleryImages = [
     {
-      url: '/2 BHK/RAJ06536.JPG',
+      url: '/RAJ06536.JPG',
       title: 'Luxury Living Room',
       category: 'Interior'
     },
     {
-      url: '/3 BHK/RAJ06629.JPG',
+      url: '/RAJ06629.JPG',
       title: 'Modern Kitchen',
       category: 'Interior'
     },
     {
-      url: 'public/2 BHK/RAJ06579.JPG',
+      url: 'public/RAJ06579.JPG',
       title: 'Bathroom',
       category: 'Interior'
     },
     {
-      url: '/3 BHK/RAJ06634.JPG',
+      url: '/RAJ06634.JPG',
       title: 'Premium Bathroom',
       category: 'Interior'
     },
@@ -40,7 +40,7 @@ const Gallery = () => {
       category: 'Exterior'
     },
     {
-      url: '/2 BHK/RAJ06550.JPG',
+      url: '/RAJ06550.JPG',
       title: 'Dining Area',
       category: 'Interior'
     },
@@ -103,7 +103,7 @@ const Gallery = () => {
         <div 
           className="hero-video"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55)), url('/3 BHK/RAJ06626.JPG')`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55)), url('/RAJ06626.JPG')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
