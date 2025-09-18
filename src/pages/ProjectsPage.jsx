@@ -36,20 +36,20 @@ const Projects = () => {
 
     /* Hero */
     .hero-projects {
-      height: 100vh;
-      min-height: 500px;
+      height: 70vh;
+      // min-height: 500px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      // background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
+      background: linear-gradient(135deg, #ffffffff 20%, #083858ff 50%, #3282b8 100%);
     }
     .hero-projects::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('/3bhk.jpg') center/cover;
+      // background: url('/3bhk.jpg') center/cover;
       // opacity: 0.15;
       animation: parallaxMove 20s ease-in-out infinite;
     }

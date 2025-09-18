@@ -118,8 +118,8 @@ const GauravEuphoriaDetail = () => {
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
             <div className="relative group inline-block"
-              onMouseEnter={() => setOpenDropdown(true)}
-              onMouseLeave={() => setOpenDropdown(false)}
+              // onMouseEnter={() => setOpenDropdown(true)}
+              // onMouseLeave={() => setOpenDropdown(false)}
             >
               <button
                 onClick={() => setOpenDropdown(!openDropdown)}
