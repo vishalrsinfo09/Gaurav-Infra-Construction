@@ -101,46 +101,41 @@ const Home = () => {
       </section>
      
 
-      <section className=" py-20 text-center relative">
-        <div className="max-w-3xl mx-auto px-6 bg-gray-100">
-          {/* Luxury Heading */}
-          <motion.h2
-            className="text-6xl font-extrabold mb-6
-             bg-[url('/image2.jpg')] bg-cover bg-center
-             bg-clip-text text-transparent drop-shadow-md"
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.6 }}
-          >
-            Welcome to Gaurav Infra
-          </motion.h2>
+   <section className="relative py-28 text-center bg-gradient-to-br ">
+  <div className="max-w-4xl mx-auto px-6">
 
-          {/* Description */}
-          <motion.p
-            className="md:text-lg lg:text-xl mb-8 leading-relaxed italic 
-                 bg-[url('/chandi.jpg')] bg-cover bg-center 
-                 bg-clip-text text-transparent"
-            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.4)" }}
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.6 }}
-          >
-            {sentence.split(" ").map((word, i) => (
-              <motion.span key={i} variants={char} className="inline-block mr-1">
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+    {/* Luxury Heading */}
+    <motion.h2
+      className="text-6xl md:text-7xl font-serif font-extrabold mb-6 
+                text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.6 }}
+    >
+      Welcome to Gaurav Infra
+    </motion.h2>
 
+    {/* Description */}
+    {/* <motion.p
+      className="text-lg md:text-xl lg:text-2xl text-[#C6C6C6] mb-8 leading-relaxed "
+      style={{ backgroundImage: "url('/chandi.jpg')" }}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.6 }}
+    >
+      {sentence.split(" ").map((word, i) => (
+        <motion.span key={i} variants={char} className="inline-block mr-1">
+          {word}
+        </motion.span>
+      ))}
+    </motion.p> */}
 
-          {/* Accent underline */}
-          <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 rounded-full mb-10"></span>
-
-
-        </div>
-      </section>
+    {/* Gold underline accent */}
+    <span className="block w-40 h-1 mx-auto bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-600 rounded-full shadow-md"></span>
+  </div>
+</section>
 
 
 
@@ -190,10 +185,25 @@ const Home = () => {
       <section className="flex flex-col md:flex-row min-h-screen">
         {/* Left Side: Text */}
         <div className="md:w-1/2 flex flex-col justify-center p-8 bg-gray-400">
-          <h3 className="text-3xl md:text-4xl font-serif font-extrabold mb-6 bg-gradient-to-r from-blue-500 via-blue-300 to-white bg-clip-text text-transparent drop-shadow-2xl tracking-wide mx-auto" > Architectural Excellence </h3>
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg mr-16"> Our architectural design philosophy combines modern functionality with timeless elegance. Each apartment is meticulously planned to maximize space utilization while maintaining an open, airy feel that promotes well-being and comfort. </p> <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg mr-16"> Premium materials including high-quality teak wood furnishing, stainless steel kitchen countertops, and marble flooring ensure durability and sophistication. Large windows and balconies bring in abundant natural light and fresh air, creating a healthy living environment. </p> <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg mr-16"> The building features earthquake-resistant construction, energy-efficient systems, and sustainable design elements that reduce environmental impact while lowering utility costs for residents. </p>
+          <h3 className="text-3xl md:text-4xl  font-extrabold mb-6 
+                 bg-gradient-to-r from-yellow-400 via-yellow-200 to-white 
+                 bg-clip-text text-transparent drop-shadow-2xl tracking-wide mx-auto" > Architectural Excellence </h3>
+       <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg text-center">
+  There are too many options for homes, but every home is not a luxurious home. Luxury cannot be described, it has to be experienced.
+  Experience it first, at the finest residential project <strong>"Gaurav Euphoria"</strong> developed by Gaurav Infra at the prime location of the city.
+</p>
+
+<p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg text-center">
+  It offers 2 & 3 spacious bed rooms with proper ventilation and sunlight. A large living room along with entrance foyer. Big kitchen with separate dining space. Balcony / terrace to every room. Thoughtful planning, stylish design, quality construction and peaceful surroundings make <strong>"Gaurav Euphoria"</strong> a more prestigious and beautiful place to live.
+</p>
+
+<p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg text-center">
+  The additional advantage of the project is its location. You can easily access many things like Shopping Mall, Inox, Metro Station, Hospital, Petrol Pump, ATM etc. within walking distance.
+  <strong>"Gaurav Euphoria"</strong> is the perfect place to live a luxurious life, that you can call a dream home.
+</p>
+
            {/* Accent underline */} 
-           <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-blue-600 via-blue-300 to-white rounded-full mt-6 "></span> </div>
+           <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-yellow-500 via-yellow-300 to-white rounded-full mt-6"></span> </div>
 
         {/* Right Side: Image */}
         <div className="md:w-1/2 flex justify-end">

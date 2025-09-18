@@ -43,7 +43,9 @@ const Projects = () => {
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: linear-gradient(135deg, #ffffffff 20%, #083858ff 50%, #3282b8 100%);
+      // background: linear-gradient(135deg, #ffffffff 20%, #083858ff 50%, #3282b8 100%);
+            background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
+
     }
     .hero-projects::before {
       content: '';
@@ -57,7 +59,7 @@ const Projects = () => {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(rgba(0, 0, 0, 0.5));
+      // background: radial-gradient(rgba(0, 0, 0, 0.5));
     }
     .hero-content-projects {
       text-align: center;
@@ -70,7 +72,7 @@ const Projects = () => {
       font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      background: linear-gradient(45deg, #ffffff, #3282b8, #0ebe7f, #ffffff);
+      background: linear-gradient(135deg, #22d3ee, #ffffff, #facc15);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-size: 300% 300%;
@@ -149,7 +151,7 @@ const Projects = () => {
     .project-card img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: fill;
       display: block;
       transition: transform 0.6s ease;
     }
@@ -257,7 +259,7 @@ const Projects = () => {
             {/* Hero */}
             <section className="hero-projects">
                 <div className="hero-content-projects">
-                    <h1 className="hero-title-projects">Our Projects</h1>
+                    <h1 className="hero-title-projects ">Our Projects</h1>
                     <p className="hero-subtitle-projects">Luxury living spaces designed for modern lifestyles</p>
                 </div>
             </section>
@@ -316,15 +318,10 @@ const Projects = () => {
                         {
                             title: 'Gaurav Square',
                             img: '/carousal-build3.jpeg',
+                            // img: '/gaurav_sqa.jpeg',
                             desc: 'Modern commercial complex offering premium office spaces in prime location.',
                             path: "/"
                         },
-                        // {
-                        //     title: 'Corporate Tower',
-                        //     img: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg',
-                        //     desc: 'A-grade commercial tower with world-class facilities for enterprises.',
-                        //     path: "/"
-                        // },
                     ].map((project, i) => (
                         <div key={i} className={`project-card ${isVisible.commercial ? 'visible' : ''}`}>
                             <img src={project.img} alt={project.title} loading="lazy" />
