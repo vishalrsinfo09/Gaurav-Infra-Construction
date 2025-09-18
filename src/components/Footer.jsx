@@ -314,7 +314,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="font-semibold text-white hover:text-cyan-400 transition-colors"
         >
-          Right Serve Infotech Pvt Ltd.
+          Right Serve Infotech Systems Pvt Ltd.
         </a>
         </p>
       </motion.div>

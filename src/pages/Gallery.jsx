@@ -104,13 +104,27 @@ const Gallery = () => {
         <div 
           className="hero-video"
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55)), url('/RAJ06626.JPG')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            //  background: "linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%)",
+            background: "linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%)",
+      width: "100%",
+      height: "100%",
+            // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55)), url('/RAJ06626.JPG')`,
+            // backgroundSize: 'cover',
+            // backgroundPosition: 'center'
           }}
         />
         <div className="hero-content">
-          <h1>Visual Gallery</h1>
+          <h1 style={{
+       fontSize: "4rem",
+      fontWeight: 800,
+      marginBottom: "1rem",
+      background: "linear-gradient(135deg, #22d3ee, #ffffff, #facc15)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+      backgroundSize: "300% 300%",
+      animation: "gradientFlow 5s ease infinite"
+    }}>Visual Gallery</h1>
           <p>Explore our stunning collection of luxury apartments and amenities</p>
         </div>
       </section>

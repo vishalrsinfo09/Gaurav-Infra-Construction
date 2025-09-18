@@ -42,6 +42,7 @@ const About = () => {
       justify-content: center;
       overflow: hidden;
       // background: linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%);
+      background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
     }
     
     .hero-about::before {
@@ -51,7 +52,7 @@ const About = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('/parallax_img1.jpeg') center/cover;
+      // background: url('/Logo3.png') center/cover;
       // opacity: 0.9;
       animation: parallaxMove 20s ease-in-out infinite;
     }
@@ -79,7 +80,7 @@ const About = () => {
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
-      background: linear-gradient(45deg, #ffffff, #3282b8, #0ebe7f, #ffffff);
+      background: linear-gradient(135deg, #22d3ee, #ffffff, #facc15);
       background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -254,6 +255,7 @@ const About = () => {
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      
     }
     
     .content-image.visible {
@@ -538,7 +540,7 @@ const About = () => {
       .content-layout {
         flex-direction: row;
         align-items: center;
-        gap: 4rem;
+      
       }
       
       .content-text, .content-image {
@@ -608,56 +610,29 @@ const About = () => {
           <p>Meet the visionaries behind Gaurav Infra's success</p>
         </div>
         <div className="content-layout">
-          <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`} style={{ border: '2px solid' }}>
-            <img
-              src="/Giri_Sir.jpg"
-              alt="Professional team meeting in modern office environment"
-              loading="lazy"
-            />
-          </div>
           <div className={`content-text ${isVisible.leadership ? 'visible' : ''}`}>
             <h3>KRISHNAKANT GIRI</h3>
             <p>
               At Gaurav Infra, leadership is not just about building structures, it is about building trust. With a vision to transform the real estate landscape of Nagpur, our leaders focus on creating projects that reflect innovation, quality, and timeless value. Every milestone we achieve is driven by a commitment to deliver beyond expectations.
             </p>
             <p>
-              Our leadership team combines deep industry expertise with a modern outlook, ensuring that each project is planned with precision and executed with responsibility. By emphasizing sustainable construction practices, timely delivery, and uncompromised quality, we continue to set benchmarks in the real estate sector.
+              Our leadership team combines deep industry expertise with a modern outlook, ensuring that each project is planned with precision and executed with responsibility. By emphasizing sustainable construction practices, timely delivery, and uncompromised quality, we continue to set benchmarks in the real estate sector.  We strongly believe that true leadership lies in putting customers first. 
             </p>
-            <p>
-              We strongly believe that true leadership lies in putting customers first. Every decision, design, and detail is crafted to fulfill the aspirations of our clients. Through transparency, integrity, and visionary guidance, Gaurav Infra is shaping not only the skyline of Nagpur but also the trust and satisfaction of the families who choose us.
-            </p>
+            {/* <p>
+              We strongly believe that true leadership lies in putting customers first. 
+            </p> */}
           </div>
+          <div className={`content-image ${isVisible.leadership ? 'visible' : ''}`} style={{ border: '2px solid',width:'400px',height:'500px' }}>
+            <img
+              src="/Giri_Sir.jpg"
+              alt="Professional team meeting in modern office environment"
+              loading="lazy" draggable="false"
+            />
+          </div>
+
         </div>
       </section>
 
-      {/* Company Story */}
-      <section className="about-section" data-section="story">
-        <div className={`section-title-about ${isVisible.story ? 'visible' : ''}`}>
-          <h2>Our Story</h2>
-          <p>A legacy of excellence in real estate development</p>
-        </div>
-        <div className="content-layout">
-          <div className={`content-text ${isVisible.story ? 'visible' : ''}`}>
-            <h3>Building Trust Since Inception</h3>
-            <p>
-              Gaurav Infra was founded with a simple yet powerful vision: to create residential spaces that combine luxury with comfort, modernity with tradition, and quality with affordability. Over the years, we have established ourselves as a trusted name in Nagpur's real estate sector.
-            </p>
-            <p>
-              Our journey began with a commitment to understand the evolving needs of modern families. We recognized that today's homebuyers seek more than just a place to live - they want a lifestyle that reflects their aspirations and values.
-            </p>
-            <p>
-              Every project we undertake is a testament to our dedication to excellence. From architectural design to interior finishing, from amenities planning to customer service, we maintain the highest standards at every step.
-            </p>
-          </div>
-          <div className={`content-image ${isVisible.story ? 'visible' : ''}`}>
-            <img
-              src="/carousal-build.jpeg"
-              alt="Modern office building representing Gaurav Infra headquarters"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Mission Vision Values */}
       <section className="about-section bg-light" data-section="foundation">
@@ -686,6 +661,36 @@ const About = () => {
             </div>
             <h4>Our Values</h4>
             <p>Integrity, excellence, innovation, and customer satisfaction form the core of our business philosophy. We believe in building long-term relationships based on trust and quality.</p>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Company Story */}
+      <section className="about-section" data-section="story">
+        <div className={`section-title-about ${isVisible.story ? 'visible' : ''}`}>
+          <h2>Our Story</h2>
+          <p>A legacy of excellence in real estate development</p>
+        </div>
+        <div className="content-layout">
+          <div className={`content-text ${isVisible.story ? 'visible' : ''}`}>
+            <h3>Building Trust Since Inception</h3>
+            <p>
+              Gaurav Infra was founded with a simple yet powerful vision: to create residential spaces that combine luxury with comfort, modernity with tradition, and quality with affordability. Over the years, we have established ourselves as a trusted name in Nagpur's real estate sector.
+            </p>
+            <p>
+              Our journey began with a commitment to understand the evolving needs of modern families. We recognized that today's homebuyers seek more than just a place to live - they want a lifestyle that reflects their aspirations and values.
+            </p>
+            <p>
+              Every project we undertake is a testament to our dedication to excellence. From architectural design to interior finishing, from amenities planning to customer service, we maintain the highest standards at every step.
+            </p>
+          </div>
+          <div className={`content-image ${isVisible.story ? 'visible' : ''}`}>
+            <img
+              src="/carousal-build.jpeg"
+              alt="Modern office building representing Gaurav Infra headquarters"
+              loading="lazy" draggable="false"
+            />
           </div>
         </div>
       </section>

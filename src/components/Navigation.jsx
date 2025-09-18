@@ -27,11 +27,16 @@ const Navigation = () => {
   ];
 
   return (
-    <nav
-      className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'
-        }`}
+   <nav
+  className={`fixed w-full top-0 left-0 z-50 transition-colors duration-300 ${
+    location.pathname === '/' 
+      ? scrolled 
+        ? 'bg-black/80 backdrop-blur-md' 
+        : 'bg-transparent' 
+      : 'bg-black/80 backdrop-blur-md'
+  }`}
+>
 
-    >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link to="/" className="flex-shrink-0 h-full -ml-4">
           <img src="/Logo3.png" alt="Gaurav Infra" className="h-20 w-46 object-fill" />
