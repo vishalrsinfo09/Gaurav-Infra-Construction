@@ -25,7 +25,7 @@ const char = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.10 } },
 };
-const sentence = "Discover luxury living in the heart of Nagpur. Premium 3BHK, 4BHK, and 5BHK apartments with modern amenities and timeless elegance.";
+const sentence = "Discover luxury living in the heart of Nagpur. Premium 2BHK and 3BHK apartments with modern amenities and timeless elegance.";
 
 
 const Home = () => {
@@ -99,9 +99,10 @@ const Home = () => {
           <ArrowDown />
         </div> */}
       </section>
+     
 
       <section className=" py-20 text-center relative">
-        <div className="max-w-3xl mx-auto px-6">
+        <div className="max-w-3xl mx-auto px-6 bg-gray-100">
           {/* Luxury Heading */}
           <motion.h2
             className="text-6xl font-extrabold mb-6
@@ -142,6 +143,7 @@ const Home = () => {
       </section>
 
 
+
       {/* About Section */}
       <section className="flex flex-col md:flex-row min-h-screen">
         {/* Left Side: Image */}
@@ -163,14 +165,14 @@ const Home = () => {
             Your Dream Place Awaits
           </h3>
 
-          <p className="mb-4 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-900 font-light italic drop-shadow-lg">
+          <p className="mb-4 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-900 font-light drop-shadow-lg">
             Gaurav Infra is proud to present <span className="font-semibold">Gaurav Square</span>,
             a premium commercial destination designed to give your business a new identity.
             This landmark project brings together modern architecture and strategic location
             to create the perfect synergy for growth.
           </p>
 
-          <p className="mb-6 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-900 font-light italic drop-shadow-lg">
+          <p className="mb-6 text-lg md:text-xl max-w-3xl leading-relaxed text-gray-900 font-light  drop-shadow-lg">
             Located on a prime road-touch site with seamless connectivity across the city,
             Gaurav Square ensures your business stays connected and accessible.
             Offering smartly planned spaces for diverse business needs, it provides
@@ -189,7 +191,7 @@ const Home = () => {
         {/* Left Side: Text */}
         <div className="md:w-1/2 flex flex-col justify-center p-8 bg-gray-400">
           <h3 className="text-3xl md:text-4xl font-serif font-extrabold mb-6 bg-gradient-to-r from-blue-500 via-blue-300 to-white bg-clip-text text-transparent drop-shadow-2xl tracking-wide mx-auto" > Architectural Excellence </h3>
-          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light italic drop-shadow-lg mr-16"> Our architectural design philosophy combines modern functionality with timeless elegance. Each apartment is meticulously planned to maximize space utilization while maintaining an open, airy feel that promotes well-being and comfort. </p> <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light italic drop-shadow-lg mr-16"> Premium materials including high-quality teak wood furnishing, stainless steel kitchen countertops, and marble flooring ensure durability and sophistication. Large windows and balconies bring in abundant natural light and fresh air, creating a healthy living environment. </p> <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light italic drop-shadow-lg mr-16"> The building features earthquake-resistant construction, energy-efficient systems, and sustainable design elements that reduce environmental impact while lowering utility costs for residents. </p>
+          <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg mr-16"> Our architectural design philosophy combines modern functionality with timeless elegance. Each apartment is meticulously planned to maximize space utilization while maintaining an open, airy feel that promotes well-being and comfort. </p> <p className="mb-4 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg mr-16"> Premium materials including high-quality teak wood furnishing, stainless steel kitchen countertops, and marble flooring ensure durability and sophistication. Large windows and balconies bring in abundant natural light and fresh air, creating a healthy living environment. </p> <p className="mb-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-black/90 font-light drop-shadow-lg mr-16"> The building features earthquake-resistant construction, energy-efficient systems, and sustainable design elements that reduce environmental impact while lowering utility costs for residents. </p>
            {/* Accent underline */} 
            <span className="block w-32 h-1 mx-auto bg-gradient-to-r from-blue-600 via-blue-300 to-white rounded-full mt-6 "></span> </div>
 
