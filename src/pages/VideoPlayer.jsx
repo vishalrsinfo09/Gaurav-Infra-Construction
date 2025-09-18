@@ -26,11 +26,7 @@ const VideoPlayer = () => {
       src: '/video/3 BHK Sample Flat @ Gaurav Euphoria, Nagpur.mp4',
       description: 'Discover the luxurious and premium 3 BHK apartment layout'
     },
-    'amenities': {
-      title: 'Amenities Video',
-      src: '/video/Amenities @ Gaurav Euphoria, Nagpur.mp4',
-      description: 'Explore the world-class amenities offered at Gaurav Euphoria'
-    }
+
   };
 
   const currentVideo = videoConfig[type];
