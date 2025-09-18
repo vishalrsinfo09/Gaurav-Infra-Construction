@@ -7,14 +7,14 @@ import "swiper/css/pagination";
 
 const testimonials = [
   {
-    name: "Rohit Sharma",
-    designation: "Software Engineer",
+    name: "Rohit Prajapati",
+    designation: "Doctor",
     message:
       "Gaurav Infra has redefined luxury living for me. The apartments are spacious, Vastu-compliant, and the amenities are world-class. Truly a dream home!",
     image: "/testimonials/test2.jpg",
   },
   {
-    name: "Sneha Kulkarni",
+    name: "Sneha Meshram",
     designation: "Business Owner",
     message:
       "From planning to possession, the experience has been seamless. The interiors are stunning, and the community vibe is warm and welcoming.",
@@ -51,7 +51,11 @@ const Testimonials = () => {
           effect="fade"
           fadeEffect={{ crossFade: true }}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          }}
           spaceBetween={40}
           slidesPerView={1}
           loop={true}
