@@ -20,11 +20,11 @@ const Gallery = () => {
       category: 'Interior'
     },
     {
-      url: 'public/RAJ06579.JPG',
+      url: '/RAJ06579.JPG',
       title: 'Bathroom',
       category: 'Interior'
     },
-     {
+    {
       url: '/RAJ06550.JPG',
       title: 'Dining Area',
       category: 'Interior'
@@ -44,7 +44,7 @@ const Gallery = () => {
     //   title: 'Front Facade',
     //   category: 'Exterior'
     // },
-   
+
     // {
     //   url: 'https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg?auto=compress&cs=tinysrgb&w=800',
     //   title: 'Office Space',
@@ -101,50 +101,55 @@ const Gallery = () => {
 
       {/* Hero Section */}
       <section className="hero-section" style={{ height: '70vh' }}>
-        <div 
+        <div
           className="hero-video"
           style={{
             //  background: "linear-gradient(135deg, #16213e 0%, #0f4c75 50%, #3282b8 100%)",
             background: "linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%)",
-      width: "100%",
-      height: "100%",
+            width: "100%",
+            height: "100%",
             // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.55)), url('/RAJ06626.JPG')`,
             // backgroundSize: 'cover',
             // backgroundPosition: 'center'
           }}
         />
         <div className="hero-content">
-          <h1 style={{
-       fontSize: "4rem",
-      fontWeight: 800,
-      marginBottom: "1rem",
-      background: "linear-gradient(135deg, #22d3ee, #ffffff, #facc15)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      backgroundClip: "text",
-      backgroundSize: "300% 300%",
-      animation: "gradientFlow 5s ease infinite"
-    }}>Visual Gallery</h1>
+          <h1
+            style={{
+              fontSize: "4rem",
+              fontWeight: 800,
+              marginBottom: "1.5rem",
+              background: "linear-gradient(135deg, #22d3ee, #ffffff, #facc15)",
+              backgroundSize: "300% 300%",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              animation: "gradientFlow 4s ease-in-out infinite",
+              lineHeight: 1.2,
+              textShadow: "0 0 30px rgba(50, 130, 184, 0.3)",
+            }}
+          >
+            Visual Gallery
+          </h1>
           <p>Explore our stunning collection of luxury apartments and amenities</p>
         </div>
-      </section>
+      </section >
 
       {/* Gallery Grid */}
-      <section className="section">
+      < section className="section" >
         <div className="section-title">
           <h2>Our Project Showcase</h2>
           <p>Take a visual journey through our beautiful residential spaces</p>
         </div>
-        
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '1.5rem',
           maxWidth: '1200px',
           margin: '0 auto'
         }}>
           {galleryImages.map((image, index) => (
-            <div 
+            <div
               key={index}
               className="gallery-item"
               style={{
@@ -158,7 +163,7 @@ const Gallery = () => {
               }}
               onClick={() => openModal(image.url, index)}
             >
-              <img 
+              <img
                 src={image.url}
                 alt={image.title}
                 loading="lazy"
@@ -169,7 +174,7 @@ const Gallery = () => {
                   transition: 'transform 0.3s ease'
                 }}
               />
-              <div 
+              <div
                 className="gallery-overlay"
                 style={{
                   position: 'absolute',
@@ -201,8 +206,8 @@ const Gallery = () => {
                 <h4 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem' }}>
                   {image.title}
                 </h4>
-                <span style={{ 
-                  fontSize: '0.9rem', 
+                <span style={{
+                  fontSize: '0.9rem',
                   background: 'rgba(50, 130, 184, 0.8)',
                   padding: '0.25rem 0.75rem',
                   borderRadius: '20px'
@@ -213,183 +218,185 @@ const Gallery = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section >
 
       {/* Enhanced Lightbox Modal with Navigation */}
-      {selectedImage && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'rgba(0, 0, 0, 0.9)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 2000,
-            padding: '2rem'
-          }}
-          onClick={closeModal}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-        >
-          {/* Close Button */}
-          <button
+      {
+        selectedImage && (
+          <div
             style={{
-              position: 'absolute',
-              top: '2rem',
-              right: '2rem',
-              background: 'rgba(255, 255, 255, 0.2)',
-              border: 'none',
-              color: 'white',
-              fontSize: '2rem',
-              cursor: 'pointer',
-              zIndex: 2001,
-              borderRadius: '50%',
-              width: '50px',
-              height: '50px',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'rgba(0, 0, 0, 0.9)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'background 0.3s ease'
+              zIndex: 2000,
+              padding: '2rem'
             }}
             onClick={closeModal}
-            onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
-            onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
           >
-            <X size={24} />
-          </button>
+            {/* Close Button */}
+            <button
+              style={{
+                position: 'absolute',
+                top: '2rem',
+                right: '2rem',
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: 'white',
+                fontSize: '2rem',
+                cursor: 'pointer',
+                zIndex: 2001,
+                borderRadius: '50%',
+                width: '50px',
+                height: '50px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.3s ease'
+              }}
+              onClick={closeModal}
+              onMouseEnter={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.3)'}
+              onMouseLeave={(e) => e.target.style.background = 'rgba(255, 255, 255, 0.2)'}
+            >
+              <X size={24} />
+            </button>
 
-          {/* Previous Button */}
-          <button
-            style={{
-              position: 'absolute',
-              left: '2rem',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'rgba(255, 255, 255, 0.2)',
-              border: 'none',
-              color: 'white',
-              cursor: 'pointer',
-              zIndex: 2001,
-              borderRadius: '50%',
-              width: '50px',
-              height: '50px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              opacity: galleryImages.length > 1 ? 1 : 0,
-              pointerEvents: galleryImages.length > 1 ? 'auto' : 'none'
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
-              goToPrevious();
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.3)';
-              e.target.style.transform = 'translateY(-50%) scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-              e.target.style.transform = 'translateY(-50%) scale(1)';
-            }}
-          >
-            <ChevronLeft size={24} />
-          </button>
+            {/* Previous Button */}
+            <button
+              style={{
+                position: 'absolute',
+                left: '2rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer',
+                zIndex: 2001,
+                borderRadius: '50%',
+                width: '50px',
+                height: '50px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s ease',
+                opacity: galleryImages.length > 1 ? 1 : 0,
+                pointerEvents: galleryImages.length > 1 ? 'auto' : 'none'
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+                e.target.style.transform = 'translateY(-50%) scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+                e.target.style.transform = 'translateY(-50%) scale(1)';
+              }}
+            >
+              <ChevronLeft size={24} />
+            </button>
 
-          {/* Next Button */}
-          <button
-            style={{
-              position: 'absolute',
-              right: '2rem',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'rgba(255, 255, 255, 0.2)',
-              border: 'none',
-              color: 'white',
-              cursor: 'pointer',
-              zIndex: 2001,
-              borderRadius: '50%',
-              width: '50px',
-              height: '50px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              opacity: galleryImages.length > 1 ? 1 : 0,
-              pointerEvents: galleryImages.length > 1 ? 'auto' : 'none'
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
-              goToNext();
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.3)';
-              e.target.style.transform = 'translateY(-50%) scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.2)';
-              e.target.style.transform = 'translateY(-50%) scale(1)';
-            }}
-          >
-            <ChevronRight size={24} />
-          </button>
+            {/* Next Button */}
+            <button
+              style={{
+                position: 'absolute',
+                right: '2rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer',
+                zIndex: 2001,
+                borderRadius: '50%',
+                width: '50px',
+                height: '50px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s ease',
+                opacity: galleryImages.length > 1 ? 1 : 0,
+                pointerEvents: galleryImages.length > 1 ? 'auto' : 'none'
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+                e.target.style.transform = 'translateY(-50%) scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(255, 255, 255, 0.2)';
+                e.target.style.transform = 'translateY(-50%) scale(1)';
+              }}
+            >
+              <ChevronRight size={24} />
+            </button>
 
-          {/* Main Image */}
-          <img 
-            src={selectedImage}
-            alt={galleryImages[selectedImageIndex]?.title || "Gallery preview"}
-            style={{
-              maxWidth: '85%',
-              maxHeight: '85%',
-              objectFit: 'contain',
-              borderRadius: '10px',
-              transition: 'opacity 0.3s ease'
-            }}
-            onClick={(e) => e.stopPropagation()}
-          />
+            {/* Main Image */}
+            <img
+              src={selectedImage}
+              alt={galleryImages[selectedImageIndex]?.title || "Gallery preview"}
+              style={{
+                maxWidth: '85%',
+                maxHeight: '85%',
+                objectFit: 'contain',
+                borderRadius: '10px',
+                transition: 'opacity 0.3s ease'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
 
-          {/* Image Counter */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '2rem',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'rgba(0, 0, 0, 0.5)',
-              color: 'white',
-              padding: '0.5rem 1rem',
-              borderRadius: '20px',
-              fontSize: '0.9rem',
-              zIndex: 2001
-            }}
-          >
-            {selectedImageIndex + 1} / {galleryImages.length}
+            {/* Image Counter */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '2rem',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: 'rgba(0, 0, 0, 0.5)',
+                color: 'white',
+                padding: '0.5rem 1rem',
+                borderRadius: '20px',
+                fontSize: '0.9rem',
+                zIndex: 2001
+              }}
+            >
+              {selectedImageIndex + 1} / {galleryImages.length}
+            </div>
+
+            {/* Image Title */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '2rem',
+                left: '2rem',
+                background: 'rgba(0, 0, 0, 0.5)',
+                color: 'white',
+                padding: '0.5rem 1rem',
+                borderRadius: '10px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                zIndex: 2001,
+                maxWidth: '300px'
+              }}
+            >
+              {galleryImages[selectedImageIndex]?.title}
+            </div>
           </div>
-
-          {/* Image Title */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '2rem',
-              left: '2rem',
-              background: 'rgba(0, 0, 0, 0.5)',
-              color: 'white',
-              padding: '0.5rem 1rem',
-              borderRadius: '10px',
-              fontSize: '1rem',
-              fontWeight: '600',
-              zIndex: 2001,
-              maxWidth: '300px'
-            }}
-          >
-            {galleryImages[selectedImageIndex]?.title}
-          </div>
-        </div>
-      )}
+        )
+      }
 
       {/* Call to Action */}
       <section className="section bg-premium-light" style={{ textAlign: 'center' }}>
@@ -406,7 +413,7 @@ const Gallery = () => {
           </a>
         </div>
       </section>
-    </div>
+    </div >
   );
 };
 

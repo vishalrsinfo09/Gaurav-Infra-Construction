@@ -596,7 +596,7 @@ const About = () => {
           <div className="floating-shape"></div>
         </div>
         <div className="hero-content-about">
-          <h1 className="hero-title-about">About Gaurav Infra</h1>
+          <h1 className="hero-title-about">About Us</h1>
           <p className="hero-subtitle-about">
             Building dreams, creating homes, transforming lives with luxury and uncompromising quality
           </p>
