@@ -90,7 +90,7 @@ const Contact = () => {
     
     /* Professional Hero Section */
     .hero-professional {
-      height: 100vh;
+      height: 60vh;
       min-height: 450px;
       position: relative;
       display: flex;
@@ -106,7 +106,7 @@ const Contact = () => {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.49)), url('architecture-concept-with-laptop-workspace.jpg');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6)), url('architecture-concept-with-laptop-workspace.jpg');
       background-size: cover;
       background-position: center;
       animation: ${isVisible ? 'parallaxMove' : 'none'} 20s ease-in-out infinite;
