@@ -46,7 +46,6 @@ const GauravEuphoriaDetail = () => {
     { title: "OTHERS", items: ["POP with light in all ceiling.", "Two lift of Kone or Jhonson company with Rescue Backup.", "24 hour water supply from over head tank & underground sump."] },
     { title: "ADDITIONAL CHARGES", items: ["Registration, stamp duty charges and document preparation charges shall be paid by purchaser.", "M.S.E.B. meter, water meter and other incidental expenses will be charged extra.", "Any extra work other than specification shall be charged separately before execution.", "Elevation changes are not allowed.", "All rights reserved with builder for making changes in drawing & Specification.", "GST & other Govt. taxes if applicable will be charge extra.", "Possession after full clearance of all dues."] }
   ];
-  //navbar
 
   useEffect(() => {
     const handleScroll = () => {
@@ -204,11 +203,36 @@ const GauravEuphoriaDetail = () => {
           {/* Left Side: Title + Info Box */}
           <div className="flex-1 flex flex-col justify-center gap-6 px-3 md:px-12 py-12 bg-white">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
-              <span className="block text-gray-500">{project.title.split(" ")[0]}</span>
-              <span className="text-amber-600 italic">
-                {project.title.split(" ")[1] || ""}
+              <span className="block text-amber-700" style={{
+                fontFamily: 'Playfair Display, serif',
+                color: '#B8860B',
+                fontWeight: '700',
+                letterSpacing: '2px',
+                fontSize:'30px'
+              }}>
+                Gaurav
               </span>
+              <span className="text-amber-600 italic" style={{
+                fontFamily: 'Dancing Script, Brush Script MT, cursive',
+                color: '#CD853F',
+                fontWeight: '400',
+                fontSize: '1.2em',
+                letterSpacing: '3px',
+                fontStyle: 'italic'
+              }}>
+                Euphoria
+              </span>
+              <div className="text-amber-700 text-lg md:text-xl" style={{
+                fontFamily: 'Playfair Display, serif',
+                color: '#B8860B',
+                fontWeight: '500',
+                letterSpacing: '1px',
+                paddingLeft:'100px'
+              }}>
+                2 & 3 BHK Premium Homes
+              </div>
             </h1>
+
 
             <div className="text-green-800 rounded-lg mt-6 inline-block">
               <p className="text-3xl" style={{ fontFamily: 'Cairo' }}>
@@ -500,17 +524,8 @@ const GauravEuphoriaDetail = () => {
           </div>
         </section>
 
-
-
-
-
-
-
-        {/* Tabs Section */}
-        <section
-          className="project-panel h-screen relative z-20 px-4 sm:px-6 md:px-24 py-12 sm:py-16 bg-fixed bg-center bg-cover"
-          style={{ backgroundImage: "url('/carousal2.jpg')" }}
-        >
+        <section className="project-panel h-screen relative z-20 px-4 sm:px-6 md:px-24 py-12 sm:py-16 bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: "url('/carousal2.jpg')" }}>
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
           <div className="relative z-10 text-white">
             {/* Tabs */}
@@ -587,28 +602,6 @@ const GauravEuphoriaDetail = () => {
         </div>
       )}
 
-      {/* PopUp Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
-          onClick={() => setSelectedImage(null)} // Close on background click
-        >
-          <div className="relative w-full h-full flex items-center justify-center">
-            <img
-              src={selectedImage}
-              alt="Selected Floor Plan"
-              className="w-full h-full object-contain"
-            />
-            {/* Close button */}
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white text-3xl font-bold"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
