@@ -77,7 +77,7 @@ const About = () => {
     }
     
     .hero-title-about {
-      font-size: 2.5rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 1.5rem;
       background: linear-gradient(135deg, #22d3ee, #ffffff, #facc15);
@@ -590,11 +590,11 @@ const About = () => {
 
       {/* Enhanced Hero Section */}
       <section className="hero-about">
-        <div className="floating-elements-about">
+        {/* <div className="floating-elements-about">
           <div className="floating-shape"></div>
           <div className="floating-shape"></div>
           <div className="floating-shape"></div>
-        </div>
+        </div> */}
         <div className="hero-content-about">
           <h1 className="hero-title-about">About Us</h1>
           <p className="hero-subtitle-about">

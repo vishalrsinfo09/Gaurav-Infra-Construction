@@ -82,6 +82,8 @@ const GauravEuphoriaDetail = () => {
   }, []);
 
   useEffect(() => {
+    // let mm = gsap.matchMedia();
+    // mm.add("(min-width: 767px)", () => {
     const sections = gsap.utils.toArray(".project-panel");
     sections.forEach((panel) => {
       ScrollTrigger.create({
@@ -93,6 +95,18 @@ const GauravEuphoriaDetail = () => {
         snap: 1,
       });
     });
+    // });
+
+    // For mobile
+    // mm.add("(max-width: 767px)", () => {
+
+    //   const sections = document.querySelectorAll(".project-panel");
+    //   sections.forEach((sec) => {
+    //     sec.classList.remove("h-screen");
+    //     sec.classList.add("min-h-screen");
+    //   });
+    // });
+    // return () => mm.revert();
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -118,8 +132,8 @@ const GauravEuphoriaDetail = () => {
             <a href="/" className="hover:text-cyan-300 transition-colors">HOME</a>
             <a href="/projects" className="hover:text-cyan-300 transition-colors">PROJECTS</a>
             <div className="relative group inline-block"
-              // onMouseEnter={() => setOpenDropdown(true)}
-              // onMouseLeave={() => setOpenDropdown(false)}
+            // onMouseEnter={() => setOpenDropdown(true)}
+            // onMouseLeave={() => setOpenDropdown(false)}
             >
               <button
                 onClick={() => setOpenDropdown(!openDropdown)}
@@ -201,8 +215,10 @@ const GauravEuphoriaDetail = () => {
 
         <section className="project-panel h-screen flex flex-col md:flex-row min-h-screen">
           {/* Left Side: Title + Info Box */}
-          <div className="flex-1 flex flex-col justify-center gap-6 px-3 md:px-12 py-12 bg-white">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
+          <div className="flex-1 flex flex-col justify-center gap-6 
+                  px-4 sm:px-8 md:px-10 lg:px-12 
+                  py-8 md:py-12 bg-white text-center md:text-left">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-wide  pt-20 sm:pt-8 md:pt-0">
               <span className="block text-amber-700" style={{
                 fontFamily: 'Playfair Display, serif',
                 color: '#B8860B',
@@ -251,10 +267,10 @@ const GauravEuphoriaDetail = () => {
               </div>
             </h1>
 
-            <div className="text-green-800 rounded-lg mt-6 inline-block">
-              <p className="text-3xl" style={{ fontFamily: 'Cairo' }}>
+            <div className="text-green-800 rounded-lg  sm:mt-4 md:mt-6 inline-block custome-mt">
+              <p className="text-2xl sm:text-xl md:text-3xl" style={{ fontFamily: 'Cairo' }}>
                 the first <strong style={{ fontSize: '45px' }}>highrise</strong> building<br />
-                <span className="ps-6">
+                <span className="ps-4 sm:ps-2 md:ps-6">
                   in <span style={{ fontWeight: 'bold' }}>Lashkaribagh</span> with modern
                   <strong style={{ fontSize: '45px' }}>amenities</strong>
                 </span>
@@ -266,36 +282,38 @@ const GauravEuphoriaDetail = () => {
             <img
               src={project.heroImage}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="w-full h-64 sm:h-80 
+      md:h-screen md:object-contain 
+      lg:h-full lg:object-cover"
             />
           </div>
         </section>
 
 
         <section className="project-panel h-screen content-section pin bg-gray-50">
-          <div className="section-container max-w-7xl mx-auto px-6">
-            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-6" style={{ marginBottom: '24px' }}>
+          <div className="section-container max-w-7xl mx-auto px-6 sm:px-6">
+            <h2 className="section-title  text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-6  mb-6 sm:mb-8">
               About Project
             </h2>
-            <div className="w-24 h-1 bg-[#D2AD75] mx-auto mb-10"></div>
-            <div className="section-content grid md:grid-cols-2 gap-16 items-center">
+            <div className="w-16 sm:w-20 md:w-24 h-1 bg-[#D2AD75] mx-auto mb-2 sm:mb-4"></div>
+            <div className="section-content grid  grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start">
               <div className="">
                 <img
                   src="/carousal-build.jpeg"
                   alt="Gaurav Euphoria modern facade"
-                  className="w-full h-[400px] object-cover rounded-xl shadow-2xl"
+                  className="w-full h-60 sm:h-72 md:h-[400px] object-cover rounded-xl shadow-2xl"
                   onClick={() => setSelectedImage("/carousal-build.jpeg")}
                 />
               </div>
               <div className="content-text fade-up">
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-[10px] md:text-[14px] lg:text-lg text-justify">
                   There are too many option for homes, but every home is not a luxurious home. Luxury cannot be described, it has to be experienced.
                   Experience it first, at the finest residential project <strong>"Gaurav Euphoria"</strong> developed by Gaurav Infra at the prime location of the city.
                 </p>
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-[10px] md:text-[14px] lg:text-lg text-justify">
                   It offers 2 & 3 spacious bed rooms with proper ventilation and sunlight. A large living room along with entrance foyer. Big kitchen with separate dining space. Balcony / terrace to every rooms. Thoughtful planning, stylish design, quality construction and peaceful surrounding make <strong>"Gaurav Euphoria"</strong> more prestigious and beautiful place to live.
                 </p>
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-2 text-gray-700 leading-relaxed text-[10px] md:text-[14px] lg:text-lg text-justify">
                   The additional advantage of the project is its location. You can easily access many things like Shopping Mall, Inox, Metro Station, Hospital, Petrol Pump, ATM etc. within walking distance.
                   <strong>"Gaurav Euphoria"</strong> is the perfect place to live luxurious life, that you can call a dream home.
                 </p>
@@ -305,63 +323,67 @@ const GauravEuphoriaDetail = () => {
         </section>
 
         <section className="project-panel h-screen content-section pin bg-gray-50" id="architecture">
-          <div className="section-container max-w-7xl mx-auto px-6">
-            <h2 className="section-title text-5xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-6" style={{ marginBottom: '24px' }}>
+          <div className="section-container max-w-7xl mx-auto px-4 sm:px-6">
+            <h2 className="section-title text-3xl sm:text-4xl md:text-6xl font-serif font-bold text-[#D2AD75] tracking-wide pt-6 mb-6">
               Architecture
             </h2>
-            <div className="w-24 h-1 bg-[#D2AD75] mx-auto mb-7"></div>
-            <div className="section-content grid md:grid-cols-2 gap-16 items-center">
+            <div className="w-20 sm:w-24 h-1 bg-[#D2AD75] mx-auto mb-8"></div>
 
-              <div className="content-text fade-up">
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+            {/* Grid Layout */}
+            <div className="section-content grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start">
+
+              {/* Image First on Mobile */}
+              <div className="order-1 md:order-2">
+                <img
+                  src="/carousal-build2.jpeg"
+                  alt="Gaurav Euphoria modern facade"
+                  className="w-full h-64 sm:h-80 md:h-[400px] object-cover rounded-xl shadow-2xl"
+                  onClick={() => setSelectedImage("/carousal-build2.jpeg")}
+                />
+              </div>
+
+              {/* Text Content */}
+              <div className="content-text fade-up order-2 md:order-1">
+                <p className="mb-0 text-gray-700 leading-relaxed text-[9px] md:text-[14px] lg:text-lg text-justify">
                   <strong>Gaurav Euphoria</strong> showcases a modern minimalist architectural design,
                   combining sleek glass facades with textured stone cladding. Each tower is thoughtfully
                   oriented to maximize natural light, cross-ventilation, and panoramic views of the
                   landscaped gardens below.
                 </p>
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-0  text-gray-700 leading-relaxed text-[9px] md:text-[14px] lg:text-lg text-justify">
                   Apartments feature open-plan living areas, modular kitchens, and spacious bedrooms.
                   Balconies with elegant glass railings provide uninterrupted views, emphasizing the
                   seamless connection between indoor and outdoor spaces.
                 </p>
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-0 text-gray-700 leading-relaxed text-[9px] md:text-[14px] lg:text-lg text-justify">
                   The construction emphasizes durability and sustainability, using high-quality concrete,
                   eco-friendly materials, and energy-efficient systems. Rainwater harvesting, solar lighting,
                   and landscaped terraces reflect Gaurav Infra’s commitment to environmentally conscious design.
                 </p>
-                <p className="mb-2 text-gray-700 leading-relaxed text-lg">
+                <p className="mb-0  text-gray-700 leading-relaxed text-[9px] md:text-[14px] lg:text-lg text-justify">
                   Exclusive amenities like rooftop sky lounges, meditation decks, and wellness-focused terraces
                   create a luxurious living experience while maintaining a harmonious blend of aesthetics
                   and functionality.
                 </p>
               </div>
-
-              <div className="">
-                <img
-                  src="/carousal-build2.jpeg"
-                  alt="Gaurav Euphoria modern facade"
-                  className="w-full h-[400px] object-cover rounded-xl shadow-2xl"
-                  onClick={() => setSelectedImage("/carousal-build2.jpeg")}
-                />
-
-              </div>
             </div>
           </div>
         </section>
 
+
         <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-6">
           <div className="section-container max-w-5xl mx-auto px-6">
-            <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-12 text-[#D2AD75]">
               Floor Plan
             </h2>
-
+            <div className="w-20 sm:w-24 h-1 bg-[#D2AD75] mx-auto mb-2 md:mb-8"></div>
             {/* Image Container */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               {/* Left Column */}
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-4 md:gap-8">
                 {/* First Image */}
                 <div className="flex flex-col items-center w-full " onClick={() => setSelectedImage("/_2bhk_floor.png")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">2BHK (1st Floor Plan)</h3>
+                  <h3 className="text-1xl font-semibold text-gray-800 mb-0 md:mb-2 text-center">2BHK (1st Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/_2bhk_floor.png"
@@ -373,7 +395,7 @@ const GauravEuphoriaDetail = () => {
 
                 {/* Second Image */}
                 <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center"> (2nd/4th/6th/8th/10th Floor Plan)</h3>
+                  <h3 className="text-1xl font-semibold text-gray-800 mb-0 md:mb-2 text-center"> (2nd/4th/6th/8th/10th Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/_2bhk_floor.png"
@@ -385,10 +407,10 @@ const GauravEuphoriaDetail = () => {
               </div>
 
               {/* Right Column */}
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-4 md:gap-8">
                 {/* Third Image */}
                 <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">(3rd/5th/7th/9th/11th Floor Plan)</h3>
+                  <h3 className="text-1xl font-semibold text-gray-800 mb-0 md:mb-2 text-center">(3rd/5th/7th/9th/11th Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
                       src="/_2bhk_floor.png"
@@ -399,13 +421,13 @@ const GauravEuphoriaDetail = () => {
                 </div>
 
                 {/* Fourth Image */}
-                <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/5bhk.jpg")}>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">(12th Floor Plan)</h3>
+                <div className="flex flex-col items-center w-full" onClick={() => setSelectedImage("/_2bhk_floor.png")}>
+                  <h3 className="text-1xl font-semibold text-gray-800 mb-0 md:mb-2 text-center">(12th Floor Plan)</h3>
                   <div className="rounded-lg shadow-lg overflow-hidden w-full">
                     <img
-                      src="/5bhk.jpg"
+                      src="/_2bhk_floor.png"
                       alt="3BHK Premium Floor Plan"
-                      className="w-[4000px] h-[170px] object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
+                      className="w-full h-auto object-contain cursor-pointer transform transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                 </div>
@@ -418,10 +440,10 @@ const GauravEuphoriaDetail = () => {
 
         <section className="project-panel h-screen floor-plan-section relative bg-gray-50 py-6">
           <div className="section-container max-w-5xl mx-auto px-6">
-            <h2 className="text-5xl md:text-5xl font-bold text-center mb-12 text-[#D2AD75]">
+            <h2 className="text-[34px] md:text-5xl font-bold text-center mb:6 md:mb-12 text-[#D2AD75]">
               Isometric View
             </h2>
-
+            <div className="w-20 sm:w-24 h-1 bg-[#D2AD75] mx-auto mb-2 md:mb-8"></div>
             {/* Image Container */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* 2BHK Floor Plan */}
@@ -431,7 +453,7 @@ const GauravEuphoriaDetail = () => {
                   <img
                     src="/2bhk_isometric_view.png"
                     alt="Gaurav Euphoria 2BHK floor plan"
-                    className="w-full max-w-sm h-auto object-contain cursor-pointer"
+                    className="w-[250px] h-[250px] object-fill cursor-pointer md:w-full md:h-auto"
                   />
                 </div>
               </div>
@@ -443,7 +465,7 @@ const GauravEuphoriaDetail = () => {
                   <img
                     src="/3bhk_isometric_view.png"
                     alt="Gaurav Euphoria 3BHK floor plan"
-                    className="w-full max-w-sm h-auto object-contain cursor-pointer"
+                    className="w-[250px] h-[250px] object-fill cursor-pointer md:w-full md:h-auto"
                   />
                 </div>
               </div>
@@ -451,80 +473,79 @@ const GauravEuphoriaDetail = () => {
           </div>
         </section>
 
-        <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100" id="lifestyle">
-          <div className="section-container max-w-7xl mx-auto px-6 py-6 text-center">
+        <section className="project-panel h-screen md:h-screen min-h-screen md:min-h-0 content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100" id="lifestyle">
+          <div className="section-container max-w-7xl mx-auto px-4 md:px-6 py-8 text-center">
+
             {/* Heading */}
-            <h2 className="section-title text-5xl md:text-6xl font-bold text-[#D2AD75] tracking-wide" style={{ marginBottom: '24px' }}>
+            <h2 className="section-title text-3xl sm:text-4xl md:text-6xl font-bold text-[#D2AD75] tracking-wide mb-0 md:mb-6">
               Lifestyle
             </h2>
-            <div className="w-24 h-1 bg-[#D2AD75] mx-auto mt-2 mb-10"></div>
+            <div className="w-16 sm:w-24 h-1 bg-[#D2AD75] mx-auto mt-2 mb-2 md:mb-8 md:mb-10"></div>
 
             {/* Text Content */}
-            <div className="content-text fade-up max-w-3xl mx-auto">
-              <p className="text-gray-700 leading-relaxed text-lg">
+            <div className="content-text fade-up max-w-3xl mx-auto space-y-0 md:space-y-4">
+              <p className="text-gray-700 leading-relaxed text-[11px] sm:text-lg px-2">
                 Our team of experienced interior designers and furniture planners brings years of
                 expertise, making us a trusted choice for creating luxurious living spaces.
                 Each design blends comfort, elegance, and functionality.
               </p>
-              <p className=" text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed text-[11px] sm:text-lg px-2">
                 Whether you’re redesigning your living room, planning a new office, or creating your dream kitchen,
                 we craft spaces that truly reflect your personality while ensuring cost-effectiveness and precision.
               </p>
             </div>
 
-            {/* Overlapping Images Layout */}
-            <div className="relative w-full max-w-5xl mx-auto h-auto flex justify-center gap-6 mt-4">
+            {/* Images Layout */}
+            <div className="relative w-full max-w-5xl mx-auto h-auto flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 mt-0 mb:mt-6">
+
               {/* Left Image */}
-              <div className="w-72 md:w-96 h-80 border-2 border-gray-300 shadow-lg">
+              <div className="w-[200px] h-[200px]  w-64 sm:w-72 md:w-96 h-64 sm:h-72 md:h-80 border-2 border-gray-300 shadow-lg">
                 <img
                   src="/RAJ06604.JPG"
                   alt="Floor Plan 1"
-                  className="rounded-lg w-full h-full object-FILL"
+                  className="rounded-lg w-full h-full object-cover"
                 />
               </div>
 
               {/* Right Image */}
-              <div className="w-72 md:w-96 h-80 border-2 border-gray-300 shadow-lg">
+              <div className="w-[200px] h-[200px] sm:w-72 md:w-96 h-64 sm:h-72 md:h-80 border-2 border-gray-300 shadow-lg">
                 <img
                   src="/RAJ06598.JPG"
                   alt="Floor Plan 2"
-                  className="rounded-lg w-full h-full object-FILL"
+                  className="rounded-lg w-full h-full object-cover"
                 />
               </div>
             </div>
-
-
           </div>
         </section>
 
-        <section className="project-panel h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100 px-6 py-2" >
-          <h2 className="section-title text-5xl md:text-6xl  font-bold text-[#D2AD75] tracking-wide">
+
+        <section className="project-panel h-auto md:h-screen content-section pin bg-gradient-to-r from-white via-gray-50 to-gray-100 px-4 sm:px-6 py-6">
+          {/* Heading */}
+          <h2 className="section-title text-3xl sm:text-4xl md:text-6xl font-bold text-[#D2AD75] tracking-wide text-center mb-0 md:mb-6">
             Specification
           </h2>
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-0">
+            <div className="w-16 sm:w-24 h-1 bg-[#D2AD75] mx-auto mt-2 mb-2 md:mb-8 md:mb-10"></div>
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-0">
+
             {/* Left: Text */}
-            <div className="md:w-1/2 space-y-6">
-              <div className="w-full md:w-1/2 space-y-4"></div>
+            <div className="w-full md:w-1/2 space-y-0 md:space-y-6">
               {sections.map((sec, i) => (
-
                 <div key={i}>
-
                   <h3
-                    className="text-2xl font-semibold text-[#D2AD75] mb-0 cursor-pointer hover:text-amber-600 "
+                    className="text-[14px] sm:text-2xl font-semibold text-[#D2AD75] mb-0 md:mb-2 cursor-pointer hover:text-amber-600 flex items-center gap-0 md:gap-2"
                     onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-
-                  >  <span
-                    className={`transform transition-transform duration-300 text-2xl ml-2 ${activeIndex === i ? "rotate-90" : "rotate-0"
-                      }`}
                   >
+                    <span
+                      className={`transform transition-transform duration-300 text-[10px] sm:text-2xl ${activeIndex === i ? "rotate-90" : "rotate-0"}`}
+                    >
                       +
                     </span>
                     {sec.title}
-
                   </h3>
 
                   {activeIndex === i && (
-                    <ul className="list-disc list-inside space-y-1 leading-relaxed text-lg">
+                    <ul className="list-disc list-inside space-y-0 md:space-y-1 leading-relaxed text-[12px] sm:text-lg pl-2">
                       {sec.items.map((item, j) => (
                         <li key={j}>{item}</li>
                       ))}
@@ -535,17 +556,16 @@ const GauravEuphoriaDetail = () => {
             </div>
 
             {/* Right: Image */}
-            <div className="md:w-1/2 flex justify-center items-start">
+            <div className="w-full md:w-1/2 flex justify-center items-start mt-6 md:mt-0">
               <img
-                src="/specifications.png" // Replace with your image path
+                src="/specifications.png"
                 alt="Specification illustration"
-                className="w-full h-[550px] object-contain rounded-lg"
+                className="w-full max-w-sm sm:max-w-md md:max-w-full h-auto object-contain rounded-lg shadow-md"
               />
             </div>
-
-
           </div>
         </section>
+
 
         <section className="project-panel h-screen relative z-20 px-4 sm:px-6 md:px-24 py-12 sm:py-16 bg-fixed bg-center bg-cover"
           style={{ backgroundImage: "url('/carousal-build.jpeg')" }}>
