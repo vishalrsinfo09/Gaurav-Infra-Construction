@@ -590,11 +590,11 @@ const About = () => {
 
       {/* Enhanced Hero Section */}
       <section className="hero-about">
-        <div className="floating-elements-about">
+        {/* <div className="floating-elements-about">
           <div className="floating-shape"></div>
           <div className="floating-shape"></div>
           <div className="floating-shape"></div>
-        </div>
+        </div> */}
         <div className="hero-content-about">
           <h1 className="hero-title-about">About Us</h1>
           <p className="hero-subtitle-about">

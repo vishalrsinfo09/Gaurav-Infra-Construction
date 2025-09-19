@@ -139,7 +139,8 @@ const Projects = () => {
       align-items: center;
       justify-content: center;
       // background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-      background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
+      // background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
+            background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
       background-size: 400% 400%;
       animation: gradientShift 8s ease infinite;
       overflow: hidden;
@@ -149,10 +150,10 @@ const Projects = () => {
       content: '';
       position: absolute;
       inset: 0;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 117, 95, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(69, 104, 220, 0.3) 0%, transparent 50%);
+      // background: 
+      //   radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.4) 0%, transparent 50%),
+      //   radial-gradient(circle at 80% 20%, rgba(255, 117, 95, 0.4) 0%, transparent 50%),
+      //   radial-gradient(circle at 40% 80%, rgba(69, 104, 220, 0.3) 0%, transparent 50%);
       animation: floatingBubbles 15s ease-in-out infinite;
     }
     
@@ -160,6 +161,7 @@ const Projects = () => {
       text-align: center;
       z-index: 3;
       padding: 2rem;
+      height:10vh;
       animation: heroFadeInUp 1.5s ease-out 0.5s backwards;
     }
     
@@ -359,7 +361,7 @@ const Projects = () => {
         rgba(236, 72, 153, 0.1) 100%
       );
       opacity: 0;
-      transition: opacity 0.6s ease;
+      // transition: opacity 0.6s ease;
     }
 
     .project-row:hover .project-image-half::after {
@@ -523,9 +525,10 @@ const Projects = () => {
 
     /* CTA Section with Advanced Animations */
     .cta-section {
-      padding: 8rem 2rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-      background-size: 400% 400%;
+      padding: 3rem 2rem;
+      // background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #0ebe7f 0%, #3282b8 100%);
+      background-size: 400% 300%;
       animation: gradientShift 10s ease infinite;
       text-align: center;
       color: white;
@@ -555,7 +558,7 @@ const Projects = () => {
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
-      animation: textGlow 3s ease-in-out infinite;
+      // animation: textGlow 3s ease-in-out infinite
     }
 
     .cta-content p {
@@ -571,7 +574,7 @@ const Projects = () => {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 1.5rem 3rem;
+      // padding: 1.5rem 3rem;
       background: white;
       border-radius: 50px;
       color: #1e293b;
@@ -755,7 +758,7 @@ const Projects = () => {
                 img: 'gaurav-euphoria.jpeg',
                 desc: 'Premium 2BHK & 3BHK apartments with modern amenities and green surroundings. Experience luxury living with state-of-the-art facilities and beautiful landscaped gardens.',
                 path: "/projects/gaurav-euphoria",
-                location: "Prime Location",
+                location: "LakshariBagh, Nagpur",
                 year: "2024",
                 units: "120 Units"
             },
@@ -784,7 +787,7 @@ const Projects = () => {
                 img: '/carousal-build3.jpeg',
                 desc: 'Modern commercial complex offering premium office spaces in prime location. Perfect for businesses looking for prestigious addresses with cutting-edge infrastructure.',
                 path: "/",
-                location: "Business District",
+                location: "Awale Babu Square,LakshariBagh, Nagpur",
                 year: "2024",
                 units: "50 Offices"
             },
@@ -866,7 +869,7 @@ const Projects = () => {
                                 <div className="project-meta">
                                     <span><MapPin size={16} />{project.location}</span>
                                     <span><Calendar size={16} />{project.year}</span>
-                                    <span><Eye size={16} />{project.units}</span>
+                                    {/* <span><Eye size={16} />{project.units}</span> */}
                                 </div>
                                 <p className="project-description">{project.desc}</p>
                                 <div className="project-actions">
